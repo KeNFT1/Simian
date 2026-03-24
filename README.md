@@ -142,6 +142,62 @@ Simian uses **delegate.cash** as the security foundation, ensuring your NFT neve
 
 ---
 
+## 🤖 Self-Service Agent Framework
+
+**New!** Simian now includes a self-service framework that lets BAYC/MAYC holders create and deploy their own automated trading agents without technical expertise.
+
+### 🧠 Pipeline Builder
+
+Visit `builder.html` to configure your trading strategy through a visual interface:
+
+- **Strategy Templates** — Conservative, Balanced, or Aggressive approaches
+- **Market Filters** — Volume, price range, time horizons, category exclusions
+- **Intelligence Sources** — HackerNews, Reddit, BBC RSS, Google News, Twitter
+- **Risk Parameters** — Budget, position sizing, Kelly fraction, edge thresholds
+- **Execution Settings** — Paper trading vs live, cron intervals
+
+### 🚀 Standalone Agent
+
+The self-service agent runs independently from the main Simian infrastructure:
+
+- **Standalone Python Script** — All dependencies: `requests` and `feedparser`
+- **No External APIs** — Uses free intelligence sources only
+- **Gamma API Integration** — Direct Polymarket market data access
+- **Paper Trading Mode** — Test strategies safely before going live
+- **Configurable Intelligence** — Multiple news sources with custom keywords
+
+### 📊 Quick Start (Self-Service)
+
+```bash
+# 1. Configure strategy
+open builder.html
+# Connect wallet, configure strategy, download config
+
+# 2. Install dependencies
+pip install -r agent/requirements.txt
+
+# 3. Test with paper trading
+python agent/runner.py --config agent-config.json
+
+# 4. Review results
+cat data/simulations/2024-*-*.json
+
+# 5. Go live (optional)
+# Add POLYMARKET_PRIVATE_KEY to .env
+# Set autoExecute: true in config
+```
+
+### 🔒 Security Model
+
+- **Delegation-based** — NFT never leaves your wallet via delegate.cash
+- **Non-custodial** — You control all private keys and funds
+- **Configurable** — Choose exactly which capabilities to enable
+- **Revocable** — Cancel delegation anytime
+
+See [SETUP.md](SETUP.md) for complete setup instructions.
+
+---
+
 ## 🔧 Getting Started
 
 ```bash
