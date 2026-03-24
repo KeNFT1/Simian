@@ -1,431 +1,297 @@
+#!/usr/bin/env python3
 """
-Simian Agent Delegator Module
+Simian Delegation Verifier
 
-This module handles verification and management of NFT delegations via delegate.cash,
-ensuring that agents have proper authorization to act on behalf of NFT owners.
+Verifies on-chain delegation via delegate.cash v2 registry.
+Checks that a hot wallet is authorized to act on behalf of a specific NFT.
+
+delegate.cash v2 registry: 0x00000000000000447e69651d841bD8D104Bed493
+Deployed on: Ethereum mainnet, Polygon, Arbitrum, Optimism, Base, etc.
+
+Key methods:
+  - checkDelegateForERC721(delegate, vault, contract, tokenId, rights)
+  - checkDelegateForContract(delegate, vault, contract, rights) 
+  - checkDelegateForAll(delegate, vault, rights)
 """
 
-import asyncio
-import logging
-from typing import Dict, List, Optional, Tuple, Union
-from dataclasses import dataclass
-from enum import Enum
-import time
+import json
+from typing import Optional
+from pathlib import Path
 
-from web3 import Web3
-from web3.contract import Contract
-from eth_typing import Address, ChecksumAddress
+# delegate.cash v2 registry address (same on all chains)
+DELEGATE_REGISTRY_V2 = "0x00000000000000447e69651d841bD8D104Bed493"
 
+# BAYC contract
+BAYC_CONTRACT = "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
 
-logger = logging.getLogger(__name__)
+# Minimal ABI for delegate.cash v2 read methods
+DELEGATE_REGISTRY_ABI = json.loads('''[
+    {
+        "inputs": [
+            {"name": "to", "type": "address"},
+            {"name": "from", "type": "address"},
+            {"name": "contract_", "type": "address"},
+            {"name": "tokenId", "type": "uint256"},
+            {"name": "rights", "type": "bytes32"}
+        ],
+        "name": "checkDelegateForERC721",
+        "outputs": [{"name": "", "type": "bool"}],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {"name": "to", "type": "address"},
+            {"name": "from", "type": "address"},
+            {"name": "contract_", "type": "address"},
+            {"name": "rights", "type": "bytes32"}
+        ],
+        "name": "checkDelegateForContract",
+        "outputs": [{"name": "", "type": "bool"}],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {"name": "to", "type": "address"},
+            {"name": "from", "type": "address"},
+            {"name": "rights", "type": "bytes32"}
+        ],
+        "name": "checkDelegateForAll",
+        "outputs": [{"name": "", "type": "bool"}],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]''')
 
+# ERC-721 ownerOf ABI
+ERC721_ABI = json.loads('''[
+    {
+        "inputs": [{"name": "tokenId", "type": "uint256"}],
+        "name": "ownerOf",
+        "outputs": [{"name": "", "type": "address"}],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]''')
 
-class DelegationType(Enum):
-    """Types of delegations supported by delegate.cash."""
-    ALL = "all"           # All NFTs from vault
-    CONTRACT = "contract" # All NFTs from specific contract
-    TOKEN = "token"      # Specific NFT token
-
-
-@dataclass
-class DelegationInfo:
-    """Information about a specific delegation."""
-    delegate: str
-    vault: str          # NFT owner address
-    contract_address: str
-    token_id: Optional[int] = None
-    delegation_type: DelegationType = DelegationType.TOKEN
-    is_valid: bool = False
-    expires_at: Optional[int] = None
-    created_at: Optional[int] = None
-    last_verified: int = 0
+# Empty rights = delegate for everything
+EMPTY_RIGHTS = b'\x00' * 32
 
 
 class DelegationVerifier:
-    """Verifies and manages NFT delegations via delegate.cash registry."""
+    """Verify delegate.cash delegations on-chain."""
     
-    # delegate.cash registry contract address (mainnet)
-    DELEGATE_REGISTRY_ADDRESS = "0x00000000000076A84feF008CDAbe6409d2FE638B"
+    def __init__(self, rpc_url: str = "https://eth.llamarpc.com"):
+        try:
+            from web3 import Web3
+            self.w3 = Web3(Web3.HTTPProvider(rpc_url))
+            self.registry = self.w3.eth.contract(
+                address=Web3.to_checksum_address(DELEGATE_REGISTRY_V2),
+                abi=DELEGATE_REGISTRY_ABI,
+            )
+            self.connected = self.w3.is_connected()
+        except ImportError:
+            print("⚠️ web3 not installed. Run: pip install web3")
+            self.w3 = None
+            self.connected = False
     
-    # Contract ABI for delegate.cash registry
-    DELEGATE_REGISTRY_ABI = [
-        {
-            "inputs": [
-                {"internalType": "address", "name": "delegate", "type": "address"},
-                {"internalType": "address", "name": "vault", "type": "address"},
-                {"internalType": "address", "name": "contract_", "type": "address"},
-                {"internalType": "uint256", "name": "tokenId", "type": "uint256"}
-            ],
-            "name": "checkDelegateForToken",
-            "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {"internalType": "address", "name": "delegate", "type": "address"},
-                {"internalType": "address", "name": "vault", "type": "address"},
-                {"internalType": "address", "name": "contract_", "type": "address"}
-            ],
-            "name": "checkDelegateForContract",
-            "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {"internalType": "address", "name": "delegate", "type": "address"},
-                {"internalType": "address", "name": "vault", "type": "address"}
-            ],
-            "name": "checkDelegateForAll",
-            "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
-            "stateMutability": "view",
-            "type": "function"
+    def verify_nft_ownership(self, contract_address: str, token_id: int) -> Optional[str]:
+        """Check who owns a specific NFT. Returns owner address or None."""
+        if not self.w3:
+            return None
+        
+        from web3 import Web3
+        nft_contract = self.w3.eth.contract(
+            address=Web3.to_checksum_address(contract_address),
+            abi=ERC721_ABI,
+        )
+        
+        try:
+            owner = nft_contract.functions.ownerOf(token_id).call()
+            return owner
+        except Exception as e:
+            print(f"❌ ownerOf failed: {e}")
+            return None
+    
+    def check_delegation_for_token(
+        self,
+        hot_wallet: str,
+        cold_wallet: str,
+        contract_address: str,
+        token_id: int,
+        rights: bytes = EMPTY_RIGHTS,
+    ) -> bool:
+        """Check if hot_wallet is delegated for a specific token."""
+        if not self.w3:
+            return False
+        
+        from web3 import Web3
+        try:
+            result = self.registry.functions.checkDelegateForERC721(
+                Web3.to_checksum_address(hot_wallet),
+                Web3.to_checksum_address(cold_wallet),
+                Web3.to_checksum_address(contract_address),
+                token_id,
+                rights,
+            ).call()
+            return bool(result)
+        except Exception as e:
+            print(f"❌ checkDelegateForERC721 failed: {e}")
+            return False
+    
+    def check_delegation_for_contract(
+        self,
+        hot_wallet: str,
+        cold_wallet: str,
+        contract_address: str,
+        rights: bytes = EMPTY_RIGHTS,
+    ) -> bool:
+        """Check if hot_wallet is delegated for an entire collection."""
+        if not self.w3:
+            return False
+        
+        from web3 import Web3
+        try:
+            result = self.registry.functions.checkDelegateForContract(
+                Web3.to_checksum_address(hot_wallet),
+                Web3.to_checksum_address(cold_wallet),
+                Web3.to_checksum_address(contract_address),
+                rights,
+            ).call()
+            return bool(result)
+        except Exception as e:
+            print(f"❌ checkDelegateForContract failed: {e}")
+            return False
+    
+    def check_delegation_for_all(
+        self,
+        hot_wallet: str,
+        cold_wallet: str,
+        rights: bytes = EMPTY_RIGHTS,
+    ) -> bool:
+        """Check if hot_wallet is delegated for ALL assets from cold_wallet."""
+        if not self.w3:
+            return False
+        
+        from web3 import Web3
+        try:
+            result = self.registry.functions.checkDelegateForAll(
+                Web3.to_checksum_address(hot_wallet),
+                Web3.to_checksum_address(cold_wallet),
+                rights,
+            ).call()
+            return bool(result)
+        except Exception as e:
+            print(f"❌ checkDelegateForAll failed: {e}")
+            return False
+    
+    def full_verification(self, agent_config: dict) -> dict:
+        """Run full verification for a Simian agent.
+        
+        Checks:
+        1. NFT ownership (who holds the token?)
+        2. Token-level delegation
+        3. Contract-level delegation (fallback)
+        4. Wallet-level delegation (fallback)
+        
+        Returns verification result dict.
+        """
+        hot_wallet = agent_config.get('wallet', {}).get('hot_wallet', '')
+        contract = agent_config.get('contract', BAYC_CONTRACT)
+        token_id = agent_config.get('token_id', 0)
+        
+        result = {
+            'agent_id': agent_config.get('agent_id', '?'),
+            'token_id': token_id,
+            'contract': contract,
+            'hot_wallet': hot_wallet,
+            'verified': False,
+            'delegation_type': None,
+            'owner': None,
+            'checks': {},
         }
-    ]
-    
-    def __init__(self, web3_provider: Union[str, Web3]):
-        """
-        Initialize the delegation verifier.
         
-        Args:
-            web3_provider: Web3 instance or RPC endpoint URL
-        """
-        if isinstance(web3_provider, str):
-            self.w3 = Web3(Web3.HTTPProvider(web3_provider))
-        else:
-            self.w3 = web3_provider
-            
-        if not self.w3.is_connected():
-            raise ConnectionError("Failed to connect to Ethereum provider")
+        # 1. Check NFT ownership
+        owner = self.verify_nft_ownership(contract, token_id)
+        result['owner'] = owner
+        result['checks']['ownership'] = owner is not None
         
-        # Initialize delegate registry contract
-        self.delegate_registry = self.w3.eth.contract(
-            address=Web3.to_checksum_address(self.DELEGATE_REGISTRY_ADDRESS),
-            abi=self.DELEGATE_REGISTRY_ABI
+        if not owner:
+            result['checks']['error'] = 'Could not verify NFT ownership'
+            return result
+        
+        # 2. Check token-level delegation (most specific)
+        token_delegated = self.check_delegation_for_token(
+            hot_wallet, owner, contract, token_id
         )
+        result['checks']['token_delegation'] = token_delegated
+        if token_delegated:
+            result['verified'] = True
+            result['delegation_type'] = 'token'
+            return result
         
-        # Cache for verified delegations (delegate -> delegation_info)
-        self._delegation_cache: Dict[str, DelegationInfo] = {}
-        self._cache_ttl = 300  # 5 minutes cache TTL
-    
-    def _get_cache_key(self, delegate: str, vault: str, contract: str, token_id: Optional[int] = None) -> str:
-        """Generate cache key for delegation."""
-        key = f"{delegate.lower()}:{vault.lower()}:{contract.lower()}"
-        if token_id is not None:
-            key += f":{token_id}"
-        return key
-    
-    def _is_cache_valid(self, delegation_info: DelegationInfo) -> bool:
-        """Check if cached delegation info is still valid."""
-        return (time.time() - delegation_info.last_verified) < self._cache_ttl
-    
-    async def verify_delegation(
-        self,
-        delegate: str,
-        vault: str,
-        contract_address: str,
-        token_id: Optional[int] = None,
-        use_cache: bool = True
-    ) -> DelegationInfo:
-        """
-        Verify if a delegate has permission to act for a specific NFT.
-        
-        Args:
-            delegate: Address that should have delegation rights
-            vault: NFT owner address
-            contract_address: NFT contract address
-            token_id: Specific token ID (if None, checks contract-level delegation)
-            use_cache: Whether to use cached results
-            
-        Returns:
-            DelegationInfo object with verification results
-        """
-        # Normalize addresses
-        delegate = Web3.to_checksum_address(delegate)
-        vault = Web3.to_checksum_address(vault)
-        contract_address = Web3.to_checksum_address(contract_address)
-        
-        # Check cache first
-        cache_key = self._get_cache_key(delegate, vault, contract_address, token_id)
-        if use_cache and cache_key in self._delegation_cache:
-            cached_info = self._delegation_cache[cache_key]
-            if self._is_cache_valid(cached_info):
-                logger.debug(f"Using cached delegation result for {cache_key}")
-                return cached_info
-        
-        # Create delegation info object
-        delegation_info = DelegationInfo(
-            delegate=delegate,
-            vault=vault,
-            contract_address=contract_address,
-            token_id=token_id,
-            delegation_type=DelegationType.TOKEN if token_id is not None else DelegationType.CONTRACT,
-            last_verified=int(time.time())
+        # 3. Check contract-level delegation
+        contract_delegated = self.check_delegation_for_contract(
+            hot_wallet, owner, contract
         )
+        result['checks']['contract_delegation'] = contract_delegated
+        if contract_delegated:
+            result['verified'] = True
+            result['delegation_type'] = 'contract'
+            return result
         
-        try:
-            # Check different delegation types in order of specificity
-            is_valid = False
-            
-            if token_id is not None:
-                # Check token-specific delegation
-                logger.debug(f"Checking token delegation: {delegate} for {contract_address}:{token_id}")
-                is_valid = await self._check_token_delegation(delegate, vault, contract_address, token_id)
-                
-                if is_valid:
-                    delegation_info.delegation_type = DelegationType.TOKEN
-            
-            if not is_valid:
-                # Check contract-wide delegation
-                logger.debug(f"Checking contract delegation: {delegate} for {contract_address}")
-                is_valid = await self._check_contract_delegation(delegate, vault, contract_address)
-                
-                if is_valid:
-                    delegation_info.delegation_type = DelegationType.CONTRACT
-            
-            if not is_valid:
-                # Check vault-wide (all) delegation
-                logger.debug(f"Checking vault delegation: {delegate} for {vault}")
-                is_valid = await self._check_all_delegation(delegate, vault)
-                
-                if is_valid:
-                    delegation_info.delegation_type = DelegationType.ALL
-            
-            delegation_info.is_valid = is_valid
-            
-            # Cache the result
-            self._delegation_cache[cache_key] = delegation_info
-            
-            logger.info(f"Delegation verification: {delegate} -> {vault}:{contract_address}:{token_id} = {is_valid}")
-            
-        except Exception as e:
-            logger.error(f"Delegation verification failed: {e}")
-            delegation_info.is_valid = False
+        # 4. Check wallet-level delegation
+        wallet_delegated = self.check_delegation_for_all(hot_wallet, owner)
+        result['checks']['wallet_delegation'] = wallet_delegated
+        if wallet_delegated:
+            result['verified'] = True
+            result['delegation_type'] = 'wallet'
+            return result
         
-        return delegation_info
-    
-    async def _check_token_delegation(
-        self, 
-        delegate: str, 
-        vault: str, 
-        contract_address: str, 
-        token_id: int
-    ) -> bool:
-        """Check token-specific delegation."""
-        try:
-            result = await asyncio.get_event_loop().run_in_executor(
-                None,
-                self.delegate_registry.functions.checkDelegateForToken(
-                    delegate, vault, contract_address, token_id
-                ).call
-            )
-            return bool(result)
-        except Exception as e:
-            logger.error(f"Token delegation check failed: {e}")
-            return False
-    
-    async def _check_contract_delegation(
-        self, 
-        delegate: str, 
-        vault: str, 
-        contract_address: str
-    ) -> bool:
-        """Check contract-wide delegation."""
-        try:
-            result = await asyncio.get_event_loop().run_in_executor(
-                None,
-                self.delegate_registry.functions.checkDelegateForContract(
-                    delegate, vault, contract_address
-                ).call
-            )
-            return bool(result)
-        except Exception as e:
-            logger.error(f"Contract delegation check failed: {e}")
-            return False
-    
-    async def _check_all_delegation(self, delegate: str, vault: str) -> bool:
-        """Check vault-wide delegation."""
-        try:
-            result = await asyncio.get_event_loop().run_in_executor(
-                None,
-                self.delegate_registry.functions.checkDelegateForAll(
-                    delegate, vault
-                ).call
-            )
-            return bool(result)
-        except Exception as e:
-            logger.error(f"All delegation check failed: {e}")
-            return False
-    
-    def clear_cache(self, delegate: Optional[str] = None):
-        """Clear delegation cache."""
-        if delegate:
-            # Clear cache for specific delegate
-            keys_to_remove = [k for k in self._delegation_cache.keys() if k.startswith(delegate.lower())]
-            for key in keys_to_remove:
-                del self._delegation_cache[key]
-        else:
-            # Clear entire cache
-            self._delegation_cache.clear()
-        
-        logger.info(f"Cleared delegation cache for {'all' if not delegate else delegate}")
-    
-    def get_cached_delegations(self, delegate: Optional[str] = None) -> List[DelegationInfo]:
-        """Get all cached delegations for a delegate."""
-        if delegate:
-            return [
-                info for key, info in self._delegation_cache.items() 
-                if key.startswith(delegate.lower()) and self._is_cache_valid(info)
-            ]
-        else:
-            return [
-                info for info in self._delegation_cache.values() 
-                if self._is_cache_valid(info)
-            ]
-    
-    async def batch_verify_delegations(
-        self, 
-        delegations: List[Tuple[str, str, str, Optional[int]]]
-    ) -> Dict[str, DelegationInfo]:
-        """
-        Verify multiple delegations in batch.
-        
-        Args:
-            delegations: List of (delegate, vault, contract, token_id) tuples
-            
-        Returns:
-            Dictionary mapping cache keys to delegation results
-        """
-        tasks = []
-        cache_keys = []
-        
-        for delegate, vault, contract, token_id in delegations:
-            task = self.verify_delegation(delegate, vault, contract, token_id)
-            tasks.append(task)
-            cache_keys.append(self._get_cache_key(delegate, vault, contract, token_id))
-        
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-        
-        verification_results = {}
-        for i, result in enumerate(results):
-            if isinstance(result, Exception):
-                logger.error(f"Batch verification failed for {delegations[i]}: {result}")
-                continue
-            verification_results[cache_keys[i]] = result
-        
-        return verification_results
+        result['checks']['note'] = 'No delegation found. Set up at delegate.xyz'
+        return result
 
 
-class DelegationManager:
-    """Higher-level manager for agent delegations."""
+def verify_lulo():
+    """Verify Lulo #2253 delegation status."""
+    config_path = Path(__file__).parent / "agents" / "lulo.json"
+    config = json.loads(config_path.read_text())
     
-    def __init__(self, verifier: DelegationVerifier):
-        self.verifier = verifier
-        self._active_delegations: Dict[str, DelegationInfo] = {}
+    print(f"🦍 Verifying Simian Agent: {config['name']} #{config['token_id']}")
+    print(f"   Collection: {config['collection']}")
+    print(f"   Hot wallet: {config['wallet']['hot_wallet']}")
+    print()
     
-    async def register_agent_delegation(
-        self,
-        agent_id: str,
-        delegate: str,
-        vault: str,
-        contract_address: str,
-        token_id: int
-    ) -> bool:
-        """
-        Register and verify a delegation for an agent.
-        
-        Args:
-            agent_id: Unique identifier for the agent
-            delegate: Agent's delegate address
-            vault: NFT owner address
-            contract_address: NFT contract address
-            token_id: NFT token ID
-            
-        Returns:
-            True if delegation is valid and registered
-        """
-        delegation_info = await self.verifier.verify_delegation(
-            delegate, vault, contract_address, token_id
-        )
-        
-        if delegation_info.is_valid:
-            self._active_delegations[agent_id] = delegation_info
-            logger.info(f"Registered valid delegation for agent {agent_id}")
-            return True
-        else:
-            logger.warning(f"Invalid delegation for agent {agent_id}")
-            return False
+    verifier = DelegationVerifier()
     
-    async def verify_agent_authority(
-        self,
-        agent_id: str,
-        action_description: str = ""
-    ) -> bool:
-        """
-        Verify that an agent has current authority to act.
-        
-        Args:
-            agent_id: Unique identifier for the agent
-            action_description: Optional description of the action being verified
-            
-        Returns:
-            True if agent has valid delegation
-        """
-        if agent_id not in self._active_delegations:
-            logger.error(f"No delegation registered for agent {agent_id}")
-            return False
-        
-        delegation_info = self._active_delegations[agent_id]
-        
-        # Re-verify if cache is stale
-        if not self.verifier._is_cache_valid(delegation_info):
-            logger.info(f"Re-verifying delegation for agent {agent_id}")
-            updated_info = await self.verifier.verify_delegation(
-                delegation_info.delegate,
-                delegation_info.vault,
-                delegation_info.contract_address,
-                delegation_info.token_id
-            )
-            
-            if updated_info.is_valid:
-                self._active_delegations[agent_id] = updated_info
-            else:
-                # Delegation is no longer valid
-                del self._active_delegations[agent_id]
-                logger.warning(f"Delegation revoked for agent {agent_id}")
-                return False
-        
-        if action_description:
-            logger.info(f"Agent {agent_id} authorized for action: {action_description}")
-        
-        return True
+    if not verifier.connected:
+        print("❌ Cannot connect to Ethereum RPC")
+        return
     
-    def revoke_agent_delegation(self, agent_id: str) -> bool:
-        """Remove a delegation registration for an agent."""
-        if agent_id in self._active_delegations:
-            del self._active_delegations[agent_id]
-            logger.info(f"Revoked delegation for agent {agent_id}")
-            return True
-        return False
+    print("🔍 Running verification...")
+    result = verifier.full_verification(config)
     
-    def get_agent_delegation(self, agent_id: str) -> Optional[DelegationInfo]:
-        """Get delegation info for an agent."""
-        return self._active_delegations.get(agent_id)
+    print(f"\n{'='*50}")
+    print(f"📋 VERIFICATION RESULT")
+    print(f"{'='*50}")
+    print(f"   Agent: {result['agent_id']}")
+    print(f"   Token: #{result['token_id']}")
+    print(f"   Owner: {result['owner']}")
+    print(f"   Hot wallet: {result['hot_wallet']}")
+    print(f"   Verified: {'✅ YES' if result['verified'] else '❌ NO'}")
     
-    def list_active_delegations(self) -> Dict[str, DelegationInfo]:
-        """Get all active delegations."""
-        return self._active_delegations.copy()
+    if result['verified']:
+        print(f"   Delegation type: {result['delegation_type']}")
+    else:
+        print(f"   ⚠️ No delegation found.")
+        print(f"   Set up delegation at: https://delegate.xyz")
+        print(f"   Delegate {result['hot_wallet']} for BAYC #{result['token_id']}")
+    
+    print(f"\n   Checks: {json.dumps(result['checks'], indent=6)}")
+    
+    return result
 
 
-# TODO: Implement the following features:
-# - [ ] Delegation event monitoring via WebSocket/HTTP polling
-# - [ ] Automatic delegation refresh before expiration
-# - [ ] Multi-chain delegation support (Base, Polygon, etc.)
-# - [ ] Integration with Simian Registry contract for on-chain verification
-# - [ ] Delegation analytics and reporting
-# - [ ] Emergency delegation revocation mechanisms
-# - [ ] Rate limiting for verification requests
-# - [ ] Fallback verification methods
-# - [ ] Delegation change notifications/alerts
-# - [ ] Support for time-limited delegations
+if __name__ == '__main__':
+    verify_lulo()
