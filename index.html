@@ -795,6 +795,14 @@
         }
 
         function showSignup(collection, tokenIds) {
+            // Persist verification to sessionStorage so dashboard doesn't re-ask
+            sessionStorage.setItem('simian_verified', JSON.stringify({
+                wallet: userAddress,
+                collection: collection,
+                tokenIds: tokenIds,
+                timestamp: Date.now()
+            }));
+
             document.getElementById('verify-section').style.display = 'none';
             document.getElementById('success-section').style.display = 'block';
             document.getElementById('success-details').innerHTML = `
@@ -804,10 +812,9 @@
                     Delegation: delegate.cash v2<br>
                     Status: Beta access granted 🎉
                 </p>
-                <p style="margin-top: 12px; color: #94a3b8; font-size: 0.85em;">
-                    We'll reach out via <a href="https://x.com/lulodoteth" target="_blank" style="color: #7C3AED;">@lulodoteth</a> 
-                    with next steps for agent configuration.
-                </p>
+                <div style="margin-top: 16px;">
+                    <a href="dashboard.html" class="cta-button" style="text-decoration: none;">📊 Open Dashboard →</a>
+                </div>
             `;
         }
 

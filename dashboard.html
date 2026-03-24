@@ -1158,6 +1158,26 @@
             window.open('https://github.com/KeNFT1/Simian-agent', '_blank');
         }
 
+        // Check for persisted verification from index.html
+        (function checkPersistedVerification() {
+            try {
+                const stored = sessionStorage.getItem('simian_verified');
+                if (stored) {
+                    const data = JSON.parse(stored);
+                    // Valid for 1 hour
+                    if (Date.now() - data.timestamp < 3600000) {
+                        // Skip gate, show dashboard directly
+                        document.getElementById('token-gate').style.display = 'none';
+                        document.getElementById('main-dashboard').style.display = 'block';
+                        loadDashboard();
+                        return;
+                    } else {
+                        sessionStorage.removeItem('simian_verified');
+                    }
+                }
+            } catch (e) {}
+        })();
+
         // Wallet connection and verification
         async function connectWallet() {
             const btn = document.getElementById('connect-wallet-btn');
@@ -1348,6 +1368,14 @@
         }
 
         function showDashboard() {
+            // Persist verification
+            sessionStorage.setItem('simian_verified', JSON.stringify({
+                wallet: userAddress || 'verified',
+                collection: 'BAYC',
+                tokenIds: [],
+                timestamp: Date.now()
+            }));
+            
             document.getElementById('success-section').style.display = 'none';
             document.getElementById('main-dashboard').style.display = 'block';
             loadDashboard();
