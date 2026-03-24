@@ -1,0 +1,345 @@
+{
+  "agent": {
+    "id": "lulo-2253",
+    "name": "Lulo",
+    "collection": "BAYC",
+    "token_id": 2253,
+    "status": "live"
+  },
+  "market_scan": {
+    "events": 1000,
+    "total_tradeable": 5670,
+    "after_filters": 357,
+    "with_edge": 9
+  },
+  "intelligence": {
+    "combined": 28.42,
+    "top_signals": {
+      "iran": 5.0,
+      "trump": 2.7,
+      "says": 1.47,
+      "claims": 1.44,
+      "hormuz": 1.44
+    }
+  },
+  "open_positions": [
+    {
+      "question": "Will the Iranian regime fall by June 30?",
+      "outcome": "YES",
+      "entry_price": 0.235,
+      "current_price": 0.195,
+      "cost_usd": 5.0,
+      "pnl_usd": -0.85,
+      "pnl_pct": -17.0,
+      "edge": 0.1848,
+      "strategy": "D",
+      "version": "v5_live"
+    },
+    {
+      "question": "Will the Toronto Raptors make the NBA Playoffs?",
+      "outcome": "YES",
+      "entry_price": 0.916,
+      "current_price": 0.86,
+      "cost_usd": 3.664,
+      "pnl_usd": -0.22,
+      "pnl_pct": -6.1,
+      "edge": 0,
+      "strategy": "E",
+      "version": "v5"
+    },
+    {
+      "question": "Will the Iranian regime fall by April 30?",
+      "outcome": "NO",
+      "entry_price": 0.865,
+      "current_price": 0.915,
+      "cost_usd": 8.0,
+      "pnl_usd": 0.46,
+      "pnl_pct": 5.8,
+      "edge": 2.6609999999999996,
+      "strategy": "D",
+      "version": "v2_mirofish"
+    },
+    {
+      "question": "Will the Iranian regime fall by April 30?",
+      "outcome": "NO",
+      "entry_price": 0.885,
+      "current_price": 0.915,
+      "cost_usd": 2.0,
+      "pnl_usd": 0.07,
+      "pnl_pct": 3.4,
+      "edge": 0.139,
+      "strategy": "D",
+      "version": "v2_mirofish"
+    },
+    {
+      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
+      "outcome": "YES",
+      "entry_price": 0.926,
+      "current_price": 0.95,
+      "cost_usd": 3.704,
+      "pnl_usd": 0.1,
+      "pnl_pct": 2.6,
+      "edge": 0,
+      "strategy": "E",
+      "version": "v5"
+    },
+    {
+      "question": "Will a new country join the Abraham Accords by March 31?",
+      "outcome": "NO",
+      "entry_price": 0.956,
+      "current_price": 0.9715,
+      "cost_usd": 3.824,
+      "pnl_usd": 0.06,
+      "pnl_pct": 1.6,
+      "edge": 0,
+      "strategy": "E",
+      "version": "v5"
+    },
+    {
+      "question": "Will Russia capture Kostyantynivka by March 31?",
+      "outcome": "NO",
+      "entry_price": 0.926,
+      "current_price": 0.94,
+      "cost_usd": 3.704,
+      "pnl_usd": 0.06,
+      "pnl_pct": 1.5,
+      "edge": 0,
+      "strategy": "E",
+      "version": "v5"
+    },
+    {
+      "question": "MegaETH market cap (FDV) >$1B one day after launch?",
+      "outcome": "YES",
+      "entry_price": 0.355,
+      "current_price": 0.35,
+      "cost_usd": 3.54,
+      "pnl_usd": -0.05,
+      "pnl_pct": -1.4,
+      "edge": 0.0427,
+      "strategy": "D",
+      "version": "v5_live"
+    },
+    {
+      "question": "US forces enter Iran by March 31?",
+      "outcome": "NO",
+      "entry_price": 0.795,
+      "current_price": 0.805,
+      "cost_usd": 2.0,
+      "pnl_usd": 0.03,
+      "pnl_pct": 1.3,
+      "edge": 0.1190000000000001,
+      "strategy": "D",
+      "version": "v2_mirofish"
+    },
+    {
+      "question": "Will MegaETH perform an airdrop by June 30? ",
+      "outcome": "YES",
+      "entry_price": 0.4505,
+      "current_price": 0.445,
+      "cost_usd": 4.63,
+      "pnl_usd": -0.06,
+      "pnl_pct": -1.2,
+      "edge": 0.047,
+      "strategy": "D",
+      "version": "v5_live"
+    },
+    {
+      "question": "Will Bitcoin dip to $60,000 in March?",
+      "outcome": "NO",
+      "entry_price": 0.905,
+      "current_price": 0.915,
+      "cost_usd": 1.5,
+      "pnl_usd": 0.02,
+      "pnl_pct": 1.1,
+      "edge": 0.403,
+      "strategy": "D",
+      "version": "v2_mirofish"
+    },
+    {
+      "question": "Will Trump and Putin not meet?",
+      "outcome": "NO",
+      "entry_price": 0.176,
+      "current_price": 0.1765,
+      "cost_usd": 3.45,
+      "pnl_usd": 0.01,
+      "pnl_pct": 0.3,
+      "edge": 0.0535,
+      "strategy": "D",
+      "version": "v5_live"
+    },
+    {
+      "question": "Israel strike on Damascus by March 31, 2026?",
+      "outcome": "NO",
+      "entry_price": 0.8905,
+      "current_price": 0.8895,
+      "cost_usd": 5.343,
+      "pnl_usd": -0.01,
+      "pnl_pct": -0.1,
+      "edge": 0,
+      "strategy": "E",
+      "version": "v5"
+    },
+    {
+      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
+      "outcome": "YES",
+      "entry_price": 0.435,
+      "current_price": 0.435,
+      "cost_usd": 4.14,
+      "pnl_usd": 0.0,
+      "pnl_pct": 0.0,
+      "edge": 0.0435,
+      "strategy": "D",
+      "version": "v5_live"
+    },
+    {
+      "question": "MegaETH market cap (FDV) >$2B one day after launch?",
+      "outcome": "YES",
+      "entry_price": 0.125,
+      "current_price": 0.125,
+      "cost_usd": 2.82,
+      "pnl_usd": 0.0,
+      "pnl_pct": 0.0,
+      "edge": 0.047,
+      "strategy": "D",
+      "version": "v5_live"
+    },
+    {
+      "question": "US-Iran nuclear deal by June 30?",
+      "outcome": "YES",
+      "entry_price": 0.28,
+      "current_price": 0.28,
+      "cost_usd": 5.0,
+      "pnl_usd": 0.0,
+      "pnl_pct": 0.0,
+      "edge": 0.12,
+      "strategy": "D",
+      "version": "v5_live"
+    },
+    {
+      "question": "Will China blockade Taiwan by June 30?",
+      "outcome": "YES",
+      "entry_price": 0.075,
+      "current_price": 0.075,
+      "cost_usd": 2.65,
+      "pnl_usd": 0.0,
+      "pnl_pct": 0.0,
+      "edge": 0.0466,
+      "strategy": "D",
+      "version": "v5_live"
+    }
+  ],
+  "closed_trades": [
+    {
+      "question": "Will Crude Oil (CL) hit (HIGH) $150 by end of March?",
+      "outcome": "NO",
+      "realized_pnl": 0,
+      "close_reason": "resolution_exit"
+    },
+    {
+      "question": "Will Bitcoin reach $80,000 in March?",
+      "outcome": "NO",
+      "realized_pnl": 0.3096,
+      "close_reason": "take_profit_auto"
+    },
+    {
+      "question": "Will Bitcoin dip to $65,000 in March?",
+      "outcome": "NO",
+      "realized_pnl": 0.5416,
+      "close_reason": "take_profit_auto"
+    },
+    {
+      "question": "US-Iran nuclear deal by June 30?",
+      "outcome": "YES",
+      "realized_pnl": 0,
+      "close_reason": "take_profit_manual"
+    },
+    {
+      "question": "Will Trump and Putin not meet?",
+      "outcome": "NO",
+      "realized_pnl": 0.8911,
+      "close_reason": "take_profit_auto"
+    },
+    {
+      "question": "Will Trump visit China by April 30?",
+      "outcome": "YES",
+      "realized_pnl": 0,
+      "close_reason": "take_profit_manual"
+    },
+    {
+      "question": "Trump out as President before GTA VI?",
+      "outcome": "NO",
+      "realized_pnl": 0.0,
+      "close_reason": "manual_close_gta_filter"
+    },
+    {
+      "question": "Will bitcoin hit $1m before GTA VI?",
+      "outcome": "YES",
+      "realized_pnl": 0.0102,
+      "close_reason": "manual_close_gta_filter"
+    },
+    {
+      "question": "Russia-Ukraine Ceasefire before GTA VI?",
+      "outcome": "NO",
+      "realized_pnl": 0,
+      "close_reason": "manual_close_gta_filter"
+    },
+    {
+      "question": "Will the price of Bitcoin be above $78,000 on March 16?",
+      "outcome": "No",
+      "realized_pnl": 0,
+      "close_reason": "resolution_exit"
+    },
+    {
+      "question": "Will Jon Stewart win the 2028 Democratic presidential nomination?",
+      "outcome": "No",
+      "realized_pnl": 0,
+      "close_reason": "resolution_exit"
+    }
+  ],
+  "realized_pnl": 1.75,
+  "unrealized_pnl": -0.38,
+  "total_pnl": 1.37,
+  "recent_activity": [
+    {
+      "icon": "\ud83c\udfaf",
+      "text": "Opened NO Israel strike on Damascus by March 31, 2026? \u2014 $5.34"
+    },
+    {
+      "icon": "\ud83c\udfaf",
+      "text": "Opened YES Will the Toronto Raptors make the NBA Playoffs? \u2014 $3.66"
+    },
+    {
+      "icon": "\ud83c\udfaf",
+      "text": "Opened NO Will Russia capture Kostyantynivka by March 31? \u2014 $3.70"
+    },
+    {
+      "icon": "\ud83c\udfaf",
+      "text": "Opened YES Will Anthropic have the second-best AI model at th \u2014 $3.70"
+    },
+    {
+      "icon": "\ud83c\udfaf",
+      "text": "Opened NO Will a new country join the Abraham Accords by Mar \u2014 $3.82"
+    },
+    {
+      "icon": "\ud83d\udcc9",
+      "text": "No Will Jon Stewart win the 2028 Democratic president \u2014 $+0.00 (resolution_exit)"
+    },
+    {
+      "icon": "\ud83d\udcc9",
+      "text": "No Will the price of Bitcoin be above $78,000 on Marc \u2014 $+0.00 (resolution_exit)"
+    },
+    {
+      "icon": "\ud83d\udcc9",
+      "text": "NO Russia-Ukraine Ceasefire before GTA VI? \u2014 $+0.00 (manual_close_gta_filter)"
+    },
+    {
+      "icon": "\ud83d\udcb0",
+      "text": "YES Will bitcoin hit $1m before GTA VI? \u2014 $+0.01 (manual_close_gta_filter)"
+    },
+    {
+      "icon": "\ud83d\udcc9",
+      "text": "NO Trump out as President before GTA VI? \u2014 $+0.00 (manual_close_gta_filter)"
+    }
+  ],
+  "updated_at": "2026-03-24T04:45:30.879676+00:00"
+}

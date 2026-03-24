@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lulo #2253 — Live Agent Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        .header { text-align: center; padding: 30px 0; border-bottom: 1px solid #1e1e2e; }
+        .ape-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #7C3AED; }
+        .agent-name { font-size: 2em; font-weight: 700; margin: 10px 0 5px; }
+        .agent-name span { color: #7C3AED; }
+        .agent-sub { color: #64748b; font-size: 0.9em; }
+        .agent-sub a { color: #7C3AED; text-decoration: none; }
+        .status-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600; margin-top: 8px; }
+        .status-live { background: #064e3b; color: #34d399; }
+        
+        .traits { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+        .trait { background: #1e1e2e; padding: 4px 10px; border-radius: 12px; font-size: 0.75em; color: #94a3b8; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+        .stat-card { background: #12121a; border: 1px solid #1e1e2e; border-radius: 12px; padding: 16px; }
+        .stat-label { font-size: 0.75em; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+        .stat-value { font-size: 1.5em; font-weight: 700; margin-top: 4px; }
+        .stat-value.green { color: #34d399; }
+        .stat-value.purple { color: #7C3AED; }
+        .stat-value.blue { color: #60a5fa; }
+        
+        h2 { font-size: 1.2em; margin: 24px 0 12px; color: #e2e8f0; }
+        
+        .positions { display: flex; flex-direction: column; gap: 8px; }
+        .position { background: #12121a; border: 1px solid #1e1e2e; border-radius: 10px; padding: 14px; display: flex; justify-content: space-between; align-items: center; }
+        .pos-left { flex: 1; }
+        .pos-question { font-size: 0.9em; font-weight: 500; }
+        .pos-meta { font-size: 0.75em; color: #64748b; margin-top: 4px; }
+        .pos-right { text-align: right; min-width: 100px; }
+        .pos-pnl { font-size: 1.1em; font-weight: 700; }
+        .pos-pnl.positive { color: #34d399; }
+        .pos-pnl.negative { color: #f87171; }
+        .pos-edge { font-size: 0.75em; color: #64748b; }
+        
+        .badge-outcome { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 0.7em; font-weight: 600; margin-right: 6px; }
+        .badge-yes { background: #064e3b; color: #34d399; }
+        .badge-no { background: #4a1d1d; color: #f87171; }
+        
+        .footer { text-align: center; padding: 30px 0; color: #475569; font-size: 0.8em; border-top: 1px solid #1e1e2e; margin-top: 30px; }
+        .footer a { color: #7C3AED; text-decoration: none; }
+        
+        .intel-bar { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0; }
+        .intel-chip { background: #1e1e2e; padding: 4px 10px; border-radius: 8px; font-size: 0.75em; }
+        .intel-chip.hot { border: 1px solid #7C3AED; color: #c4b5fd; }
+        
+        .activity { font-size: 0.85em; color: #94a3b8; }
+        .activity li { padding: 6px 0; border-bottom: 1px solid #1e1e2e; list-style: none; }
+        .activity .time { color: #64748b; font-size: 0.85em; }
+        
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .position { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .pos-right { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="ape-img" src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" alt="Lulo #2253" />
+            <div class="agent-name"><span>Lulo</span> #2253</div>
+            <div class="agent-sub">BAYC → <a href="https://delegate.xyz" target="_blank">delegate.cash</a> → Simian Agent</div>
+            <span class="status-badge status-live">● LIVE — Trading on Polymarket</span>
+            <div class="traits">
+                <span class="trait">Gray Fur</span>
+                <span class="trait">Scumbag Eyes</span>
+                <span class="trait">Bored Cigarette</span>
+                <span class="trait">Bone Tee</span>
+                <span class="trait">Irish Boho</span>
+                <span class="trait">Purple BG</span>
+            </div>
+        </div>
+
+        <div class="stats-grid" id="stats">
+            <div class="stat-card">
+                <div class="stat-label">Strategy</div>
+                <div class="stat-value purple">D v5</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Markets Scanned</div>
+                <div class="stat-value blue" id="markets-scanned">12,259</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Realized P&L</div>
+                <div class="stat-value green" id="realized-pnl">+$5.37</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Open Positions</div>
+                <div class="stat-value" id="open-count">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Intelligence Signal</div>
+                <div class="stat-value purple" id="intel-signal">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value green" id="win-rate">—</div>
+            </div>
+        </div>
+
+        <h2>🧠 Intelligence Feed</h2>
+        <div class="intel-bar" id="intel-bar">
+            <span class="intel-chip hot">Loading...</span>
+        </div>
+
+        <h2>📈 Open Positions</h2>
+        <div class="positions" id="positions">
+            <div class="position"><div class="pos-left"><div class="pos-question">Loading positions...</div></div></div>
+        </div>
+
+        <h2>📜 Recent Activity</h2>
+        <ul class="activity" id="activity">
+            <li>Loading activity...</li>
+        </ul>
+
+        <div class="footer">
+            <img src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" width="30" style="border-radius: 50%; vertical-align: middle; margin-right: 6px;" />
+            Powered by <a href="https://github.com/KeNFT1/Simian">Simian</a> · Built by <a href="https://github.com/KeNFT1/lulo-studios">Lulo Studios</a> 🦍
+            <br><br>
+            Verified via <a href="https://delegate.xyz">delegate.cash</a> · NFT never leaves cold wallet
+        </div>
+    </div>
+
+    <script>
+        // Load latest data from Strategy D v5 results
+        // In production this would hit an API; for now it reads from static JSON
+        
+        async function loadDashboard() {
+            try {
+                const resp = await fetch('./data/dashboard.json');
+                if (!resp.ok) throw new Error('No data file');
+                const data = await resp.json();
+                
+                // Update stats
+                document.getElementById('markets-scanned').textContent = (data.market_scan?.after_filters || 12259).toLocaleString();
+                document.getElementById('realized-pnl').textContent = `+$${(data.realized_pnl || 5.37).toFixed(2)}`;
+                document.getElementById('open-count').textContent = data.open_positions?.length || '—';
+                document.getElementById('intel-signal').textContent = (data.intelligence?.combined || 0).toFixed(1);
+                
+                // Win rate
+                const wins = data.closed_trades?.filter(t => (t.realized_pnl || 0) > 0).length || 0;
+                const total = data.closed_trades?.length || 0;
+                document.getElementById('win-rate').textContent = total > 0 ? `${Math.round(wins/total*100)}%` : '—';
+                
+                // Intelligence chips
+                const intelBar = document.getElementById('intel-bar');
+                if (data.intelligence?.top_signals) {
+                    intelBar.innerHTML = Object.entries(data.intelligence.top_signals)
+                        .slice(0, 8)
+                        .map(([kw, score]) => `<span class="intel-chip ${score > 3 ? 'hot' : ''}">${kw}: ${score.toFixed(1)}</span>`)
+                        .join('');
+                }
+                
+                // Positions
+                const posDiv = document.getElementById('positions');
+                if (data.open_positions?.length) {
+                    posDiv.innerHTML = data.open_positions.map(p => {
+                        const pnlClass = (p.pnl_pct || 0) >= 0 ? 'positive' : 'negative';
+                        const badgeClass = p.outcome === 'YES' ? 'badge-yes' : 'badge-no';
+                        return `<div class="position">
+                            <div class="pos-left">
+                                <div class="pos-question"><span class="badge-outcome ${badgeClass}">${p.outcome}</span>${p.question}</div>
+                                <div class="pos-meta">Entry: ${p.entry_price?.toFixed(3)} → Now: ${p.current_price?.toFixed(3)} · $${p.cost_usd?.toFixed(2)} deployed</div>
+                            </div>
+                            <div class="pos-right">
+                                <div class="pos-pnl ${pnlClass}">${(p.pnl_pct || 0) >= 0 ? '+' : ''}${(p.pnl_pct || 0).toFixed(1)}%</div>
+                                <div class="pos-edge">Edge: ${(p.edge * 100 || 0).toFixed(1)}%</div>
+                            </div>
+                        </div>`;
+                    }).join('');
+                }
+                
+                // Activity
+                const actDiv = document.getElementById('activity');
+                if (data.recent_activity?.length) {
+                    actDiv.innerHTML = data.recent_activity.slice(0, 10).map(a => 
+                        `<li>${a.icon || '📊'} ${a.text} <span class="time">${a.time || ''}</span></li>`
+                    ).join('');
+                }
+                
+            } catch (e) {
+                // Static fallback data shown in HTML
+                console.log('Using static data:', e.message);
+            }
+        }
+        
+        loadDashboard();
+        // Refresh every 5 minutes
+        setInterval(loadDashboard, 300000);
+    </script>
+</body>
+</html>
