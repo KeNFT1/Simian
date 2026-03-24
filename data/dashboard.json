@@ -4,13 +4,13 @@
     "name": "Lulo",
     "collection": "BAYC",
     "token_id": 2253,
-    "status": "live"
+    "status": "live",
+    "wallet": "0xC3499259f08E950031a749353A1422179C28E9C1"
   },
+  "source": "on-chain (data-api.polymarket.com)",
   "market_scan": {
-    "events": 1000,
-    "total_tradeable": 5670,
-    "after_filters": 354,
-    "with_edge": 5
+    "total_tradeable": 12259,
+    "after_filters": 364
   },
   "intelligence": {
     "combined": 30.62,
@@ -24,322 +24,330 @@
   },
   "open_positions": [
     {
-      "question": "Will China blockade Taiwan by June 30?",
-      "outcome": "YES",
-      "entry_price": 0.075,
-      "current_price": 0.065,
-      "cost_usd": 2.65,
-      "pnl_usd": -0.35,
-      "pnl_pct": -13.3,
-      "edge": 0.0466,
-      "strategy": "D",
-      "version": "v5_live"
-    },
-    {
-      "question": "Will the Iranian regime fall by June 30?",
-      "outcome": "YES",
-      "entry_price": 0.235,
-      "current_price": 0.205,
-      "cost_usd": 5.0,
-      "pnl_usd": -0.64,
-      "pnl_pct": -12.8,
-      "edge": 0.1848,
-      "strategy": "D",
-      "version": "v5_live"
-    },
-    {
-      "question": "Will the Toronto Raptors make the NBA Playoffs?",
-      "outcome": "YES",
-      "entry_price": 0.916,
-      "current_price": 0.855,
-      "cost_usd": 3.664,
-      "pnl_usd": -0.24,
-      "pnl_pct": -6.7,
-      "edge": 0,
-      "strategy": "E",
-      "version": "v5"
-    },
-    {
-      "question": "Will the Iranian regime fall by April 30?",
-      "outcome": "NO",
-      "entry_price": 0.865,
-      "current_price": 0.915,
-      "cost_usd": 8.0,
-      "pnl_usd": 0.46,
-      "pnl_pct": 5.8,
-      "edge": 2.6609999999999996,
-      "strategy": "D",
-      "version": "v2_mirofish"
-    },
-    {
-      "question": "Will the Iranian regime fall by April 30?",
-      "outcome": "NO",
-      "entry_price": 0.885,
-      "current_price": 0.915,
-      "cost_usd": 2.0,
-      "pnl_usd": 0.07,
-      "pnl_pct": 3.4,
-      "edge": 0.139,
-      "strategy": "D",
-      "version": "v2_mirofish"
-    },
-    {
-      "question": "Will Bitcoin dip to $60,000 in March?",
-      "outcome": "NO",
-      "entry_price": 0.905,
-      "current_price": 0.93,
-      "cost_usd": 1.5,
-      "pnl_usd": 0.04,
-      "pnl_pct": 2.8,
-      "edge": 0.403,
-      "strategy": "D",
-      "version": "v2_mirofish"
-    },
-    {
-      "question": "MegaETH market cap (FDV) >$1B one day after launch?",
-      "outcome": "YES",
-      "entry_price": 0.355,
-      "current_price": 0.345,
-      "cost_usd": 3.54,
-      "pnl_usd": -0.1,
-      "pnl_pct": -2.8,
-      "edge": 0.0427,
-      "strategy": "D",
-      "version": "v5_live"
-    },
-    {
-      "question": "Will Russia capture Kostyantynivka by March 31?",
-      "outcome": "NO",
-      "entry_price": 0.926,
-      "current_price": 0.95,
-      "cost_usd": 3.704,
-      "pnl_usd": 0.1,
-      "pnl_pct": 2.6,
-      "edge": 0,
-      "strategy": "E",
-      "version": "v5"
-    },
-    {
       "question": "US-Iran nuclear deal by June 30?",
-      "outcome": "YES",
-      "entry_price": 0.28,
-      "current_price": 0.275,
-      "cost_usd": 5.0,
-      "pnl_usd": -0.09,
-      "pnl_pct": -1.8,
-      "edge": 0.12,
-      "strategy": "D",
-      "version": "v5_live"
+      "outcome": "Yes",
+      "entry_price": 0.266013,
+      "current_price": 0.315,
+      "cost_usd": 5.87,
+      "current_value": 6.95,
+      "pnl_usd": 1.08,
+      "pnl_pct": 18.4,
+      "realized_pnl": 1.84,
+      "size": 22.049154,
+      "slug": "us-iran-nuclear-deal-by-june-30",
+      "end_date": "2026-06-30",
+      "redeemable": false
     },
     {
-      "question": "Will Trump and Putin not meet?",
-      "outcome": "NO",
-      "entry_price": 0.176,
-      "current_price": 0.179,
-      "cost_usd": 3.45,
-      "pnl_usd": 0.06,
-      "pnl_pct": 1.7,
-      "edge": 0.0535,
-      "strategy": "D",
-      "version": "v5_live"
-    },
-    {
-      "question": "Will a new country join the Abraham Accords by March 31?",
-      "outcome": "NO",
-      "entry_price": 0.956,
-      "current_price": 0.9715,
-      "cost_usd": 3.824,
-      "pnl_usd": 0.06,
-      "pnl_pct": 1.6,
-      "edge": 0,
-      "strategy": "E",
-      "version": "v5"
+      "question": "Will the Iranian regime fall by April 30?",
+      "outcome": "No",
+      "entry_price": 0.873916,
+      "current_price": 0.915,
+      "cost_usd": 10.04,
+      "current_value": 10.51,
+      "pnl_usd": 0.47,
+      "pnl_pct": 4.7,
+      "realized_pnl": 0.0,
+      "size": 11.49,
+      "slug": "will-the-iranian-regime-fall-by-april-30",
+      "end_date": "2026-04-30",
+      "redeemable": false
     },
     {
       "question": "Will MegaETH perform an airdrop by June 30? ",
-      "outcome": "YES",
-      "entry_price": 0.4505,
-      "current_price": 0.4555,
+      "outcome": "Yes",
+      "entry_price": 0.454999,
+      "current_price": 0.479,
       "cost_usd": 4.63,
-      "pnl_usd": 0.05,
-      "pnl_pct": 1.1,
-      "edge": 0.047,
-      "strategy": "D",
-      "version": "v5_live"
+      "current_value": 4.87,
+      "pnl_usd": 0.24,
+      "pnl_pct": 5.3,
+      "realized_pnl": 0.0,
+      "size": 10.175823,
+      "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
+      "end_date": "2026-02-01",
+      "redeemable": false
     },
     {
-      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
-      "outcome": "YES",
-      "entry_price": 0.926,
-      "current_price": 0.935,
-      "cost_usd": 3.704,
-      "pnl_usd": 0.04,
-      "pnl_pct": 1.0,
-      "edge": 0,
-      "strategy": "E",
-      "version": "v5"
-    },
-    {
-      "question": "Israel strike on Damascus by March 31, 2026?",
-      "outcome": "NO",
-      "entry_price": 0.8905,
-      "current_price": 0.8855,
-      "cost_usd": 5.343,
-      "pnl_usd": -0.03,
-      "pnl_pct": -0.6,
-      "edge": 0,
-      "strategy": "E",
-      "version": "v5"
-    },
-    {
-      "question": "US forces enter Iran by March 31?",
-      "outcome": "NO",
-      "entry_price": 0.795,
+      "question": "Will the Iranian regime fall by June 30?",
+      "outcome": "No",
+      "entry_price": 0.679,
       "current_price": 0.795,
-      "cost_usd": 2.0,
-      "pnl_usd": 0.0,
-      "pnl_pct": 0.0,
-      "edge": 0.1190000000000001,
-      "strategy": "D",
-      "version": "v2_mirofish"
-    },
-    {
-      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
-      "outcome": "YES",
-      "entry_price": 0.435,
-      "current_price": 0.435,
-      "cost_usd": 4.14,
-      "pnl_usd": 0.0,
-      "pnl_pct": 0.0,
-      "edge": 0.0435,
-      "strategy": "D",
-      "version": "v5_live"
+      "cost_usd": 1.0,
+      "current_value": 1.17,
+      "pnl_usd": 0.17,
+      "pnl_pct": 17.1,
+      "realized_pnl": 0.0,
+      "size": 1.472751,
+      "slug": "will-the-iranian-regime-fall-by-june-30",
+      "end_date": "2026-06-30",
+      "redeemable": false
     },
     {
       "question": "MegaETH market cap (FDV) >$2B one day after launch?",
-      "outcome": "YES",
-      "entry_price": 0.125,
-      "current_price": 0.125,
+      "outcome": "Yes",
+      "entry_price": 0.129999,
+      "current_price": 0.135,
       "cost_usd": 2.82,
+      "current_value": 2.93,
+      "pnl_usd": 0.11,
+      "pnl_pct": 3.8,
+      "realized_pnl": 0.0,
+      "size": 21.692306,
+      "slug": "megaeth-market-cap-fdv-2b-one-day-after-launch-738-867-649-272-765-733",
+      "end_date": "2025-12-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will Russia capture Kostyantynivka by March 31?",
+      "outcome": "No",
+      "entry_price": 0.93,
+      "current_price": 0.95,
+      "cost_usd": 3.72,
+      "current_value": 3.8,
+      "pnl_usd": 0.08,
+      "pnl_pct": 2.2,
+      "realized_pnl": 0.0,
+      "size": 4.0,
+      "slug": "will-russia-capture-kostyantynivka-by-march-31-872-578",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will Trump and Putin not meet?",
+      "outcome": "No",
+      "entry_price": 0.176995,
+      "current_price": 0.179,
+      "cost_usd": 3.45,
+      "current_value": 3.49,
+      "pnl_usd": 0.04,
+      "pnl_pct": 1.1,
+      "realized_pnl": 0.79,
+      "size": 19.494856,
+      "slug": "will-trump-and-putin-not-meet-315-857-437-514",
+      "end_date": "2026-06-30",
+      "redeemable": false
+    },
+    {
+      "question": "Will a new country join the Abraham Accords by March 31?",
+      "outcome": "No",
+      "entry_price": 0.96,
+      "current_price": 0.971,
+      "cost_usd": 3.84,
+      "current_value": 3.88,
+      "pnl_usd": 0.04,
+      "pnl_pct": 1.1,
+      "realized_pnl": 0.0,
+      "size": 4.0,
+      "slug": "will-a-new-country-join-the-abraham-accords-by-march-31",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "Israel strike on Damascus by March 31, 2026?",
+      "outcome": "No",
+      "entry_price": 0.89,
+      "current_price": 0.893,
+      "cost_usd": 5.34,
+      "current_value": 5.36,
+      "pnl_usd": 0.02,
+      "pnl_pct": 0.3,
+      "realized_pnl": 0.0,
+      "size": 6.0,
+      "slug": "israel-strike-on-damascus-by-march-31-2026",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will Bitcoin dip to $60,000 in March?",
+      "outcome": "No",
+      "entry_price": 0.9,
+      "current_price": 0.905,
+      "cost_usd": 1.49,
+      "current_value": 1.49,
+      "pnl_usd": 0.01,
+      "pnl_pct": 0.6,
+      "realized_pnl": 0.0,
+      "size": 1.65,
+      "slug": "will-bitcoin-dip-to-60k-in-march-2026",
+      "end_date": "2026-04-01",
+      "redeemable": false
+    },
+    {
+      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
+      "outcome": "Yes",
+      "entry_price": 0.439999,
+      "current_price": 0.44,
+      "cost_usd": 4.13,
+      "current_value": 4.13,
       "pnl_usd": 0.0,
       "pnl_pct": 0.0,
-      "edge": 0.047,
-      "strategy": "D",
-      "version": "v5_live"
+      "realized_pnl": 0.0,
+      "size": 9.386362,
+      "slug": "will-ken-paxton-win-the-2026-republican-primary",
+      "end_date": "2026-05-26",
+      "redeemable": false
+    },
+    {
+      "question": "Will Jesus Christ return before GTA VI?",
+      "outcome": "Yes",
+      "entry_price": 0.489003,
+      "current_price": 0.485,
+      "cost_usd": 0.58,
+      "current_value": 0.58,
+      "pnl_usd": -0.0,
+      "pnl_pct": -0.8,
+      "realized_pnl": -0.01,
+      "size": 1.188124,
+      "slug": "will-jesus-christ-return-before-gta-vi-665",
+      "end_date": "2026-07-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
+      "outcome": "Yes",
+      "entry_price": 0.93,
+      "current_price": 0.925,
+      "cost_usd": 3.72,
+      "current_value": 3.7,
+      "pnl_usd": -0.02,
+      "pnl_pct": -0.5,
+      "realized_pnl": 0.0,
+      "size": 4.0,
+      "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "US forces enter Iran by March 31?",
+      "outcome": "No",
+      "entry_price": 0.78,
+      "current_price": 0.765,
+      "cost_usd": 1.96,
+      "current_value": 1.92,
+      "pnl_usd": -0.04,
+      "pnl_pct": -1.9,
+      "realized_pnl": 0.0,
+      "size": 2.51,
+      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will China blockade Taiwan by June 30?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "current_price": 0.075,
+      "cost_usd": 2.65,
+      "current_value": 2.48,
+      "pnl_usd": -0.17,
+      "pnl_pct": -6.2,
+      "realized_pnl": 0.0,
+      "size": 33.125,
+      "slug": "will-china-blockade-taiwan-by-june-30",
+      "end_date": "2026-06-30",
+      "redeemable": false
+    },
+    {
+      "question": "Will the Toronto Raptors make the NBA Playoffs?",
+      "outcome": "Yes",
+      "entry_price": 0.92,
+      "current_price": 0.86,
+      "cost_usd": 3.68,
+      "current_value": 3.44,
+      "pnl_usd": -0.24,
+      "pnl_pct": -6.5,
+      "realized_pnl": 0.0,
+      "size": 4.0,
+      "slug": "will-the-toronto-raptors-make-the-nba-playoffs-961",
+      "end_date": "2026-04-12",
+      "redeemable": false
+    },
+    {
+      "question": "MegaETH market cap (FDV) >$1B one day after launch?",
+      "outcome": "Yes",
+      "entry_price": 0.359999,
+      "current_price": 0.325,
+      "cost_usd": 3.54,
+      "current_value": 3.2,
+      "pnl_usd": -0.34,
+      "pnl_pct": -9.7,
+      "realized_pnl": 0.0,
+      "size": 9.833332,
+      "slug": "megaeth-market-cap-fdv-1b-one-day-after-launch-gj9e-189-291-824-352",
+      "end_date": "2025-12-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will the Iranian regime fall by June 30?",
+      "outcome": "Yes",
+      "entry_price": 0.240027,
+      "current_price": 0.205,
+      "cost_usd": 5.0,
+      "current_value": 4.27,
+      "pnl_usd": -0.73,
+      "pnl_pct": -14.6,
+      "realized_pnl": -0.4,
+      "size": 20.839897,
+      "slug": "will-the-iranian-regime-fall-by-june-30",
+      "end_date": "2026-06-30",
+      "redeemable": false
     }
   ],
   "closed_trades": [
     {
-      "question": "Will Crude Oil (CL) hit (HIGH) $150 by end of March?",
-      "outcome": "NO",
-      "realized_pnl": 0,
-      "close_reason": "resolution_exit"
-    },
-    {
-      "question": "Will Bitcoin reach $80,000 in March?",
-      "outcome": "NO",
-      "realized_pnl": 0.3096,
-      "close_reason": "take_profit_auto"
-    },
-    {
-      "question": "Will Bitcoin dip to $65,000 in March?",
-      "outcome": "NO",
-      "realized_pnl": 0.5416,
-      "close_reason": "take_profit_auto"
-    },
-    {
-      "question": "US-Iran nuclear deal by June 30?",
-      "outcome": "YES",
-      "realized_pnl": 0,
-      "close_reason": "take_profit_manual"
-    },
-    {
-      "question": "Will Trump and Putin not meet?",
-      "outcome": "NO",
-      "realized_pnl": 0.8911,
-      "close_reason": "take_profit_auto"
-    },
-    {
-      "question": "Will Trump visit China by April 30?",
-      "outcome": "YES",
-      "realized_pnl": 0,
-      "close_reason": "take_profit_manual"
-    },
-    {
-      "question": "Trump out as President before GTA VI?",
-      "outcome": "NO",
+      "question": "Will the Indiana Pacers win the 2026 NBA Finals?",
+      "outcome": "Yes",
+      "entry_price": 0.002,
+      "current_price": 0.0,
+      "cost_usd": 0.8,
+      "current_value": 0.0,
+      "pnl_usd": -0.8,
+      "pnl_pct": -100.0,
       "realized_pnl": 0.0,
-      "close_reason": "manual_close_gta_filter"
-    },
-    {
-      "question": "Will bitcoin hit $1m before GTA VI?",
-      "outcome": "YES",
-      "realized_pnl": 0.0102,
-      "close_reason": "manual_close_gta_filter"
-    },
-    {
-      "question": "Russia-Ukraine Ceasefire before GTA VI?",
-      "outcome": "NO",
-      "realized_pnl": 0,
-      "close_reason": "manual_close_gta_filter"
-    },
-    {
-      "question": "Will the price of Bitcoin be above $78,000 on March 16?",
-      "outcome": "No",
-      "realized_pnl": 0,
-      "close_reason": "resolution_exit"
-    },
-    {
-      "question": "Will Jon Stewart win the 2028 Democratic presidential nomination?",
-      "outcome": "No",
-      "realized_pnl": 0,
-      "close_reason": "resolution_exit"
+      "size": 400.0,
+      "slug": "will-the-indiana-pacers-win-the-2026-nba-finals",
+      "end_date": "2026-07-01",
+      "redeemable": true
     }
   ],
-  "realized_pnl": 1.75,
-  "unrealized_pnl": -0.57,
-  "total_pnl": 1.18,
+  "portfolio": {
+    "total_deployed": 68.25,
+    "current_value": 68.18,
+    "unrealized_pnl": -0.08,
+    "realized_pnl": 2.22,
+    "total_pnl": 2.15,
+    "total_pnl_pct": -0.1
+  },
+  "stats": {
+    "total_trades": 19,
+    "winning_trades": 11,
+    "losing_trades": 8,
+    "win_rate": 57.9,
+    "open_positions": 18,
+    "resolved_positions": 1
+  },
   "recent_activity": [
     {
-      "icon": "\ud83c\udfaf",
-      "text": "Opened NO Israel strike on Damascus by March 31, 2026? \u2014 $5.34"
+      "icon": "\ud83d\udfe2",
+      "text": "Yes MegaETH market cap (FDV) >$2B one day after l \u2014 $+0.11 (+3.8%)"
     },
     {
-      "icon": "\ud83c\udfaf",
-      "text": "Opened YES Will the Toronto Raptors make the NBA Playoffs? \u2014 $3.66"
+      "icon": "\ud83d\udfe2",
+      "text": "No Will the Iranian regime fall by June 30? \u2014 $+0.17 (+17.1%)"
     },
     {
-      "icon": "\ud83c\udfaf",
-      "text": "Opened NO Will Russia capture Kostyantynivka by March 31? \u2014 $3.70"
+      "icon": "\ud83d\udfe2",
+      "text": "Yes Will MegaETH perform an airdrop by June 30?  \u2014 $+0.24 (+5.3%)"
     },
     {
-      "icon": "\ud83c\udfaf",
-      "text": "Opened YES Will Anthropic have the second-best AI model at th \u2014 $3.70"
+      "icon": "\ud83d\udfe2",
+      "text": "No Will the Iranian regime fall by April 30? \u2014 $+0.47 (+4.7%)"
     },
     {
-      "icon": "\ud83c\udfaf",
-      "text": "Opened NO Will a new country join the Abraham Accords by Mar \u2014 $3.82"
-    },
-    {
-      "icon": "\ud83d\udcc9",
-      "text": "No Will Jon Stewart win the 2028 Democratic president \u2014 $+0.00 (resolution_exit)"
-    },
-    {
-      "icon": "\ud83d\udcc9",
-      "text": "No Will the price of Bitcoin be above $78,000 on Marc \u2014 $+0.00 (resolution_exit)"
-    },
-    {
-      "icon": "\ud83d\udcc9",
-      "text": "NO Russia-Ukraine Ceasefire before GTA VI? \u2014 $+0.00 (manual_close_gta_filter)"
-    },
-    {
-      "icon": "\ud83d\udcb0",
-      "text": "YES Will bitcoin hit $1m before GTA VI? \u2014 $+0.01 (manual_close_gta_filter)"
-    },
-    {
-      "icon": "\ud83d\udcc9",
-      "text": "NO Trump out as President before GTA VI? \u2014 $+0.00 (manual_close_gta_filter)"
+      "icon": "\ud83d\udfe2",
+      "text": "Yes US-Iran nuclear deal by June 30? \u2014 $+1.08 (+18.4%)"
     }
   ],
-  "updated_at": "2026-03-24T12:45:43.150684+00:00"
+  "updated_at": "2026-03-24T18:49:53.887013+00:00"
 }

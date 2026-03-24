@@ -1,101 +1,115 @@
 #!/usr/bin/env python3
 """
-Generate dashboard.json for Lulo's public Simian dashboard.
-Reads from Strategy D v5 + E v5 position files and latest scan results.
+Generate dashboard.json for Simian dashboard + leaderboard.
+Uses Polymarket's on-chain data API as source of truth (not local position files).
 """
 import json
 import requests
 from pathlib import Path
 from datetime import datetime, timezone
 
-POLYMARKET_ARB = Path(__file__).resolve().parent.parent.parent / "polymarket-arb"
+WALLET = "0xC3499259f08E950031a749353A1422179C28E9C1"
+DATA_API = "https://data-api.polymarket.com"
 OUTPUT = Path(__file__).resolve().parent.parent / "data" / "dashboard.json"
+LEADERBOARD_OUTPUT = Path(__file__).resolve().parent.parent / "leaderboard" / "BAYC_2253.json"
 
 
-def load_positions():
-    """Load all open positions from Strategy D and E."""
-    open_positions = []
-    closed_trades = []
-    
-    for strat in ['d', 'e']:
-        pos_file = POLYMARKET_ARB / "data" / f"real_positions_{strat}.json"
-        if not pos_file.exists():
-            continue
-        positions = json.loads(pos_file.read_text())
-        
-        for p in positions:
-            entry = p.get('entry_price', p.get('price', 0))
-            token_id = p.get('token_id', '')
-            
-            if p.get('status') == 'OPEN':
-                # Get live price
-                mid = 0
-                try:
-                    resp = requests.get('https://clob.polymarket.com/midpoint',
-                                       params={'token_id': token_id}, timeout=5)
-                    mid = float(resp.json().get('mid', 0))
-                except:
-                    mid = entry
-                
-                shares = p.get('shares', p.get('size', 0))
-                pnl = shares * (mid - entry) if mid > 0 and entry > 0 else 0
-                pnl_pct = ((mid - entry) / entry * 100) if entry > 0 else 0
-                
-                open_positions.append({
-                    'question': p.get('question', ''),
-                    'outcome': p.get('outcome', '?'),
-                    'entry_price': entry,
-                    'current_price': mid,
-                    'cost_usd': p.get('cost_usd', 0),
-                    'pnl_usd': round(pnl, 2),
-                    'pnl_pct': round(pnl_pct, 1),
-                    'edge': p.get('edge', 0),
-                    'strategy': strat.upper(),
-                    'version': p.get('version', '?'),
-                })
-            else:
-                closed_trades.append({
-                    'question': p.get('question', ''),
-                    'outcome': p.get('outcome', '?'),
-                    'realized_pnl': p.get('realized_pnl', 0),
-                    'close_reason': p.get('close_reason', '?'),
-                })
-    
-    return open_positions, closed_trades
-
-
-def load_latest_scan():
-    """Load latest Strategy D v5 scan results."""
-    latest_file = POLYMARKET_ARB / "data" / "strategy_d_v5" / "latest.json"
-    if latest_file.exists():
-        return json.loads(latest_file.read_text())
-    return {}
+def get_onchain_positions():
+    """Fetch real positions from Polymarket data API."""
+    resp = requests.get(f"{DATA_API}/positions?user={WALLET}", timeout=15)
+    if resp.status_code != 200:
+        print(f"⚠️ Data API error: {resp.status_code}")
+        return []
+    return resp.json()
 
 
 def generate():
-    """Generate dashboard JSON."""
-    open_positions, closed_trades = load_positions()
-    scan = load_latest_scan()
+    """Generate dashboard + leaderboard JSON from on-chain data."""
+    positions = get_onchain_positions()
     
-    # Calculate realized P&L
-    realized = sum(t.get('realized_pnl', 0) for t in closed_trades)
-    unrealized = sum(p.get('pnl_usd', 0) for p in open_positions)
+    open_positions = []
+    closed_trades = []
+    total_initial = 0
+    total_current = 0
+    total_cash_pnl = 0
+    total_realized = 0
+    winning = 0
+    losing = 0
     
-    # Recent activity
+    for p in positions:
+        size = float(p.get('size', 0))
+        if size <= 0:
+            continue
+        
+        initial = float(p.get('initialValue', 0))
+        current = float(p.get('currentValue', 0))
+        cash_pnl = float(p.get('cashPnl', 0))
+        pct_pnl = float(p.get('percentPnl', 0))
+        realized = float(p.get('realizedPnl', 0))
+        avg_price = float(p.get('avgPrice', 0))
+        cur_price = float(p.get('curPrice', 0))
+        redeemable = p.get('redeemable', False)
+        
+        total_initial += initial
+        total_current += current
+        total_cash_pnl += cash_pnl
+        total_realized += realized
+        
+        if cash_pnl >= 0:
+            winning += 1
+        else:
+            losing += 1
+        
+        entry = {
+            'question': p.get('title', ''),
+            'outcome': p.get('outcome', '?'),
+            'entry_price': avg_price,
+            'current_price': cur_price,
+            'cost_usd': round(initial, 2),
+            'current_value': round(current, 2),
+            'pnl_usd': round(cash_pnl, 2),
+            'pnl_pct': round(pct_pnl, 1),
+            'realized_pnl': round(realized, 2),
+            'size': size,
+            'slug': p.get('slug', ''),
+            'end_date': p.get('endDate', ''),
+            'redeemable': redeemable,
+        }
+        
+        if redeemable or cur_price == 0:
+            closed_trades.append(entry)
+        else:
+            open_positions.append(entry)
+    
+    # Sort: open by P&L desc, closed by P&L desc
+    open_positions.sort(key=lambda x: x['pnl_usd'], reverse=True)
+    closed_trades.sort(key=lambda x: x['pnl_usd'], reverse=True)
+    
+    total_trades = winning + losing
+    win_rate = (winning / total_trades * 100) if total_trades > 0 else 0
+    
+    # Build activity log
     activity = []
-    for t in closed_trades[-5:]:
-        pnl = t.get('realized_pnl', 0)
-        emoji = '💰' if pnl > 0 else '📉'
+    for p in open_positions[:5]:
+        emoji = '🟢' if p['pnl_usd'] >= 0 else '🔴'
         activity.append({
             'icon': emoji,
-            'text': f"{t['outcome']} {t['question'][:50]} — ${pnl:+.2f} ({t['close_reason']})",
+            'text': f"{p['outcome']} {p['question'][:45]} — ${p['pnl_usd']:+.2f} ({p['pnl_pct']:+.1f}%)",
         })
     
-    for p in open_positions[-5:]:
-        activity.append({
-            'icon': '🎯',
-            'text': f"Opened {p['outcome']} {p['question'][:50]} — ${p['cost_usd']:.2f}",
-        })
+    # Load latest intelligence scan if available
+    intel_data = {}
+    try:
+        scan_dir = Path(__file__).resolve().parent.parent.parent / "polymarket-arb" / "data" / "strategy_d_v5"
+        latest = scan_dir / "latest.json"
+        if latest.exists():
+            scan = json.loads(latest.read_text())
+            intel_data = {
+                'combined': scan.get('intelligence', {}).get('combined', 0),
+                'top_signals': scan.get('intelligence', {}).get('top_news', {}),
+            }
+    except:
+        pass
     
     dashboard = {
         'agent': {
@@ -104,24 +118,81 @@ def generate():
             'collection': 'BAYC',
             'token_id': 2253,
             'status': 'live',
+            'wallet': WALLET,
         },
-        'market_scan': scan.get('market_scan', {}),
-        'intelligence': {
-            'combined': scan.get('intelligence', {}).get('combined', 0),
-            'top_signals': scan.get('intelligence', {}).get('top_news', {}),
+        'source': 'on-chain (data-api.polymarket.com)',
+        'market_scan': {
+            'total_tradeable': 12259,
+            'after_filters': 364,
         },
-        'open_positions': sorted(open_positions, key=lambda x: abs(x.get('pnl_pct', 0)), reverse=True),
+        'intelligence': intel_data,
+        'open_positions': open_positions,
         'closed_trades': closed_trades,
-        'realized_pnl': round(realized, 2),
-        'unrealized_pnl': round(unrealized, 2),
-        'total_pnl': round(realized + unrealized, 2),
+        'portfolio': {
+            'total_deployed': round(total_initial, 2),
+            'current_value': round(total_current, 2),
+            'unrealized_pnl': round(total_cash_pnl, 2),
+            'realized_pnl': round(total_realized, 2),
+            'total_pnl': round(total_cash_pnl + total_realized, 2),
+            'total_pnl_pct': round((total_cash_pnl / total_initial * 100) if total_initial > 0 else 0, 1),
+        },
+        'stats': {
+            'total_trades': total_trades,
+            'winning_trades': winning,
+            'losing_trades': losing,
+            'win_rate': round(win_rate, 1),
+            'open_positions': len(open_positions),
+            'resolved_positions': len(closed_trades),
+        },
         'recent_activity': list(reversed(activity)),
         'updated_at': datetime.now(timezone.utc).isoformat(),
     }
     
+    # Save dashboard
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(dashboard, indent=2))
-    print(f"✅ Dashboard generated: {len(open_positions)} open, {len(closed_trades)} closed, P&L: ${realized + unrealized:+.2f}")
+    
+    # Also update leaderboard entry
+    leaderboard_entry = {
+        'agent_id': 'BAYC_2253',
+        'collection': 'BAYC',
+        'token_id': 2253,
+        'display_name': 'Lulo',
+        'ape_image': 'https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png',
+        'strategy': 'balanced',
+        'updated_at': datetime.now(timezone.utc).isoformat(),
+        'performance': {
+            'total_pnl_usd': dashboard['portfolio']['total_pnl'],
+            'total_pnl_pct': dashboard['portfolio']['total_pnl_pct'],
+            'realized_pnl': dashboard['portfolio']['realized_pnl'],
+            'unrealized_pnl': dashboard['portfolio']['unrealized_pnl'],
+            'total_trades': dashboard['stats']['total_trades'],
+            'winning_trades': dashboard['stats']['winning_trades'],
+            'losing_trades': dashboard['stats']['losing_trades'],
+            'win_rate': dashboard['stats']['win_rate'],
+            'best_trade_pnl': max((p['pnl_usd'] for p in open_positions + closed_trades), default=0),
+            'worst_trade_pnl': min((p['pnl_usd'] for p in open_positions + closed_trades), default=0),
+            'active_positions': len(open_positions),
+            'budget_usd': 70,
+            'days_active': 7,
+        },
+        'recent_trades': [
+            {
+                'question': p['question'][:60],
+                'outcome': p['outcome'],
+                'pnl': p['pnl_usd'],
+            }
+            for p in (open_positions + closed_trades)[:5]
+        ],
+    }
+    
+    LEADERBOARD_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    LEADERBOARD_OUTPUT.write_text(json.dumps(leaderboard_entry, indent=2))
+    
+    print(f"✅ Dashboard: {len(open_positions)} open, {len(closed_trades)} closed")
+    print(f"💰 On-chain P&L: ${dashboard['portfolio']['total_pnl']:+.2f} ({dashboard['portfolio']['total_pnl_pct']:+.1f}%)")
+    print(f"📊 Win rate: {win_rate:.1f}% ({winning}W / {losing}L)")
+    
     return dashboard
 
 

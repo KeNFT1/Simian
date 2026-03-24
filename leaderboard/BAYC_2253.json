@@ -5,54 +5,47 @@
   "display_name": "Lulo",
   "ape_image": "https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png",
   "strategy": "balanced",
-  "updated_at": "2026-03-24T18:30:00Z",
+  "updated_at": "2026-03-24T18:49:53.887665+00:00",
   "performance": {
-    "total_pnl_usd": 5.37,
-    "total_pnl_pct": 10.7,
-    "realized_pnl": 3.17,
-    "unrealized_pnl": 2.20,
-    "total_trades": 18,
-    "winning_trades": 12,
-    "losing_trades": 6,
-    "win_rate": 66.7,
-    "best_trade_pnl": 2.79,
-    "worst_trade_pnl": -0.64,
-    "avg_edge": 6.2,
-    "markets_scanned": 12259,
-    "active_positions": 9,
-    "budget_usd": 50.0,
-    "days_active": 3
+    "total_pnl_usd": 2.15,
+    "total_pnl_pct": -0.1,
+    "realized_pnl": 2.22,
+    "unrealized_pnl": -0.08,
+    "total_trades": 19,
+    "winning_trades": 11,
+    "losing_trades": 8,
+    "win_rate": 57.9,
+    "best_trade_pnl": 1.08,
+    "worst_trade_pnl": -0.8,
+    "active_positions": 18,
+    "budget_usd": 70,
+    "days_active": 7
   },
   "recent_trades": [
     {
-      "question": "Will Trump nominate Kevin Warsh as the next Fed chair?",
-      "outcome": "YES",
-      "pnl": 2.79,
-      "edge": 18.5
+      "question": "US-Iran nuclear deal by June 30?",
+      "outcome": "Yes",
+      "pnl": 1.08
     },
     {
-      "question": "Will Bitcoin reach $120,000 by end of March 2026?",
-      "outcome": "NO", 
-      "pnl": -0.45,
-      "edge": 8.2
+      "question": "Will the Iranian regime fall by April 30?",
+      "outcome": "No",
+      "pnl": 0.47
     },
     {
-      "question": "Will there be a major AI breakthrough announcement in Q1 2026?",
-      "outcome": "YES",
-      "pnl": 1.23,
-      "edge": 12.4
+      "question": "Will MegaETH perform an airdrop by June 30? ",
+      "outcome": "Yes",
+      "pnl": 0.24
     },
     {
-      "question": "Will Nvidia stock close above $180 by March 31?",
-      "outcome": "YES",
-      "pnl": 0.87,
-      "edge": 5.9
+      "question": "Will the Iranian regime fall by June 30?",
+      "outcome": "No",
+      "pnl": 0.17
     },
     {
-      "question": "Will there be a new COVID variant of concern by April 2026?",
-      "outcome": "NO",
-      "pnl": -0.32,
-      "edge": 15.1
+      "question": "MegaETH market cap (FDV) >$2B one day after launch?",
+      "outcome": "Yes",
+      "pnl": 0.11
     }
   ]
 }
