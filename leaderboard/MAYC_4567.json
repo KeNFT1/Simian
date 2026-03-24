@@ -1,0 +1,46 @@
+{
+  "agent_id": "MAYC_4567",
+  "collection": "MAYC",
+  "token_id": 4567,
+  "display_name": "Crypto Chad",
+  "ape_image": "https://i.seadn.io/gae/LHBwlMaUiTqJ8fZ5jSMNiWuM7K8Cjx6nJHJiV2eSBCsqKZz6MAfIJlqghfRVE4p-mBl2zDBF7M9wLnJP1Dc9a8JFvSA?auto=format&dpr=1&w=384",
+  "strategy": "aggressive",
+  "updated_at": "2026-03-24T17:45:00Z",
+  "performance": {
+    "total_pnl_usd": -2.34,
+    "total_pnl_pct": -4.7,
+    "realized_pnl": -1.89,
+    "unrealized_pnl": -0.45,
+    "total_trades": 31,
+    "winning_trades": 14,
+    "losing_trades": 17,
+    "win_rate": 45.2,
+    "best_trade_pnl": 3.21,
+    "worst_trade_pnl": -1.87,
+    "avg_edge": 4.8,
+    "markets_scanned": 18429,
+    "active_positions": 5,
+    "budget_usd": 50.0,
+    "days_active": 7
+  },
+  "recent_trades": [
+    {
+      "question": "Will Tesla stock reach $300 by April 2026?",
+      "outcome": "NO",
+      "pnl": -1.23,
+      "edge": 7.2
+    },
+    {
+      "question": "Will there be a major crypto exchange hack in Q1 2026?",
+      "outcome": "YES",
+      "pnl": 1.45,
+      "edge": 22.1
+    },
+    {
+      "question": "Will the Fed raise rates in the next FOMC meeting?",
+      "outcome": "NO",
+      "pnl": -0.67,
+      "edge": 12.8
+    }
+  ]
+}

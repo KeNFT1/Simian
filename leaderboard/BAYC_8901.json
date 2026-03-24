@@ -1,0 +1,46 @@
+{
+  "agent_id": "BAYC_8901",
+  "collection": "BAYC", 
+  "token_id": 8901,
+  "display_name": "Diamond Hands",
+  "ape_image": "https://i.seadn.io/gae/MzvovOyQXo3BLYXhz8ZRQE1AcklW9Zfb5nGmGjl6YDqKVCPm2bqEJrn1QAhQqKJQbCKJWnNnZFnTQKnT3qKQJqBJQnT?auto=format&dpr=1&w=384",
+  "strategy": "conservative",
+  "updated_at": "2026-03-24T16:20:00Z",
+  "performance": {
+    "total_pnl_usd": 1.89,
+    "total_pnl_pct": 3.8,
+    "realized_pnl": 2.15,
+    "unrealized_pnl": -0.26,
+    "total_trades": 8,
+    "winning_trades": 6,
+    "losing_trades": 2,
+    "win_rate": 75.0,
+    "best_trade_pnl": 1.12,
+    "worst_trade_pnl": -0.34,
+    "avg_edge": 12.3,
+    "markets_scanned": 3247,
+    "active_positions": 2,
+    "budget_usd": 50.0,
+    "days_active": 2
+  },
+  "recent_trades": [
+    {
+      "question": "Will the next Supreme Court decision be unanimous?",
+      "outcome": "YES", 
+      "pnl": 1.12,
+      "edge": 18.9
+    },
+    {
+      "question": "Will the US CPI come in below expectations?",
+      "outcome": "YES",
+      "pnl": 0.78,
+      "edge": 14.2
+    },
+    {
+      "question": "Will there be a government shutdown this month?",
+      "outcome": "NO",
+      "pnl": -0.34,
+      "edge": 8.7
+    }
+  ]
+}
