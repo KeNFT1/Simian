@@ -1,244 +1,61 @@
-# Simian — AI Agents with NFT Identity
+# Simian 🦍
+
+**AI agents with NFT identity.** Your ape isn't a JPEG. It's an identity. Give it a brain.
 
 <div align="center">
-  <img src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" alt="Lulo BAYC #2253" width="300px" />
-  
-  ## Your ape isn't a JPEG. It's an identity. Give it a brain.
-  
-  **Simian transforms your Bored Ape into an autonomous AI agent that acts on-chain under your NFT's identity—without ever touching your actual token.**
+  <img src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" width="120" alt="BAYC #2253" />
+  <br/>
+  <sub>A <a href="https://github.com/KeNFT1/lulo-studios">Lulo Studios</a> project 🦍</sub>
 </div>
 
----
+## What is Simian?
 
-## 🧠 How It Works
+Simian lets BAYC and MAYC holders spawn autonomous AI agents that trade prediction markets under their ape's identity — verified on-chain via [delegate.cash](https://delegate.xyz).
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Connect       │    │   Delegate      │    │   Configure     │    │   Agent Acts   │
-│   Wallet        │───▶│   via           │───▶│   Agent         │───▶│   On-Chain     │
-│                 │    │   delegate.cash │    │   Capabilities  │    │   Autonomously  │
-└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │                       │
-         ▼                       ▼                       ▼                       ▼
-  Verify NFT              Agent never              Set risk params         Track P&L &
-  ownership               touches your NFT          & preferences           activity
-```
+- 🔗 **Connect wallet** → verify your ape
+- 🔐 **Delegate** → agent acts on behalf, NFT stays in cold storage
+- 🧠 **Configure** → choose strategy, risk, intelligence sources
+- 📈 **Deploy** → agent scans 12,000+ markets and trades autonomously
 
-### The Process:
+## Live Agent
 
-1. **🔗 Connect Wallet** → Verify NFT ownership (BAYC, MAYC, CryptoPunks)
-2. **🔐 Delegate via delegate.cash** → Grant specific permissions without transferring your NFT
-3. **⚙️ Configure Agent Capabilities** → Choose from trading, social, governance, airdrop claiming
-4. **🤖 Agent Acts On-Chain** → Your ape's identity drives autonomous actions
-5. **📊 Dashboard Monitoring** → Real-time activity, P&L tracking, action logs
+**Lulo #2253** is the first Simian agent — live on Polymarket.
 
----
+🔗 [Live Dashboard](https://kenft1.github.io/Simian/dashboard.html) · [Landing Page](https://kenft1.github.io/Simian/)
 
-## 🏗️ Architecture
+## Get Access
 
-Simian uses **delegate.cash** as the security foundation, ensuring your NFT never leaves your wallet while granting specific permissions to AI agents.
+The agent framework is **token-gated** for BAYC/MAYC holders.
+
+1. Visit [kenft1.github.io/Simian](https://kenft1.github.io/Simian/)
+2. Connect wallet → verify your ape
+3. Build your pipeline at [builder.html](https://kenft1.github.io/Simian/builder.html)
+4. Request access to the [private agent repo](https://github.com/KeNFT1/Simian-agent)
+
+## Architecture
 
 ```
-┌─────────────────┐
-│  Your Wallet    │
-│  ┌───────────┐  │     ┌─────────────────┐     ┌─────────────────┐
-│  │    NFT    │  │────▶│  delegate.cash  │────▶│ Simian Registry │
-│  │  (BAYC)   │  │     │   Delegation    │     │   Contract      │
-│  └───────────┘  │     │    Registry     │     └─────────────────┘
-└─────────────────┘     └─────────────────┘              │
-                                                          ▼
-                        ┌─────────────────┐     ┌─────────────────┐
-                        │   AI Agent      │◀────│ Agent Config &  │
-                        │   Runtime       │     │  Capabilities   │
-                        └─────────────────┘     └─────────────────┘
-                                │
-                                ▼
-                        ┌─────────────────┐
-                        │   On-Chain      │
-                        │   Actions       │
-                        └─────────────────┘
+Public (this repo)              Private (Simian-agent)
+├── index.html    Landing       ├── runner.py       Orchestrator
+├── builder.html  Config UI     ├── intelligence.py News sources
+├── dashboard.html Live P&L     ├── market_scanner.py  Gamma API
+└── README.md                   ├── scorer.py       Edge detection
+                                ├── executor.py     Paper + live
+                                ├── delegator.py    delegate.cash
+                                └── templates/      Strategy presets
 ```
 
-**Security Model:**
-- **Delegation-based**: Agent never holds your NFT
-- **Revocable**: Cancel delegation anytime via delegate.cash
-- **Granular permissions**: Choose which capabilities to enable
-- **Non-custodial**: Your NFT stays in your wallet
+## Links
+
+- 🌐 [Landing Page](https://kenft1.github.io/Simian/)
+- 📊 [Lulo's Dashboard](https://kenft1.github.io/Simian/dashboard.html)
+- 🔧 [Pipeline Builder](https://kenft1.github.io/Simian/builder.html)
+- 🐦 [@lulodoteth](https://x.com/lulodoteth)
 
 ---
-
-## 🎯 Supported Collections
-
-- **Bored Ape Yacht Club (BAYC)** — Full support
-- **Mutant Ape Yacht Club (MAYC)** — Full support  
-- **CryptoPunks** — Full support
-- **Extensible architecture** for additional collections
-
----
-
-## 🚀 Agent Capabilities
-
-### 📈 Prediction Market Trading
-- Autonomous trading on Polymarket and other prediction markets
-- Risk-managed position sizing based on your preferences
-- Profit/loss tracking and strategy optimization
-
-### 👁️ Portfolio Monitoring  
-- Real-time tracking of your NFT and token holdings
-- Market alerts and opportunity notifications
-- Performance analytics and insights
-
-### 🗳️ DAO Governance
-- Automatic participation in governance proposals
-- Voting based on your predefined preferences
-- Snapshot integration for off-chain governance
-
-### 📱 Social Posting
-- Automated social media presence reflecting your ape's personality
-- Community engagement and alpha sharing
-- Brand building for your NFT identity
-
-### 🎁 Airdrop Auto-Claim
-- Monitor and claim airdrops for eligible NFT holders
-- Gas optimization and timing strategies
-- Comprehensive claim tracking
-
----
-
-## 🛠️ Tech Stack
-
-| Component | Technology |
-|-----------|------------|
-| **Smart Contracts** | Solidity, delegate.cash integration |
-| **Backend** | Python, FastAPI |
-| **Blockchain** | Ethereum, Base, Polygon |
-| **Identity** | OpenSea API, on-chain metadata |
-| **Frontend** | React, Web3.js |
-| **AI/ML** | OpenAI GPT-4, custom trading models |
-| **Data** | PostgreSQL, Redis |
-| **Infrastructure** | AWS, Docker |
-
----
-
-## 🗺️ Roadmap
-
-### Phase 1: Trading Agent (Q2 2024)
-- [ ] Core delegation infrastructure
-- [ ] Prediction market trading capabilities
-- [ ] Basic dashboard and monitoring
-- [ ] BAYC/MAYC support
-
-### Phase 2: Social & Governance (Q3 2024)  
-- [ ] DAO governance participation
-- [ ] Social media automation
-- [ ] Advanced portfolio analytics
-- [ ] CryptoPunks support
-
-### Phase 3: Multi-Collection Expansion (Q4 2024)
-- [ ] Support for additional NFT collections
-- [ ] Advanced AI personality customization
-- [ ] Cross-chain capabilities
-- [ ] Community marketplace
-
----
-
-## 🤖 Self-Service Agent Framework
-
-**New!** Simian now includes a self-service framework that lets BAYC/MAYC holders create and deploy their own automated trading agents without technical expertise.
-
-### 🧠 Pipeline Builder
-
-Visit `builder.html` to configure your trading strategy through a visual interface:
-
-- **Strategy Templates** — Conservative, Balanced, or Aggressive approaches
-- **Market Filters** — Volume, price range, time horizons, category exclusions
-- **Intelligence Sources** — HackerNews, Reddit, BBC RSS, Google News, Twitter
-- **Risk Parameters** — Budget, position sizing, Kelly fraction, edge thresholds
-- **Execution Settings** — Paper trading vs live, cron intervals
-
-### 🚀 Standalone Agent
-
-The self-service agent runs independently from the main Simian infrastructure:
-
-- **Standalone Python Script** — All dependencies: `requests` and `feedparser`
-- **No External APIs** — Uses free intelligence sources only
-- **Gamma API Integration** — Direct Polymarket market data access
-- **Paper Trading Mode** — Test strategies safely before going live
-- **Configurable Intelligence** — Multiple news sources with custom keywords
-
-### 📊 Quick Start (Self-Service)
-
-```bash
-# 1. Configure strategy
-open builder.html
-# Connect wallet, configure strategy, download config
-
-# 2. Install dependencies
-pip install -r agent/requirements.txt
-
-# 3. Test with paper trading
-python agent/runner.py --config agent-config.json
-
-# 4. Review results
-cat data/simulations/2024-*-*.json
-
-# 5. Go live (optional)
-# Add POLYMARKET_PRIVATE_KEY to .env
-# Set autoExecute: true in config
-```
-
-### 🔒 Security Model
-
-- **Delegation-based** — NFT never leaves your wallet via delegate.cash
-- **Non-custodial** — You control all private keys and funds
-- **Configurable** — Choose exactly which capabilities to enable
-- **Revocable** — Cancel delegation anytime
-
-See [SETUP.md](SETUP.md) for complete setup instructions.
-
----
-
-## 🔧 Getting Started
-
-```bash
-# Clone the repository
-git clone https://github.com/KeNFT1/Simian.git
-cd Simian
-
-# Install dependencies
-npm install
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your settings
-
-# Deploy contracts (testnet)
-npm run deploy:testnet
-
-# Start the application
-npm run dev
-```
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-## 🦍 About
 
 <div align="center">
-  
-**Built by BAYC holders, for BAYC holders**
-
-<img src="https://img.shields.io/badge/BAYC-%232253-orange" alt="BAYC #2253" />
-<img src="https://img.shields.io/badge/Built_by-Lulo_Studios-purple" alt="Lulo Studios" />
-
-*Part of the [Lulo Studios](https://github.com/KeNFT1/lulo-studios) ecosystem*
-
-[@lulodoteth](https://x.com/lulodoteth) • [Lulo Studios](https://github.com/KeNFT1/lulo-studios) • BAYC #2253
-
+  <img src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" width="60" alt="BAYC #2253" />
+  <br/>
+  <sub>Built by <a href="https://github.com/KeNFT1">KeNFT1</a> 🦍 BAYC #2253</sub>
 </div>
