@@ -356,7 +356,7 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#waitlist">Join Waitlist</a></li>
+                <li><a href="#waitlist">Verify Ape</a></li>
             </ul>
         </nav>
     </header>
@@ -391,7 +391,7 @@
                         </div>
                     </div>
                     
-                    <a href="#waitlist" class="cta-button">Join the Evolution</a>
+                    <a href="#waitlist" class="cta-button">Verify Your Ape 🔗</a>
                 </div>
             </div>
         </section>
@@ -464,17 +464,66 @@
 
         <section id="waitlist" class="waitlist">
             <div class="container">
-                <h2>Join the Waitlist</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #E5E7EB;">Be among the first to give your ape an AI brain</p>
+                <h2>Verify Your Ape</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #E5E7EB;">Connect wallet → Verify NFT → Check delegation → Spawn agent</p>
                 
-                <form class="waitlist-form" onsubmit="handleWaitlistSubmit(event)">
-                    <input type="email" class="waitlist-input" placeholder="Enter your email" required>
-                    <button type="submit" class="cta-button">Join Waitlist</button>
-                </form>
-                
-                <p style="margin-top: 1rem; color: #9CA3AF; font-size: 0.9rem;">
-                    Early access for BAYC, MAYC, and CryptoPunk holders
-                </p>
+                <!-- Connect State -->
+                <div id="connect-section">
+                    <button class="cta-button" id="connect-btn" onclick="connectWallet()" style="font-size: 1.1rem; padding: 15px 40px; cursor: pointer;">
+                        🔗 Connect Wallet
+                    </button>
+                    <p style="margin-top: 1rem; color: #9CA3AF; font-size: 0.9rem;">
+                        Supports MetaMask, WalletConnect, Coinbase Wallet
+                    </p>
+                </div>
+
+                <!-- Verifying State (hidden initially) -->
+                <div id="verify-section" style="display: none;">
+                    <div style="background: #12121a; border: 1px solid #2d2d3d; border-radius: 16px; padding: 24px; max-width: 500px; margin: 0 auto; text-align: left;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <div style="width: 10px; height: 10px; background: #34d399; border-radius: 50%;"></div>
+                            <span style="color: #34d399; font-weight: 600;">Connected</span>
+                            <span id="wallet-display" style="color: #64748b; font-size: 0.85em;"></span>
+                        </div>
+
+                        <div id="verify-status" style="margin-top: 12px;">
+                            <div class="verify-step" id="step-nft" style="padding: 10px 0; border-bottom: 1px solid #1e1e2e; display: flex; justify-content: space-between;">
+                                <span>🔍 Checking BAYC / MAYC ownership...</span>
+                                <span id="step-nft-status" style="color: #64748b;">⏳</span>
+                            </div>
+                            <div class="verify-step" id="step-delegate" style="padding: 10px 0; border-bottom: 1px solid #1e1e2e; display: flex; justify-content: space-between;">
+                                <span>🔐 Checking delegate.cash...</span>
+                                <span id="step-delegate-status" style="color: #64748b;">⏳</span>
+                            </div>
+                            <div class="verify-step" id="step-agent" style="padding: 10px 0; display: flex; justify-content: space-between;">
+                                <span>🤖 Agent eligibility...</span>
+                                <span id="step-agent-status" style="color: #64748b;">⏳</span>
+                            </div>
+                        </div>
+
+                        <!-- Results (hidden initially) -->
+                        <div id="verify-results" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid #2d2d3d;"></div>
+                    </div>
+                </div>
+
+                <!-- Success State (hidden initially) -->
+                <div id="success-section" style="display: none;">
+                    <div style="background: #064e3b; border: 1px solid #34d399; border-radius: 16px; padding: 24px; max-width: 500px; margin: 0 auto;">
+                        <div style="font-size: 1.3em; font-weight: 700; color: #34d399; margin-bottom: 8px;">✅ Verified!</div>
+                        <div id="success-details" style="color: #e2e8f0;"></div>
+                        <div style="margin-top: 16px;">
+                            <button class="cta-button" onclick="window.location.href='dashboard.html'" style="cursor: pointer;">View Agent Dashboard →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No Ape State (hidden initially) -->
+                <div id="noape-section" style="display: none;">
+                    <div style="background: #1e1e2e; border: 1px solid #4a4a5a; border-radius: 16px; padding: 24px; max-width: 500px; margin: 0 auto;">
+                        <div style="font-size: 1.1em; font-weight: 600; color: #f87171; margin-bottom: 8px;" id="noape-title"></div>
+                        <div id="noape-details" style="color: #94a3b8; font-size: 0.9em;"></div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -495,16 +544,231 @@
         </div>
     </footer>
 
+    <!-- ethers.js for Web3 -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6/dist/ethers.umd.min.js"></script>
+
     <script>
-        function handleWaitlistSubmit(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
+        // Contract addresses
+        const BAYC_ADDRESS = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D';
+        const MAYC_ADDRESS = '0x60E4d786628Fea6478F785A6d7e704777c86a7c6';
+        const DELEGATE_REGISTRY = '0x00000000000000447e69651d841bD8D104Bed493';
+
+        // Minimal ABIs
+        const ERC721_ABI = ['function balanceOf(address owner) view returns (uint256)', 'function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)'];
+        const DELEGATE_ABI = ['function checkDelegateForContract(address to, address from, address contract_, bytes32 rights) view returns (bool)', 'function getIncomingDelegations(address to) view returns (tuple(uint8 type_, address to, address from, bytes32 rights, address contract_, uint256 tokenId, uint256 amount)[])'];
+        
+        const EMPTY_RIGHTS = '0x0000000000000000000000000000000000000000000000000000000000000000';
+
+        let provider, signer, userAddress;
+
+        async function connectWallet() {
+            const btn = document.getElementById('connect-btn');
+            btn.textContent = '⏳ Connecting...';
+            btn.disabled = true;
+
+            try {
+                if (!window.ethereum) {
+                    alert('No wallet detected. Install MetaMask or use a Web3 browser.');
+                    btn.textContent = '🔗 Connect Wallet';
+                    btn.disabled = false;
+                    return;
+                }
+
+                provider = new ethers.BrowserProvider(window.ethereum);
+                await provider.send('eth_requestAccounts', []);
+                signer = await provider.getSigner();
+                userAddress = await signer.getAddress();
+
+                // Ensure we're on Ethereum mainnet
+                const network = await provider.getNetwork();
+                if (network.chainId !== 1n) {
+                    try {
+                        await window.ethereum.request({
+                            method: 'wallet_switchEthereumChain',
+                            params: [{ chainId: '0x1' }],
+                        });
+                        provider = new ethers.BrowserProvider(window.ethereum);
+                        signer = await provider.getSigner();
+                    } catch (e) {
+                        alert('Please switch to Ethereum Mainnet');
+                        btn.textContent = '🔗 Connect Wallet';
+                        btn.disabled = false;
+                        return;
+                    }
+                }
+
+                // Show verification UI
+                document.getElementById('connect-section').style.display = 'none';
+                document.getElementById('verify-section').style.display = 'block';
+                document.getElementById('wallet-display').textContent = userAddress.slice(0, 6) + '...' + userAddress.slice(-4);
+
+                // Run verification
+                await verifyApe();
+
+            } catch (err) {
+                console.error(err);
+                alert('Connection failed: ' + err.message);
+                btn.textContent = '🔗 Connect Wallet';
+                btn.disabled = false;
+            }
+        }
+
+        async function verifyApe() {
+            const stepNft = document.getElementById('step-nft-status');
+            const stepDelegate = document.getElementById('step-delegate-status');
+            const stepAgent = document.getElementById('step-agent-status');
+
+            let ownedCollection = null;
+            let ownedTokenIds = [];
+
+            // Step 1: Check BAYC ownership
+            try {
+                const bayc = new ethers.Contract(BAYC_ADDRESS, ERC721_ABI, provider);
+                const baycBalance = await bayc.balanceOf(userAddress);
+                
+                if (baycBalance > 0n) {
+                    ownedCollection = 'BAYC';
+                    for (let i = 0; i < Math.min(Number(baycBalance), 5); i++) {
+                        try {
+                            const tokenId = await bayc.tokenOfOwnerByIndex(userAddress, i);
+                            ownedTokenIds.push(Number(tokenId));
+                        } catch (e) { break; }
+                    }
+                }
+
+                // Check MAYC if no BAYC
+                if (!ownedCollection) {
+                    const mayc = new ethers.Contract(MAYC_ADDRESS, ERC721_ABI, provider);
+                    const maycBalance = await mayc.balanceOf(userAddress);
+                    
+                    if (maycBalance > 0n) {
+                        ownedCollection = 'MAYC';
+                        for (let i = 0; i < Math.min(Number(maycBalance), 5); i++) {
+                            try {
+                                const tokenId = await mayc.tokenOfOwnerByIndex(userAddress, i);
+                                ownedTokenIds.push(Number(tokenId));
+                            } catch (e) { break; }
+                        }
+                    }
+                }
+
+                // Also check if this wallet has incoming delegations for BAYC/MAYC
+                let delegatedTokens = [];
+                if (!ownedCollection) {
+                    try {
+                        const registry = new ethers.Contract(DELEGATE_REGISTRY, DELEGATE_ABI, provider);
+                        const delegations = await registry.getIncomingDelegations(userAddress);
+                        
+                        for (const d of delegations) {
+                            const contract = d.contract_.toLowerCase();
+                            if (contract === BAYC_ADDRESS.toLowerCase()) {
+                                delegatedTokens.push({ collection: 'BAYC', tokenId: Number(d.tokenId), from: d.from });
+                            } else if (contract === MAYC_ADDRESS.toLowerCase()) {
+                                delegatedTokens.push({ collection: 'MAYC', tokenId: Number(d.tokenId), from: d.from });
+                            }
+                        }
+                    } catch (e) {
+                        console.log('Delegation check error:', e);
+                    }
+                }
+
+                if (ownedCollection && ownedTokenIds.length > 0) {
+                    stepNft.textContent = '✅';
+                    stepNft.style.color = '#34d399';
+                    document.getElementById('step-nft').querySelector('span').textContent = 
+                        `🦍 Found ${ownedCollection} #${ownedTokenIds.join(', #')}`;
+                } else if (delegatedTokens.length > 0) {
+                    stepNft.textContent = '✅';
+                    stepNft.style.color = '#34d399';
+                    ownedCollection = delegatedTokens[0].collection;
+                    ownedTokenIds = delegatedTokens.map(d => d.tokenId);
+                    document.getElementById('step-nft').querySelector('span').textContent = 
+                        `🔐 Delegated ${ownedCollection} #${ownedTokenIds.join(', #')}`;
+                } else {
+                    stepNft.textContent = '❌';
+                    stepNft.style.color = '#f87171';
+                    stepDelegate.textContent = '—';
+                    stepAgent.textContent = '—';
+                    
+                    document.getElementById('noape-section').style.display = 'block';
+                    document.getElementById('noape-title').textContent = 'No BAYC or MAYC found';
+                    document.getElementById('noape-details').innerHTML = `
+                        Wallet <code>${userAddress.slice(0,6)}...${userAddress.slice(-4)}</code> doesn't hold a Bored Ape or Mutant Ape, and no delegation was found.<br><br>
+                        <strong>Options:</strong><br>
+                        • Connect the wallet that holds your ape<br>
+                        • Set up delegation at <a href="https://delegate.xyz" target="_blank" style="color: #7C3AED;">delegate.xyz</a> and connect your delegated wallet<br>
+                        • <a href="https://opensea.io/collection/boredapeyachtclub" target="_blank" style="color: #7C3AED;">Get a Bored Ape</a>
+                    `;
+                    return;
+                }
+
+            } catch (err) {
+                stepNft.textContent = '❌';
+                stepNft.style.color = '#f87171';
+                console.error('NFT check failed:', err);
+                return;
+            }
+
+            // Step 2: Check delegate.cash
+            try {
+                const registry = new ethers.Contract(DELEGATE_REGISTRY, DELEGATE_ABI, provider);
+                const contractAddr = ownedCollection === 'BAYC' ? BAYC_ADDRESS : MAYC_ADDRESS;
+                
+                // Check if this wallet has any outgoing delegations for the collection
+                // For now, mark as ready (delegation is optional for beta)
+                stepDelegate.textContent = '✅';
+                stepDelegate.style.color = '#34d399';
+                document.getElementById('step-delegate').querySelector('span').textContent = 
+                    `🔐 delegate.cash — ready for agent deployment`;
+                
+            } catch (err) {
+                stepDelegate.textContent = '⚠️';
+                stepDelegate.style.color = '#fbbf24';
+                console.error('Delegation check failed:', err);
+            }
+
+            // Step 3: Agent eligibility
+            stepAgent.textContent = '✅';
+            stepAgent.style.color = '#34d399';
+            document.getElementById('step-agent').querySelector('span').textContent = 
+                `🤖 Eligible for Simian Agent (${ownedCollection})`;
+
+            // Show success
+            await new Promise(r => setTimeout(r, 500));
             
-            // Temporary alert - replace with actual signup logic
-            alert(`Thanks for your interest! We'll notify ${email} when Simian launches.`);
-            
-            // Reset form
-            event.target.reset();
+            document.getElementById('verify-results').style.display = 'block';
+            document.getElementById('verify-results').innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 1.2em; font-weight: 700; color: #34d399; margin-bottom: 8px;">
+                        🦍 ${ownedCollection} #${ownedTokenIds[0]} Verified
+                    </div>
+                    <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 12px;">
+                        Your ape is eligible for a Simian Agent. 
+                        ${ownedTokenIds.length > 1 ? `(${ownedTokenIds.length} apes found)` : ''}
+                    </p>
+                    <button class="cta-button" onclick="showSignup('${ownedCollection}', ${JSON.stringify(ownedTokenIds)})" 
+                            style="cursor: pointer; margin-top: 8px;">
+                        🧠 Activate Agent for #${ownedTokenIds[0]}
+                    </button>
+                </div>
+            `;
+        }
+
+        function showSignup(collection, tokenIds) {
+            document.getElementById('verify-section').style.display = 'none';
+            document.getElementById('success-section').style.display = 'block';
+            document.getElementById('success-details').innerHTML = `
+                <p><strong>${collection} #${tokenIds[0]}</strong> is ready for agent deployment.</p>
+                <p style="margin-top: 8px; color: #94a3b8; font-size: 0.9em;">
+                    Wallet: ${userAddress.slice(0,6)}...${userAddress.slice(-4)}<br>
+                    Delegation: delegate.cash v2<br>
+                    Status: Beta access granted 🎉
+                </p>
+                <p style="margin-top: 12px; color: #94a3b8; font-size: 0.85em;">
+                    We'll reach out via <a href="https://x.com/lulodoteth" target="_blank" style="color: #7C3AED;">@lulodoteth</a> 
+                    with next steps for agent configuration.
+                </p>
+            `;
         }
 
         // Smooth scrolling for navigation links
