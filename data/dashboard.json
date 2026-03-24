@@ -24,21 +24,6 @@
   },
   "open_positions": [
     {
-      "question": "US-Iran nuclear deal by June 30?",
-      "outcome": "Yes",
-      "entry_price": 0.266013,
-      "current_price": 0.315,
-      "cost_usd": 5.87,
-      "current_value": 6.95,
-      "pnl_usd": 1.08,
-      "pnl_pct": 18.4,
-      "realized_pnl": 1.84,
-      "size": 22.049154,
-      "slug": "us-iran-nuclear-deal-by-june-30",
-      "end_date": "2026-06-30",
-      "redeemable": false
-    },
-    {
       "question": "Will the Iranian regime fall by April 30?",
       "outcome": "No",
       "entry_price": 0.873916,
@@ -69,21 +54,6 @@
       "redeemable": false
     },
     {
-      "question": "Will the Iranian regime fall by June 30?",
-      "outcome": "No",
-      "entry_price": 0.679,
-      "current_price": 0.795,
-      "cost_usd": 1.0,
-      "current_value": 1.17,
-      "pnl_usd": 0.17,
-      "pnl_pct": 17.1,
-      "realized_pnl": 0.0,
-      "size": 1.472751,
-      "slug": "will-the-iranian-regime-fall-by-june-30",
-      "end_date": "2026-06-30",
-      "redeemable": false
-    },
-    {
       "question": "MegaETH market cap (FDV) >$2B one day after launch?",
       "outcome": "Yes",
       "entry_price": 0.129999,
@@ -99,8 +69,23 @@
       "redeemable": false
     },
     {
-      "question": "Will Russia capture Kostyantynivka by March 31?",
+      "question": "US forces enter Iran by March 31?",
       "outcome": "No",
+      "entry_price": 0.78,
+      "current_price": 0.815,
+      "cost_usd": 1.96,
+      "current_value": 2.05,
+      "pnl_usd": 0.09,
+      "pnl_pct": 4.5,
+      "realized_pnl": 0.0,
+      "size": 2.51,
+      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
+      "outcome": "Yes",
       "entry_price": 0.93,
       "current_price": 0.95,
       "cost_usd": 3.72,
@@ -109,8 +94,38 @@
       "pnl_pct": 2.2,
       "realized_pnl": 0.0,
       "size": 4.0,
-      "slug": "will-russia-capture-kostyantynivka-by-march-31-872-578",
+      "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
       "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "US-Iran nuclear deal by June 30?",
+      "outcome": "Yes",
+      "entry_price": 0.266013,
+      "current_price": 0.34,
+      "cost_usd": 0.29,
+      "current_value": 0.37,
+      "pnl_usd": 0.08,
+      "pnl_pct": 27.8,
+      "realized_pnl": 3.18,
+      "size": 1.099154,
+      "slug": "us-iran-nuclear-deal-by-june-30",
+      "end_date": "2026-06-30",
+      "redeemable": false
+    },
+    {
+      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
+      "outcome": "Yes",
+      "entry_price": 0.439999,
+      "current_price": 0.445,
+      "cost_usd": 4.13,
+      "current_value": 4.18,
+      "pnl_usd": 0.05,
+      "pnl_pct": 1.1,
+      "realized_pnl": 0.0,
+      "size": 9.386362,
+      "slug": "will-ken-paxton-win-the-2026-republican-primary",
+      "end_date": "2026-05-26",
       "redeemable": false
     },
     {
@@ -147,11 +162,11 @@
       "question": "Israel strike on Damascus by March 31, 2026?",
       "outcome": "No",
       "entry_price": 0.89,
-      "current_price": 0.893,
+      "current_price": 0.894,
       "cost_usd": 5.34,
       "current_value": 5.36,
       "pnl_usd": 0.02,
-      "pnl_pct": 0.3,
+      "pnl_pct": 0.4,
       "realized_pnl": 0.0,
       "size": 6.0,
       "slug": "israel-strike-on-damascus-by-march-31-2026",
@@ -162,11 +177,11 @@
       "question": "Will Bitcoin dip to $60,000 in March?",
       "outcome": "No",
       "entry_price": 0.9,
-      "current_price": 0.905,
+      "current_price": 0.91,
       "cost_usd": 1.49,
-      "current_value": 1.49,
-      "pnl_usd": 0.01,
-      "pnl_pct": 0.6,
+      "current_value": 1.5,
+      "pnl_usd": 0.02,
+      "pnl_pct": 1.1,
       "realized_pnl": 0.0,
       "size": 1.65,
       "slug": "will-bitcoin-dip-to-60k-in-march-2026",
@@ -174,18 +189,18 @@
       "redeemable": false
     },
     {
-      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
-      "outcome": "Yes",
-      "entry_price": 0.439999,
-      "current_price": 0.44,
-      "cost_usd": 4.13,
-      "current_value": 4.13,
+      "question": "Will Russia capture Kostyantynivka by March 31?",
+      "outcome": "No",
+      "entry_price": 0.93,
+      "current_price": 0.93,
+      "cost_usd": 3.72,
+      "current_value": 3.72,
       "pnl_usd": 0.0,
       "pnl_pct": 0.0,
       "realized_pnl": 0.0,
-      "size": 9.386362,
-      "slug": "will-ken-paxton-win-the-2026-republican-primary",
-      "end_date": "2026-05-26",
+      "size": 4.0,
+      "slug": "will-russia-capture-kostyantynivka-by-march-31-872-578",
+      "end_date": "2026-03-31",
       "redeemable": false
     },
     {
@@ -201,36 +216,6 @@
       "size": 1.188124,
       "slug": "will-jesus-christ-return-before-gta-vi-665",
       "end_date": "2026-07-31",
-      "redeemable": false
-    },
-    {
-      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
-      "outcome": "Yes",
-      "entry_price": 0.93,
-      "current_price": 0.925,
-      "cost_usd": 3.72,
-      "current_value": 3.7,
-      "pnl_usd": -0.02,
-      "pnl_pct": -0.5,
-      "realized_pnl": 0.0,
-      "size": 4.0,
-      "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
-      "end_date": "2026-03-31",
-      "redeemable": false
-    },
-    {
-      "question": "US forces enter Iran by March 31?",
-      "outcome": "No",
-      "entry_price": 0.78,
-      "current_price": 0.765,
-      "cost_usd": 1.96,
-      "current_value": 1.92,
-      "pnl_usd": -0.04,
-      "pnl_pct": -1.9,
-      "realized_pnl": 0.0,
-      "size": 2.51,
-      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
-      "end_date": "2026-03-31",
       "redeemable": false
     },
     {
@@ -312,30 +297,34 @@
     }
   ],
   "portfolio": {
-    "positions_value": 69.32,
-    "wallet_balance": 7.26,
-    "total_value": 76.58,
+    "positions_value": 61.76,
+    "wallet_balance": 15.33,
+    "total_value": 77.09,
     "initial_deposit": 70.0,
-    "total_pnl": 6.58,
-    "total_pnl_pct": 9.4,
-    "biggest_win": 1.0801219069980001
+    "total_pnl": 7.09,
+    "total_pnl_pct": 10.1,
+    "biggest_win": 0.47205516000000014
   },
   "stats": {
-    "total_trades": 19,
-    "winning_trades": 11,
-    "losing_trades": 8,
-    "win_rate": 57.9,
-    "open_positions": 18,
+    "total_trades": 18,
+    "winning_trades": 12,
+    "losing_trades": 6,
+    "win_rate": 66.7,
+    "open_positions": 17,
     "resolved_positions": 1
   },
   "recent_activity": [
     {
       "icon": "\ud83d\udfe2",
-      "text": "Yes MegaETH market cap (FDV) >$2B one day after l \u2014 $+0.11 (+3.8%)"
+      "text": "Yes Will Anthropic have the second-best AI model  \u2014 $+0.08 (+2.2%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No Will the Iranian regime fall by June 30? \u2014 $+0.17 (+17.1%)"
+      "text": "No US forces enter Iran by March 31? \u2014 $+0.09 (+4.5%)"
+    },
+    {
+      "icon": "\ud83d\udfe2",
+      "text": "Yes MegaETH market cap (FDV) >$2B one day after l \u2014 $+0.11 (+3.8%)"
     },
     {
       "icon": "\ud83d\udfe2",
@@ -344,11 +333,7 @@
     {
       "icon": "\ud83d\udfe2",
       "text": "No Will the Iranian regime fall by April 30? \u2014 $+0.47 (+4.7%)"
-    },
-    {
-      "icon": "\ud83d\udfe2",
-      "text": "Yes US-Iran nuclear deal by June 30? \u2014 $+1.08 (+18.4%)"
     }
   ],
-  "updated_at": "2026-03-24T18:53:07.294119+00:00"
+  "updated_at": "2026-03-24T20:20:42.705034+00:00"
 }
