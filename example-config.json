@@ -1,0 +1,38 @@
+{
+  "identity": {
+    "collection": "BAYC",
+    "tokenId": "2253",
+    "wallet": "0x742d35Cc32b8C9f951506Dc88aE7a7FE6Ad50e84"
+  },
+  "template": "balanced",
+  "marketFilters": {
+    "excludeSports": true,
+    "excludeMeme": true,
+    "minVolume": 10000,
+    "priceRange": {
+      "min": 10,
+      "max": 90
+    },
+    "maxDaysToResolution": 180
+  },
+  "intelligenceSources": {
+    "hackernews": true,
+    "reddit": true,
+    "bbc": true,
+    "googleNews": true,
+    "nitter": false,
+    "customKeywords": ["ukraine", "fed", "bitcoin", "election", "china", "iran"]
+  },
+  "riskParameters": {
+    "budget": 50,
+    "maxPerPosition": 10,
+    "maxConcurrentPositions": 5,
+    "minEdgeThreshold": 0.04,
+    "kellyFraction": 0.25
+  },
+  "execution": {
+    "autoExecute": false,
+    "cronInterval": "4h"
+  },
+  "timestamp": "2024-03-23T22:00:00.000Z"
+}
