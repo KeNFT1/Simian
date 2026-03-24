@@ -9,6 +9,9 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 WALLET = "0xC3499259f08E950031a749353A1422179C28E9C1"
+INITIAL_DEPOSIT = 70.00  # Total USDC.e deposited to Polymarket
+USDC_E_CONTRACT = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"  # Polygon USDC.e
+POLYGON_RPC = "https://polygon-bor-rpc.publicnode.com"
 DATA_API = "https://data-api.polymarket.com"
 OUTPUT = Path(__file__).resolve().parent.parent / "data" / "dashboard.json"
 LEADERBOARD_OUTPUT = Path(__file__).resolve().parent.parent / "leaderboard" / "BAYC_2253.json"
@@ -21,6 +24,51 @@ def get_onchain_positions():
         print(f"⚠️ Data API error: {resp.status_code}")
         return []
     return resp.json()
+
+
+def get_positions_value():
+    """Get total positions value from Polymarket value endpoint."""
+    try:
+        resp = requests.get(f"{DATA_API}/value?user={WALLET}", timeout=10)
+        if resp.status_code == 200:
+            data = resp.json()
+            return data[0]['value'] if data else 0
+    except:
+        pass
+    return 0
+
+
+def get_wallet_usdc_balance():
+    """Get USDC.e balance in wallet on Polygon."""
+    try:
+        call_data = f"0x70a08231000000000000000000000000{WALLET[2:].lower()}"
+        resp = requests.post(POLYGON_RPC, json={
+            'jsonrpc': '2.0',
+            'method': 'eth_call',
+            'params': [{'to': USDC_E_CONTRACT, 'data': call_data}, 'latest'],
+            'id': 1
+        }, timeout=10)
+        balance_hex = resp.json().get('result', '0x0')
+        return int(balance_hex, 16) / 1e6  # USDC.e has 6 decimals
+    except:
+        return 0
+
+
+def get_true_pnl():
+    """Calculate true P&L: positions_value + wallet_balance - initial_deposit.
+    This matches Polymarket's profile page P&L calculation."""
+    positions_value = get_positions_value()
+    wallet_balance = get_wallet_usdc_balance()
+    total_value = positions_value + wallet_balance
+    pnl = total_value - INITIAL_DEPOSIT
+    return {
+        'positions_value': round(positions_value, 2),
+        'wallet_balance': round(wallet_balance, 2),
+        'total_value': round(total_value, 2),
+        'initial_deposit': INITIAL_DEPOSIT,
+        'total_pnl': round(pnl, 2),
+        'total_pnl_pct': round((pnl / INITIAL_DEPOSIT * 100) if INITIAL_DEPOSIT > 0 else 0, 1),
+    }
 
 
 def generate():
@@ -88,6 +136,9 @@ def generate():
     total_trades = winning + losing
     win_rate = (winning / total_trades * 100) if total_trades > 0 else 0
     
+    # Get TRUE P&L (matches Polymarket profile page)
+    true_pnl = get_true_pnl()
+    
     # Build activity log
     activity = []
     for p in open_positions[:5]:
@@ -129,12 +180,13 @@ def generate():
         'open_positions': open_positions,
         'closed_trades': closed_trades,
         'portfolio': {
-            'total_deployed': round(total_initial, 2),
-            'current_value': round(total_current, 2),
-            'unrealized_pnl': round(total_cash_pnl, 2),
-            'realized_pnl': round(total_realized, 2),
-            'total_pnl': round(total_cash_pnl + total_realized, 2),
-            'total_pnl_pct': round((total_cash_pnl / total_initial * 100) if total_initial > 0 else 0, 1),
+            'positions_value': true_pnl['positions_value'],
+            'wallet_balance': true_pnl['wallet_balance'],
+            'total_value': true_pnl['total_value'],
+            'initial_deposit': true_pnl['initial_deposit'],
+            'total_pnl': true_pnl['total_pnl'],
+            'total_pnl_pct': true_pnl['total_pnl_pct'],
+            'biggest_win': max((p.get('cashPnl', 0) for p in get_onchain_positions() if float(p.get('cashPnl', 0)) > 0), default=0),
         },
         'stats': {
             'total_trades': total_trades,
@@ -162,10 +214,10 @@ def generate():
         'strategy': 'balanced',
         'updated_at': datetime.now(timezone.utc).isoformat(),
         'performance': {
-            'total_pnl_usd': dashboard['portfolio']['total_pnl'],
-            'total_pnl_pct': dashboard['portfolio']['total_pnl_pct'],
-            'realized_pnl': dashboard['portfolio']['realized_pnl'],
-            'unrealized_pnl': dashboard['portfolio']['unrealized_pnl'],
+            'total_pnl_usd': true_pnl['total_pnl'],
+            'total_pnl_pct': true_pnl['total_pnl_pct'],
+            'positions_value': true_pnl['positions_value'],
+            'wallet_balance': true_pnl['wallet_balance'],
             'total_trades': dashboard['stats']['total_trades'],
             'winning_trades': dashboard['stats']['winning_trades'],
             'losing_trades': dashboard['stats']['losing_trades'],
