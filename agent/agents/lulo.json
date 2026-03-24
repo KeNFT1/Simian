@@ -32,14 +32,23 @@
     "strategy": "strategy_d_v5_live",
     "budget_usd": 50.0,
     "max_position_usd": 10.0,
-    "intelligence_sources": ["news", "crypto", "geopolitical"],
+    "intelligence_sources": [
+      "news",
+      "crypto",
+      "geopolitical"
+    ],
     "auto_execute": true,
     "cron_interval_hours": 4
   },
   "wallet": {
     "hot_wallet": "0xC3499259f08E950031a749353A1422179C28E9C1",
     "chain": "polygon",
-    "delegation_type": "delegate.cash_v2"
+    "delegation_type": "token",
+    "delegated_wallet": "0x1B4BcCA2636F7106207813f9E07D80d861BaA705",
+    "delegated_ens": "kenft.eth",
+    "cold_wallet": "0xaa73F5B2DF5364173e2abA92890bAA6026a2251b",
+    "cold_ens": "digitalsurgery.eth",
+    "delegation_verified": true
   },
   "links": {
     "opensea": "https://opensea.io/assets/ethereum/0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D/2253",
