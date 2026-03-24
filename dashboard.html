@@ -14,9 +14,55 @@
             line-height: 1.5;
         }
         
+        /* Navigation */
+        .nav-bar {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #7C3AED;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #7C3AED;
+        }
+        
         .container { 
             max-width: 1000px; 
-            margin: 0 auto; 
+            margin: 80px auto 0; 
             padding: 20px; 
         }
 
@@ -669,6 +715,19 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">🐵 Simian</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="leaderboard.html">🏆 Leaderboard</a>
+                <a href="builder.html">Builder</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Token Gate Section -->
     <div id="token-gate" class="token-gate">
         <div class="container">
