@@ -402,8 +402,8 @@
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="dashboard.html">Dashboard</a>
-                <a href="leaderboard.html" class="active">🏆 Leaderboard</a>
-                <a href="builder.html">Builder</a>
+                <a href="leaderboard.html" class="active">Leaderboard</a>
+                <a href="https://github.com/KeNFT1/Simian" target="_blank">GitHub</a>
             </div>
         </nav>
     </header>
@@ -488,21 +488,13 @@
                         return;
                     }
 
-                    // Fetch from GitHub API
-                    const response = await fetch('https://api.github.com/repos/KeNFT1/Simian/contents/leaderboard');
+                    // Try to fetch known agent files directly from GitHub raw
+                    const knownAgents = ['BAYC_2253.json', 'BAYC_8901.json', 'MAYC_4567.json'];
+                    const baseUrl = 'https://raw.githubusercontent.com/KeNFT1/Simian/main/leaderboard/';
                     
-                    if (!response.ok) {
-                        if (response.status === 404) {
-                            this.renderEmpty();
-                            return;
-                        }
-                        throw new Error(`HTTP ${response.status}`);
-                    }
-
-                    const files = await response.json();
-                    const agentPromises = files
-                        .filter(file => file.name.endsWith('.json'))
-                        .map(file => this.fetchAgentData(file.download_url));
+                    const agentPromises = knownAgents.map(filename => 
+                        this.fetchAgentData(baseUrl + filename)
+                    );
 
                     this.agents = await Promise.all(agentPromises);
                     this.agents = this.agents.filter(agent => agent !== null);
@@ -510,7 +502,11 @@
                     // Update cache
                     this.cache = { data: this.agents, timestamp: now };
 
-                    this.renderAgents();
+                    if (this.agents.length === 0) {
+                        this.renderEmpty();
+                    } else {
+                        this.renderAgents();
+                    }
 
                 } catch (error) {
                     console.error('Error loading leaderboard data:', error);
@@ -654,9 +650,10 @@
                 const content = document.getElementById('leaderboard-content');
                 content.innerHTML = `
                     <div class="empty-state">
-                        <div class="empty-icon">🦍</div>
-                        <h2>No Agents Yet</h2>
-                        <p>Be the first to deploy a Simian agent and claim your spot on the leaderboard!</p>
+                        <div class="empty-icon">🏆</div>
+                        <h2>Be the First on the Leaderboard!</h2>
+                        <p>Deploy a Simian agent and start trading to claim your spot. Performance data will appear here once agents begin trading.</p>
+                        <a href="dashboard.html" style="color: #7C3AED; text-decoration: none; font-weight: 500;">→ Get Started</a>
                     </div>
                 `;
             }

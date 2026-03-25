@@ -98,156 +98,76 @@
             font-size: 1.1em;
             color: #94a3b8;
             margin-bottom: 32px;
-            max-width: 500px;
+            line-height: 1.5;
         }
 
-        .connect-btn {
-            background: linear-gradient(135deg, #7C3AED, #EC4899);
-            color: white;
+        .verify-btn {
+            background: linear-gradient(135deg, #7C3AED, #A855F7);
             border: none;
+            color: white;
             padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 1.1em;
+            border-radius: 12px;
+            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
         }
 
-        .connect-btn:hover {
+        .verify-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 6px 25px rgba(124, 58, 237, 0.4);
         }
 
-        .connect-btn:disabled {
+        .verify-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
-            box-shadow: none;
         }
 
-        /* Verification States */
-        .verify-box {
-            background: #12121a;
-            border: 1px solid #1e1e2e;
+        /* Agent Card */
+        .agent-card {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
             border-radius: 16px;
             padding: 24px;
-            max-width: 500px;
-            margin: 20px auto;
-            text-align: left;
+            margin-bottom: 24px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
         }
 
-        .verify-status {
+        .agent-header {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
             margin-bottom: 16px;
         }
 
-        .status-dot {
-            width: 10px;
-            height: 10px;
+        .agent-avatar {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background: #34d399;
-        }
-
-        .verify-step {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #1e1e2e;
-        }
-
-        .verify-step:last-child {
-            border-bottom: none;
-        }
-
-        .success-box {
-            background: #064e3b;
-            border: 1px solid #34d399;
-            border-radius: 16px;
-            padding: 24px;
-            max-width: 500px;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        .error-box {
-            background: #1e1e2e;
-            border: 1px solid #4a4a5a;
-            border-radius: 16px;
-            padding: 24px;
-            max-width: 500px;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        /* Dashboard Styles */
-        .dashboard {
-            display: none;
-        }
-
-        .header { 
-            text-align: center; 
-            padding: 40px 0 30px; 
-            border-bottom: 1px solid #1e1e2e; 
-        }
-        
-        .ape-img { 
-            width: 100px; 
-            height: 100px; 
-            border-radius: 50%; 
-            border: 3px solid #7C3AED; 
+            border: 2px solid #7C3AED;
             object-fit: cover;
         }
-        
-        .agent-name { 
-            font-size: 2.2em; 
-            font-weight: 700; 
-            margin: 12px 0 6px; 
+
+        .agent-info h2 {
+            color: #e2e8f0;
+            font-size: 1.5em;
+            margin-bottom: 4px;
         }
-        
-        .agent-name span { 
-            color: #7C3AED; 
+
+        .agent-details {
+            color: #94a3b8;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
-        
-        .agent-sub { 
-            color: #64748b; 
-            font-size: 0.95em; 
-        }
-        
-        .agent-sub a { 
-            color: #7C3AED; 
-            text-decoration: none; 
-        }
-        
-        .status-badge { 
-            display: inline-block; 
-            padding: 6px 16px; 
-            border-radius: 20px; 
-            font-size: 0.85em; 
-            font-weight: 600; 
-            margin-top: 12px; 
-        }
-        
-        .status-live { 
-            background: #064e3b; 
-            color: #34d399; 
-        }
-        
-        .traits { 
-            display: flex; 
-            gap: 8px; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-            margin-top: 14px; 
-        }
-        
-        .trait { 
-            background: #1e1e2e; 
-            padding: 5px 12px; 
-            border-radius: 12px; 
-            font-size: 0.8em; 
-            color: #94a3b8; 
+
+        .trait {
+            background: rgba(124, 58, 237, 0.2);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            color: #c4b5fd;
         }
         
         /* Tabs */
@@ -283,6 +203,7 @@
         .tab-content {
             display: none;
             animation: fadeIn 0.3s ease;
+            padding: 24px 0;
         }
 
         .tab-content.active {
@@ -292,401 +213,191 @@
         /* Dashboard Content */
         .stats-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
             gap: 16px; 
-            margin: 24px 0; 
+            margin-bottom: 24px; 
         }
         
         .stat-card { 
-            background: #12121a; 
-            border: 1px solid #1e1e2e; 
+            background: rgba(20, 20, 30, 0.8); 
             border-radius: 12px; 
-            padding: 18px; 
-            transition: border-color 0.3s ease;
-        }
-
-        .stat-card:hover {
-            border-color: #2d2d3d;
+            padding: 20px; 
+            border: 1px solid rgba(124, 58, 237, 0.2);
         }
         
         .stat-label { 
-            font-size: 0.8em; 
-            color: #64748b; 
-            text-transform: uppercase; 
-            letter-spacing: 0.05em; 
+            color: #94a3b8; 
+            font-size: 0.85em; 
+            margin-bottom: 8px; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .stat-value { 
-            font-size: 1.6em; 
+            font-size: 1.8em; 
             font-weight: 700; 
-            margin-top: 6px; 
-        }
-        
-        .stat-value.green { color: #34d399; }
-        .stat-value.purple { color: #7C3AED; }
-        .stat-value.blue { color: #60a5fa; }
-        .stat-value.red { color: #f87171; }
-        
-        .section-title { 
-            font-size: 1.3em; 
-            margin: 32px 0 16px; 
             color: #e2e8f0; 
-            font-weight: 600;
         }
         
-        .positions { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 12px; 
-        }
-        
-        .position { 
-            background: #12121a; 
-            border: 1px solid #1e1e2e; 
-            border-radius: 12px; 
-            padding: 18px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            transition: border-color 0.3s ease;
-        }
+        .stat-value.positive { color: #22c55e; }
+        .stat-value.negative { color: #ef4444; }
+        .stat-value.purple { color: #7C3AED; }
 
-        .position:hover {
-            border-color: #2d2d3d;
-        }
-        
-        .pos-left { 
-            flex: 1; 
-        }
-        
-        .pos-question { 
-            font-size: 0.95em; 
-            font-weight: 500; 
-            line-height: 1.4;
-        }
-        
-        .pos-meta { 
-            font-size: 0.8em; 
-            color: #64748b; 
-            margin-top: 6px; 
-        }
-        
-        .pos-right { 
-            text-align: right; 
-            min-width: 110px; 
-        }
-        
-        .pos-pnl { 
-            font-size: 1.2em; 
-            font-weight: 700; 
-        }
-        
-        .pos-pnl.positive { color: #34d399; }
-        .pos-pnl.negative { color: #f87171; }
-        
-        .pos-edge { 
-            font-size: 0.8em; 
-            color: #64748b; 
-            margin-top: 2px;
-        }
-        
-        .badge-outcome { 
-            display: inline-block; 
-            padding: 3px 8px; 
-            border-radius: 6px; 
-            font-size: 0.75em; 
-            font-weight: 600; 
-            margin-right: 8px; 
-        }
-        
-        .badge-yes { 
-            background: #064e3b; 
-            color: #34d399; 
-        }
-        
-        .badge-no { 
-            background: #4a1d1d; 
-            color: #f87171; 
-        }
-        
-        .intel-bar { 
-            display: flex; 
-            gap: 8px; 
-            flex-wrap: wrap; 
-            margin: 16px 0; 
-        }
-        
-        .intel-chip { 
-            background: #1e1e2e; 
-            padding: 6px 12px; 
-            border-radius: 8px; 
-            font-size: 0.8em; 
-            border: 1px solid transparent;
-        }
-        
-        .intel-chip.hot { 
-            border-color: #7C3AED; 
-            color: #c4b5fd; 
-            background: rgba(124, 58, 237, 0.1);
-        }
-        
-        .activity { 
-            font-size: 0.9em; 
-            color: #94a3b8; 
-        }
-        
-        .activity li { 
-            padding: 8px 0; 
-            border-bottom: 1px solid #1e1e2e; 
-            list-style: none; 
-        }
-        
-        .activity .time { 
-            color: #64748b; 
-            font-size: 0.85em; 
-        }
-
-        /* Pipeline Configurator Styles */
-        .configurator {
+        /* Get Started Content */
+        .get-started {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        .config-section {
-            background: #12121a;
-            border: 1px solid #1e1e2e;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
+        .step-section {
+            margin-bottom: 40px;
         }
 
-        .config-title {
-            font-size: 1.1em;
+        .step-title {
+            font-size: 1.4em;
+            color: #7C3AED;
+            margin-bottom: 16px;
             font-weight: 600;
-            color: #e2e8f0;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        .strategy-templates {
+        .strategy-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-bottom: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
         }
 
-        .strategy-template {
-            background: #1e1e2e;
-            border: 2px solid transparent;
-            border-radius: 8px;
-            padding: 16px;
+        .strategy-card {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.8) 0%, rgba(30, 30, 40, 0.8) 100%);
+            border: 2px solid rgba(124, 58, 237, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .strategy-template.active {
-            border-color: #7C3AED;
-            background: rgba(124, 58, 237, 0.1);
-        }
-
-        .strategy-template:hover {
-            border-color: #7C3AED;
-        }
-
-        .strategy-name {
-            font-weight: 600;
-            color: #e2e8f0;
-            margin-bottom: 4px;
-        }
-
-        .strategy-desc {
-            font-size: 0.85em;
-            color: #94a3b8;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.9em;
-            color: #e2e8f0;
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #4a5568;
-            border-radius: 4px;
-            background: #1a202c;
-            cursor: pointer;
             position: relative;
         }
 
-        .checkbox-item input[type="checkbox"]:checked {
-            background: #7C3AED;
-            border-color: #7C3AED;
+        .strategy-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .checkbox-item input[type="checkbox"]:checked::after {
-            content: "✓";
+        .strategy-card.recommended::after {
+            content: "★ RECOMMENDED";
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: -10px;
+            right: 10px;
+            background: #7C3AED;
             color: white;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .checkbox-item label {
-            cursor: pointer;
-            font-size: 0.9em;
-            color: #e2e8f0;
-        }
-
-        .slider-group {
-            margin-top: 8px;
-        }
-
-        .slider {
-            width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: #1e1e2e;
-            outline: none;
-            margin: 8px 0;
-        }
-
-        .slider::-webkit-slider-thumb {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #7C3AED;
-            cursor: pointer;
-        }
-
-        .slider::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #7C3AED;
-            cursor: pointer;
-            border: none;
-        }
-
-        .slider-value {
-            font-size: 0.85em;
-            color: #94a3b8;
-            text-align: center;
-            margin-top: 4px;
-        }
-
-        .input-field {
-            width: 100%;
-            background: #1e1e2e;
-            border: 1px solid #2d2d3d;
-            border-radius: 8px;
-            padding: 10px 12px;
-            color: #e2e8f0;
-            font-size: 0.9em;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: #7C3AED;
-        }
-
-        .select-field {
-            width: 100%;
-            background: #1e1e2e;
-            border: 1px solid #2d2d3d;
-            border-radius: 8px;
-            padding: 10px 12px;
-            color: #e2e8f0;
-            font-size: 0.9em;
-            cursor: pointer;
-        }
-
-        .select-field:focus {
-            outline: none;
-            border-color: #7C3AED;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 32px;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.9em;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.7em;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .btn-primary {
-            background: #7C3AED;
-            color: white;
+        .strategy-emoji {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            display: block;
         }
 
-        .btn-primary:hover {
-            background: #6c2bd9;
-        }
-
-        .btn-secondary {
-            background: #374151;
+        .strategy-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
             color: #e2e8f0;
         }
 
-        .btn-secondary:hover {
-            background: #4b5563;
+        .strategy-desc {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-bottom: 8px;
         }
 
-        .footer { 
-            text-align: center; 
-            padding: 40px 0; 
-            color: #475569; 
-            font-size: 0.85em; 
-            border-top: 1px solid #1e1e2e; 
-            margin-top: 40px; 
+        .risk-level {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
         }
-        
-        .footer a { 
-            color: #7C3AED; 
-            text-decoration: none; 
+
+        .risk-low { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .risk-moderate { background: rgba(124, 58, 237, 0.2); color: #a855f7; }
+        .risk-high { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+        .install-section {
+            background: rgba(20, 20, 30, 0.6);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .install-command {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            font-size: 0.9em;
+            color: #e2e8f0;
+            margin: 16px 0;
+            word-break: break-all;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #7C3AED;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.7em;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .install-command:hover .copy-btn {
+            opacity: 1;
+        }
+
+        .advanced-toggle {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid rgba(124, 58, 237, 0.5);
+            color: #7C3AED;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .advanced-section {
+            display: none;
+            margin-top: 24px;
+            padding: 24px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 12px;
+            background: rgba(124, 58, 237, 0.05);
+        }
+
+        .advanced-section.show {
+            display: block;
         }
 
         /* Animations */
@@ -704,368 +415,186 @@
         @media (max-width: 768px) {
             .container { padding: 16px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .position { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .pos-right { text-align: left; }
             .tabs { overflow-x: auto; }
-            .form-row { grid-template-columns: 1fr; }
-            .strategy-templates { grid-template-columns: 1fr; }
-            .action-buttons { flex-direction: column; align-items: center; }
-            .checkbox-group { grid-template-columns: 1fr; }
+            .strategy-cards { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div class="nav-bar">
+    <header class="nav-bar">
         <div class="nav-content">
-            <a href="index.html" class="nav-logo">🐵 Simian</a>
+            <a href="index.html" class="nav-logo">Simian</a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="dashboard.html" class="active">Dashboard</a>
-                <a href="leaderboard.html">🏆 Leaderboard</a>
-                <a href="builder.html">Builder</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="https://github.com/KeNFT1/Simian" target="_blank">GitHub</a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Token Gate Section -->
     <div id="token-gate" class="token-gate">
-        <div class="container">
-            <img class="gate-ape" src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" alt="BAYC Ape" />
-            <h1 class="gate-title">Connect Wallet to View Dashboard</h1>
-            <p class="gate-subtitle">
-                Verify your BAYC or MAYC ownership or delegation to access your Simian Agent dashboard and pipeline configurator.
-            </p>
-            <button class="connect-btn" id="connect-wallet-btn" onclick="connectWallet()">
-                🔗 Connect Wallet
-            </button>
-        </div>
+        <img src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" 
+             alt="BAYC #2253" class="gate-ape">
+        <h1 class="gate-title">Connect Your Wallet</h1>
+        <p class="gate-subtitle">
+            Access requires a Bored Ape or Mutant Ape NFT.<br>
+            Connect your wallet to verify ownership and proceed.
+        </p>
+        <button id="connect-wallet" class="verify-btn">Connect Wallet</button>
     </div>
 
-    <!-- Verification Section -->
-    <div id="verification-section" class="token-gate" style="display: none;">
-        <div class="container">
-            <div class="verify-box">
-                <div class="verify-status">
-                    <div class="status-dot"></div>
-                    <span style="color: #34d399; font-weight: 600;">Connected</span>
-                    <span id="wallet-address" style="color: #64748b; font-size: 0.9em;"></span>
-                </div>
-
-                <div id="verification-steps">
-                    <div class="verify-step">
-                        <span>🔍 Checking BAYC / MAYC ownership...</span>
-                        <span id="nft-status" style="color: #64748b;">⏳</span>
-                    </div>
-                    <div class="verify-step">
-                        <span>🔐 Checking delegate.cash...</span>
-                        <span id="delegate-status" style="color: #64748b;">⏳</span>
-                    </div>
-                    <div class="verify-step">
-                        <span>🤖 Agent eligibility...</span>
-                        <span id="agent-status" style="color: #64748b;">⏳</span>
+    <div id="dashboard" class="container" style="display: none;">
+        <div class="agent-card">
+            <div class="agent-header">
+                <img src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" 
+                     alt="BAYC #2253" class="agent-avatar">
+                <div class="agent-info">
+                    <h2>Lulo #2253</h2>
+                    <div class="agent-details">
+                        <span>BAYC #2253</span>
+                        <span class="trait">Balanced Strategy</span>
+                        <span class="trait">7 Days Active</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Success Section -->
-    <div id="success-section" class="token-gate" style="display: none;">
-        <div class="container">
-            <div class="success-box">
-                <h2 style="color: #34d399; margin-bottom: 12px;">✅ Verification Complete!</h2>
-                <div id="success-details"></div>
-                <button class="connect-btn" onclick="showDashboard()" style="margin-top: 16px;">
-                    View Dashboard →
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Error Section -->
-    <div id="error-section" class="token-gate" style="display: none;">
-        <div class="container">
-            <div class="error-box">
-                <h2 style="color: #f87171; margin-bottom: 12px;">❌ BAYC or MAYC Required</h2>
-                <div id="error-details">
-                    <p>This wallet doesn't hold a Bored Ape or Mutant Ape, and no delegation was found.</p>
-                    <br>
-                    <p><strong>Options:</strong></p>
-                    <ul style="text-align: left; margin: 12px 0; color: #94a3b8;">
-                        <li>Connect the wallet that holds your ape</li>
-                        <li>Set up delegation at <a href="https://delegate.xyz" target="_blank" style="color: #7C3AED;">delegate.xyz</a></li>
-                        <li><a href="https://opensea.io/collection/boredapeyachtclub" target="_blank" style="color: #7C3AED;">Get a Bored Ape</a></li>
-                    </ul>
-                </div>
-                <button class="connect-btn" onclick="resetToConnect()" style="margin-top: 16px; background: #374151;">
-                    Try Different Wallet
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Dashboard -->
-    <div id="main-dashboard" class="dashboard">
-        <div class="container">
-            <div class="header">
-                <img class="ape-img" src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" alt="Lulo #2253" />
-                <div class="agent-name"><span>Lulo</span> #2253</div>
-                <div class="agent-sub">BAYC → <a href="https://delegate.xyz" target="_blank">delegate.cash</a> → Simian Agent</div>
-                <span class="status-badge status-live">● LIVE — Trading on Polymarket</span>
-                <div class="traits">
-                    <span class="trait">Gray Fur</span>
-                    <span class="trait">Scumbag Eyes</span>
-                    <span class="trait">Bored Cigarette</span>
-                    <span class="trait">Bone Tee</span>
-                    <span class="trait">Irish Boho</span>
-                    <span class="trait">Purple BG</span>
-                </div>
+        <!-- Tab Navigation -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('dashboard')">📊 Dashboard</button>
+                <button class="tab" onclick="switchTab('get-started')">🚀 Get Started</button>
             </div>
 
-            <!-- Tab Navigation -->
-            <div class="tabs-container">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('dashboard')">📊 Dashboard</button>
-                    <button class="tab" onclick="switchTab('configurator')">⚙️ Build Pipeline</button>
+            <!-- Dashboard Tab Content -->
+            <div id="dashboard-tab" class="tab-content active">
+                <div class="stats-grid" id="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Total P&L</div>
+                        <div class="stat-value positive" id="total-pnl">+$8.55</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Portfolio Value</div>
+                        <div class="stat-value" id="portfolio-value">$78.55</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Win Rate</div>
+                        <div class="stat-value" id="win-rate">50.0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Active Positions</div>
+                        <div class="stat-value purple" id="active-positions">17</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Trades</div>
+                        <div class="stat-value" id="total-trades">18</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Days Active</div>
+                        <div class="stat-value" id="days-active">7</div>
+                    </div>
                 </div>
 
-                <!-- Dashboard Tab Content -->
-                <div id="dashboard-tab" class="tab-content active">
-                    <div class="stats-grid" id="stats">
-                        <div class="stat-card">
-                            <div class="stat-label">Strategy</div>
-                            <div class="stat-value purple">D v5</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Markets Scanned</div>
-                            <div class="stat-value blue" id="markets-scanned">12,259</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Realized P&L</div>
-                            <div class="stat-value green" id="realized-pnl">+$5.37</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Open Positions</div>
-                            <div class="stat-value" id="open-count">—</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Intelligence Signal</div>
-                            <div class="stat-value purple" id="intel-signal">—</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Win Rate</div>
-                            <div class="stat-value green" id="win-rate">—</div>
-                        </div>
-                    </div>
-
-                    <h2 class="section-title">🧠 Intelligence Feed</h2>
-                    <div class="intel-bar" id="intel-bar">
-                        <span class="intel-chip hot">Loading...</span>
-                    </div>
-
-                    <h2 class="section-title">📈 Open Positions</h2>
-                    <div class="positions" id="positions">
-                        <div class="position"><div class="pos-left"><div class="pos-question">Loading positions...</div></div></div>
-                    </div>
-
-                    <h2 class="section-title">📜 Recent Activity</h2>
-                    <ul class="activity" id="activity">
+                <div style="margin-top: 24px;">
+                    <h3 style="color: #7C3AED; margin-bottom: 16px;">🎯 Recent Activity</h3>
+                    <ul id="recent-activity" style="list-style: none; color: #94a3b8;">
                         <li>Loading activity...</li>
                     </ul>
                 </div>
-
-                <!-- Pipeline Configurator Tab Content -->
-                <div id="configurator-tab" class="tab-content configurator">
-                    <div class="config-section">
-                        <h3 class="config-title">🎯 Strategy Template</h3>
-                        <div class="strategy-templates">
-                            <div class="strategy-template active" data-template="conservative">
-                                <div class="strategy-name">Conservative</div>
-                                <div class="strategy-desc">Low risk, stable returns</div>
-                            </div>
-                            <div class="strategy-template" data-template="balanced">
-                                <div class="strategy-name">Balanced</div>
-                                <div class="strategy-desc">Moderate risk and reward</div>
-                            </div>
-                            <div class="strategy-template" data-template="aggressive">
-                                <div class="strategy-name">Aggressive</div>
-                                <div class="strategy-desc">High risk, high reward</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="config-section">
-                        <h3 class="config-title">🎛️ Market Filters</h3>
-                        <div class="form-group">
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="exclude-sports" checked>
-                                    <label for="exclude-sports">Exclude Sports</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="exclude-gta" checked>
-                                    <label for="exclude-gta">Exclude GTA VI Markets</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Minimum Volume</label>
-                                <div class="slider-group">
-                                    <input type="range" class="slider" id="min-volume" min="1000" max="50000" value="5000" step="1000">
-                                    <div class="slider-value">$<span id="min-volume-value">5,000</span></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Price Range</label>
-                                <div class="slider-group">
-                                    <input type="range" class="slider" id="price-range" min="5" max="95" value="50" step="5">
-                                    <div class="slider-value"><span id="price-range-value">5-95</span>¢</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Max Days to Resolution</label>
-                            <div class="slider-group">
-                                <input type="range" class="slider" id="max-days" min="7" max="365" value="90" step="7">
-                                <div class="slider-value"><span id="max-days-value">90</span> days</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="config-section">
-                        <h3 class="config-title">🔍 Intelligence Sources</h3>
-                        <div class="form-group">
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="source-hn" checked>
-                                    <label for="source-hn">Hacker News</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="source-reddit" checked>
-                                    <label for="source-reddit">Reddit</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="source-bbc" checked>
-                                    <label for="source-bbc">BBC RSS</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="source-google" checked>
-                                    <label for="source-google">Google News</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="source-nitter" checked>
-                                    <label for="source-nitter">Nitter/X</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Custom Keywords</label>
-                            <input type="text" class="input-field" id="custom-keywords" placeholder="AI, crypto, election, climate (comma-separated)">
-                        </div>
-                    </div>
-
-                    <div class="config-section">
-                        <h3 class="config-title">⚖️ Risk Parameters</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Total Budget</label>
-                                <div class="slider-group">
-                                    <input type="range" class="slider" id="budget" min="10" max="1000" value="100" step="10">
-                                    <div class="slider-value">$<span id="budget-value">100</span></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Max Per Position</label>
-                                <div class="slider-group">
-                                    <input type="range" class="slider" id="max-position" min="5" max="100" value="20" step="5">
-                                    <div class="slider-value">$<span id="max-position-value">20</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Max Concurrent Positions</label>
-                                <div class="slider-group">
-                                    <input type="range" class="slider" id="max-concurrent" min="1" max="20" value="5" step="1">
-                                    <div class="slider-value"><span id="max-concurrent-value">5</span></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Minimum Edge %</label>
-                                <div class="slider-group">
-                                    <input type="range" class="slider" id="min-edge" min="1" max="20" value="5" step="1">
-                                    <div class="slider-value"><span id="min-edge-value">5</span>%</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Kelly Fraction</label>
-                            <select class="select-field" id="kelly-fraction">
-                                <option value="0.25">Quarter Kelly (Conservative)</option>
-                                <option value="0.5" selected>Half Kelly (Balanced)</option>
-                                <option value="1.0">Full Kelly (Aggressive)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="config-section">
-                        <h3 class="config-title">🚀 Execution</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="auto-execute">
-                                    <label for="auto-execute">Auto-Execute Trades (OFF = Paper Trading)</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Update Interval</label>
-                                <select class="select-field" id="cron-interval">
-                                    <option value="*/15 * * * *">Every 15 minutes</option>
-                                    <option value="*/30 * * * *" selected>Every 30 minutes</option>
-                                    <option value="0 * * * *">Every hour</option>
-                                    <option value="0 */4 * * *">Every 4 hours</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="action-buttons">
-                        <button class="btn btn-secondary" onclick="downloadConfig()">📥 Download Config</button>
-                        <button class="btn btn-primary" onclick="requestAccess()">🤖 Request Agent Access</button>
-                    </div>
-                </div>
             </div>
 
-            <div class="footer">
-                <img src="https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png" width="30" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;" />
-                Powered by <a href="https://github.com/KeNFT1/Simian">Simian</a> · Built by <a href="https://github.com/KeNFT1/lulo-studios">Lulo Studios</a> 🦍
-                <br><br>
-                Verified via <a href="https://delegate.xyz">delegate.cash</a> · NFT never leaves cold wallet
+            <!-- Get Started Tab Content -->
+            <div id="get-started-tab" class="tab-content">
+                <div class="get-started">
+                    <div class="step-section">
+                        <h3 class="step-title">Step 1: Pick Your Strategy</h3>
+                        <div class="strategy-cards">
+                            <div class="strategy-card" data-strategy="conservative">
+                                <span class="strategy-emoji">🛡️</span>
+                                <div class="strategy-name">Conservative</div>
+                                <div class="strategy-desc">Low risk, steady yield</div>
+                                <span class="risk-level risk-low">Low Risk</span>
+                            </div>
+                            <div class="strategy-card recommended" data-strategy="balanced">
+                                <span class="strategy-emoji">⚖️</span>
+                                <div class="strategy-name">Balanced</div>
+                                <div class="strategy-desc">Smart analysis, moderate risk</div>
+                                <span class="risk-level risk-moderate">Moderate Risk</span>
+                            </div>
+                            <div class="strategy-card" data-strategy="aggressive">
+                                <span class="strategy-emoji">🔥</span>
+                                <div class="strategy-name">Aggressive</div>
+                                <div class="strategy-desc">High exposure, maximum edge</div>
+                                <span class="risk-level risk-high">High Risk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-section">
+                        <h3 class="step-title">Step 2: Copy & Run</h3>
+                        <div class="install-section">
+                            <p style="margin-bottom: 16px; color: #94a3b8;">
+                                One command that does everything:
+                            </p>
+                            <div class="install-command">
+                                curl -sSL https://raw.githubusercontent.com/KeNFT1/Simian-agent/main/install.sh | bash
+                                <button class="copy-btn" onclick="copyCommand()">Copy</button>
+                            </div>
+                            <p style="color: #64748b; font-size: 0.9em; margin-top: 12px;">
+                                This installs Python dependencies and downloads the balanced strategy. 
+                                Your agent will paper trade (no real money) until you enable live mode.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-section">
+                        <h3 class="step-title">Step 3: See Results</h3>
+                        <div class="install-section">
+                            <p style="margin-bottom: 16px; color: #94a3b8;">
+                                After running, your agent scans 12,000+ markets and shows what it would trade:
+                            </p>
+                            <div class="install-command">
+                                cd simian-agent && python3 runner.py --status
+                                <button class="copy-btn" onclick="copyStatusCommand()">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-toggle">
+                        <button class="toggle-btn" onclick="toggleAdvanced()">
+                            ⚙️ Advanced Configuration
+                        </button>
+                    </div>
+
+                    <div class="advanced-section" id="advanced-section">
+                        <h4 style="color: #7C3AED; margin-bottom: 16px;">Advanced Features</h4>
+                        <ul style="color: #94a3b8; margin-left: 20px; line-height: 1.8;">
+                            <li>Full pipeline configurator with custom market filters</li>
+                            <li>Multiple intelligence sources and risk sliders</li>
+                            <li>Custom strategy templates and backtesting</li>
+                            <li>.env configuration for live trading with real money</li>
+                            <li>Advanced position sizing and risk management</li>
+                        </ul>
+                        <p style="color: #64748b; font-size: 0.9em; margin-top: 16px;">
+                            For advanced configuration, visit the 
+                            <a href="https://github.com/KeNFT1/Simian-agent" target="_blank" style="color: #7C3AED;">GitHub repository</a>
+                            for complete documentation and setup guides.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- ethers.js for Web3 -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6/dist/ethers.umd.min.js"></script>
-
     <script>
-        // Contract addresses
-        const BAYC_ADDRESS = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D';
-        const MAYC_ADDRESS = '0x60E4d786628Fea6478F785A6d7e704777c86a7c6';
-        const DELEGATE_REGISTRY = '0x00000000000000447e69651d841bD8D104Bed493';
+        // Constants and globals
+        const BAYC_CONTRACT = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D';
+        const MAYC_CONTRACT = '0x60E4d786628Fea6478F785A6d7e704777c86a7c6';
 
-        // Minimal ABIs
-        const ERC721_ABI = ['function balanceOf(address owner) view returns (uint256)', 'function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)'];
-        const DELEGATE_ABI = ['function checkDelegateForContract(address to, address from, address contract_, bytes32 rights) view returns (bool)', 'function getIncomingDelegations(address to) view returns (tuple(uint8 type_, address to, address from, bytes32 rights, address contract_, uint256 tokenId, uint256 amount)[])'];
-        
         let provider, signer, userAddress;
+        let selectedStrategy = 'balanced';
 
         // Tab switching
         function switchTab(tabName) {
@@ -1078,445 +607,174 @@
             document.getElementById(`${tabName}-tab`).classList.add('active');
         }
 
-        // Strategy template selection
+        // Strategy selection
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.strategy-template').forEach(template => {
-                template.addEventListener('click', function() {
-                    document.querySelectorAll('.strategy-template').forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const templateType = this.dataset.template;
-                    applyStrategyTemplate(templateType);
+            document.querySelectorAll('.strategy-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('.strategy-card').forEach(c => c.style.borderColor = 'rgba(124, 58, 237, 0.2)');
+                    this.style.borderColor = '#7C3AED';
+                    selectedStrategy = this.dataset.strategy;
                 });
             });
-
-            // Initialize slider event listeners
-            initializeSliders();
         });
 
-        function applyStrategyTemplate(template) {
-            const templates = {
-                conservative: {
-                    budget: 50,
-                    maxPosition: 10,
-                    maxConcurrent: 3,
-                    minEdge: 8,
-                    kellyFraction: "0.25",
-                    autoExecute: false
-                },
-                balanced: {
-                    budget: 100,
-                    maxPosition: 20,
-                    maxConcurrent: 5,
-                    minEdge: 5,
-                    kellyFraction: "0.5",
-                    autoExecute: false
-                },
-                aggressive: {
-                    budget: 250,
-                    maxPosition: 50,
-                    maxConcurrent: 8,
-                    minEdge: 3,
-                    kellyFraction: "1.0",
-                    autoExecute: false
-                }
-            };
+        // Utility functions
+        function copyCommand() {
+            const command = 'curl -sSL https://raw.githubusercontent.com/KeNFT1/Simian-agent/main/install.sh | bash';
+            navigator.clipboard.writeText(command).then(() => {
+                const btn = event.target;
+                const original = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = original, 2000);
+            });
+        }
 
-            const config = templates[template];
-            if (config) {
-                document.getElementById('budget').value = config.budget;
-                document.getElementById('max-position').value = config.maxPosition;
-                document.getElementById('max-concurrent').value = config.maxConcurrent;
-                document.getElementById('min-edge').value = config.minEdge;
-                document.getElementById('kelly-fraction').value = config.kellyFraction;
-                document.getElementById('auto-execute').checked = config.autoExecute;
-                
-                updateSliderValues();
+        function copyStatusCommand() {
+            const command = 'cd simian-agent && python3 runner.py --status';
+            navigator.clipboard.writeText(command).then(() => {
+                const btn = event.target;
+                const original = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = original, 2000);
+            });
+        }
+
+        function toggleAdvanced() {
+            const section = document.getElementById('advanced-section');
+            const btn = event.target;
+            
+            if (section.classList.contains('show')) {
+                section.classList.remove('show');
+                btn.textContent = '⚙️ Advanced Configuration';
+            } else {
+                section.classList.add('show');
+                btn.textContent = '⚙️ Hide Advanced';
             }
         }
 
-        function initializeSliders() {
-            const sliders = [
-                { id: 'min-volume', valueId: 'min-volume-value', formatter: (v) => `${Number(v).toLocaleString()}` },
-                { id: 'price-range', valueId: 'price-range-value', formatter: (v) => `${Math.max(5, 50-v)}-${Math.min(95, 50+Number(v))}` },
-                { id: 'max-days', valueId: 'max-days-value', formatter: (v) => v },
-                { id: 'budget', valueId: 'budget-value', formatter: (v) => v },
-                { id: 'max-position', valueId: 'max-position-value', formatter: (v) => v },
-                { id: 'max-concurrent', valueId: 'max-concurrent-value', formatter: (v) => v },
-                { id: 'min-edge', valueId: 'min-edge-value', formatter: (v) => v }
-            ];
-
-            sliders.forEach(({ id, valueId, formatter }) => {
-                const slider = document.getElementById(id);
-                const valueDisplay = document.getElementById(valueId);
-                
-                slider.addEventListener('input', () => {
-                    valueDisplay.textContent = formatter(slider.value);
-                });
-
-                // Initialize display
-                valueDisplay.textContent = formatter(slider.value);
-            });
-        }
-
-        function updateSliderValues() {
-            // Trigger input events to update displays
-            document.querySelectorAll('.slider').forEach(slider => {
-                slider.dispatchEvent(new Event('input'));
-            });
-        }
-
-        function downloadConfig() {
-            const config = {
-                strategy: document.querySelector('.strategy-template.active')?.dataset.template || 'balanced',
-                filters: {
-                    excludeSports: document.getElementById('exclude-sports').checked,
-                    excludeGTA: document.getElementById('exclude-gta').checked,
-                    minVolume: Number(document.getElementById('min-volume').value),
-                    priceRange: Number(document.getElementById('price-range').value),
-                    maxDays: Number(document.getElementById('max-days').value)
-                },
-                intelligence: {
-                    sources: {
-                        hackerNews: document.getElementById('source-hn').checked,
-                        reddit: document.getElementById('source-reddit').checked,
-                        bbcRss: document.getElementById('source-bbc').checked,
-                        googleNews: document.getElementById('source-google').checked,
-                        nitter: document.getElementById('source-nitter').checked
-                    },
-                    customKeywords: document.getElementById('custom-keywords').value.split(',').map(k => k.trim()).filter(k => k)
-                },
-                risk: {
-                    budget: Number(document.getElementById('budget').value),
-                    maxPerPosition: Number(document.getElementById('max-position').value),
-                    maxConcurrent: Number(document.getElementById('max-concurrent').value),
-                    minEdge: Number(document.getElementById('min-edge').value) / 100,
-                    kellyFraction: Number(document.getElementById('kelly-fraction').value)
-                },
-                execution: {
-                    autoExecute: document.getElementById('auto-execute').checked,
-                    cronInterval: document.getElementById('cron-interval').value
-                },
-                metadata: {
-                    created: new Date().toISOString(),
-                    wallet: userAddress,
-                    version: "1.0"
-                }
-            };
-
-            const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'agent-config.json';
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-
-        function requestAccess() {
-            window.open('https://github.com/KeNFT1/Simian-agent', '_blank');
-        }
-
-        // Check for persisted verification from index.html
-        (function checkPersistedVerification() {
-            try {
-                const stored = sessionStorage.getItem('simian_verified');
-                if (stored) {
-                    const data = JSON.parse(stored);
-                    // Valid for 1 hour
-                    if (Date.now() - data.timestamp < 3600000) {
-                        // Skip gate, show dashboard directly
-                        document.getElementById('token-gate').style.display = 'none';
-                        document.getElementById('main-dashboard').style.display = 'block';
-                        loadDashboard();
-                        return;
-                    } else {
-                        sessionStorage.removeItem('simian_verified');
-                    }
-                }
-            } catch (e) {}
-        })();
-
-        // Wallet connection and verification
+        // Wallet connection
         async function connectWallet() {
-            const btn = document.getElementById('connect-wallet-btn');
-            btn.textContent = '⏳ Connecting...';
-            btn.disabled = true;
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const btn = document.getElementById('connect-wallet');
+                    btn.textContent = 'Connecting...';
+                    btn.disabled = true;
 
-            try {
-                if (!window.ethereum) {
-                    alert('No wallet detected. Install MetaMask or use a Web3 browser.');
-                    resetButton();
-                    return;
-                }
+                    provider = new ethers.providers.Web3Provider(window.ethereum);
+                    await provider.send("eth_requestAccounts", []);
+                    signer = provider.getSigner();
+                    userAddress = await signer.getAddress();
 
-                provider = new ethers.BrowserProvider(window.ethereum);
-                await provider.send('eth_requestAccounts', []);
-                signer = await provider.getSigner();
-                userAddress = await signer.getAddress();
+                    const hasBAYC = await hasNFT(BAYC_CONTRACT);
+                    const hasMAYC = await hasNFT(MAYC_CONTRACT);
 
-                // Ensure we're on Ethereum mainnet
-                const network = await provider.getNetwork();
-                if (network.chainId !== 1n) {
-                    try {
-                        await window.ethereum.request({
-                            method: 'wallet_switchEthereumChain',
-                            params: [{ chainId: '0x1' }],
-                        });
-                        provider = new ethers.BrowserProvider(window.ethereum);
-                        signer = await provider.getSigner();
-                    } catch (e) {
-                        alert('Please switch to Ethereum Mainnet');
-                        resetButton();
-                        return;
+                    if (hasBAYC || hasMAYC) {
+                        showDashboard();
+                    } else {
+                        alert('This dashboard requires a BAYC or MAYC NFT to access.');
+                        btn.textContent = 'Connect Wallet';
+                        btn.disabled = false;
                     }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to connect wallet. Please try again.');
+                    btn.textContent = 'Connect Wallet';
+                    btn.disabled = false;
                 }
-
-                // Show verification UI
-                showVerificationSection();
-                await verifyNFTOwnership();
-
-            } catch (err) {
-                console.error(err);
-                alert('Connection failed: ' + err.message);
-                resetButton();
+            } else {
+                alert('Please install MetaMask or another Web3 wallet.');
             }
         }
 
-        function resetButton() {
-            const btn = document.getElementById('connect-wallet-btn');
-            btn.textContent = '🔗 Connect Wallet';
-            btn.disabled = false;
-        }
-
-        function showVerificationSection() {
-            document.getElementById('token-gate').style.display = 'none';
-            document.getElementById('verification-section').style.display = 'block';
-            document.getElementById('wallet-address').textContent = userAddress.slice(0, 6) + '...' + userAddress.slice(-4);
-        }
-
-        async function verifyNFTOwnership() {
-            const nftStatus = document.getElementById('nft-status');
-            const delegateStatus = document.getElementById('delegate-status');
-            const agentStatus = document.getElementById('agent-status');
-
-            let ownedCollection = null;
-            let ownedTokenIds = [];
-
+        async function hasNFT(contractAddress) {
             try {
-                // Check BAYC ownership
-                const bayc = new ethers.Contract(BAYC_ADDRESS, ERC721_ABI, provider);
-                const baycBalance = await bayc.balanceOf(userAddress);
-                
-                if (baycBalance > 0n) {
-                    ownedCollection = 'BAYC';
-                    for (let i = 0; i < Math.min(Number(baycBalance), 5); i++) {
-                        try {
-                            const tokenId = await bayc.tokenOfOwnerByIndex(userAddress, i);
-                            ownedTokenIds.push(Number(tokenId));
-                        } catch (e) { break; }
-                    }
-                }
-
-                // Check MAYC if no BAYC
-                if (!ownedCollection) {
-                    const mayc = new ethers.Contract(MAYC_ADDRESS, ERC721_ABI, provider);
-                    const maycBalance = await mayc.balanceOf(userAddress);
-                    
-                    if (maycBalance > 0n) {
-                        ownedCollection = 'MAYC';
-                        for (let i = 0; i < Math.min(Number(maycBalance), 5); i++) {
-                            try {
-                                const tokenId = await mayc.tokenOfOwnerByIndex(userAddress, i);
-                                ownedTokenIds.push(Number(tokenId));
-                            } catch (e) { break; }
-                        }
-                    }
-                }
-
-                // Check delegations if no direct ownership
-                let delegatedTokens = [];
-                if (!ownedCollection) {
-                    try {
-                        const registry = new ethers.Contract(DELEGATE_REGISTRY, DELEGATE_ABI, provider);
-                        const delegations = await registry.getIncomingDelegations(userAddress);
-                        
-                        for (const d of delegations) {
-                            const contract = d.contract_.toLowerCase();
-                            if (contract === BAYC_ADDRESS.toLowerCase()) {
-                                delegatedTokens.push({ collection: 'BAYC', tokenId: Number(d.tokenId), from: d.from });
-                            } else if (contract === MAYC_ADDRESS.toLowerCase()) {
-                                delegatedTokens.push({ collection: 'MAYC', tokenId: Number(d.tokenId), from: d.from });
-                            }
-                        }
-                    } catch (e) {
-                        console.log('Delegation check error:', e);
-                    }
-                }
-
-                if (ownedCollection && ownedTokenIds.length > 0) {
-                    nftStatus.textContent = '✅';
-                    nftStatus.style.color = '#34d399';
-                    
-                    delegateStatus.textContent = '✅';
-                    delegateStatus.style.color = '#34d399';
-                    
-                    agentStatus.textContent = '✅';
-                    agentStatus.style.color = '#34d399';
-
-                    showSuccess(`${ownedCollection} #${ownedTokenIds[0]}`, false);
-
-                } else if (delegatedTokens.length > 0) {
-                    nftStatus.textContent = '✅';
-                    nftStatus.style.color = '#34d399';
-                    
-                    delegateStatus.textContent = '✅';
-                    delegateStatus.style.color = '#34d399';
-                    
-                    agentStatus.textContent = '✅';
-                    agentStatus.style.color = '#34d399';
-
-                    ownedCollection = delegatedTokens[0].collection;
-                    ownedTokenIds = delegatedTokens.map(d => d.tokenId);
-                    showSuccess(`${ownedCollection} #${ownedTokenIds[0]}`, true);
-
-                } else {
-                    nftStatus.textContent = '❌';
-                    nftStatus.style.color = '#f87171';
-                    delegateStatus.textContent = '—';
-                    agentStatus.textContent = '—';
-                    
-                    showError();
-                }
-
-            } catch (err) {
-                console.error('NFT verification failed:', err);
-                nftStatus.textContent = '❌';
-                nftStatus.style.color = '#f87171';
-                delegateStatus.textContent = '❌';
-                delegateStatus.style.color = '#f87171';
-                agentStatus.textContent = '❌';
-                agentStatus.style.color = '#f87171';
-                
-                showError();
+                const contract = new ethers.Contract(contractAddress, ['function balanceOf(address) view returns (uint256)'], provider);
+                const balance = await contract.balanceOf(userAddress);
+                return balance.gt(0);
+            } catch (error) {
+                console.error('Error checking NFT balance:', error);
+                return false;
             }
-        }
-
-        function showSuccess(tokenInfo, isDelegated) {
-            setTimeout(() => {
-                document.getElementById('verification-section').style.display = 'none';
-                document.getElementById('success-section').style.display = 'block';
-                
-                const details = document.getElementById('success-details');
-                details.innerHTML = `
-                    <p><strong>${tokenInfo}</strong> is ${isDelegated ? 'delegated to' : 'owned by'} this wallet.</p>
-                    <p style="margin-top: 8px; color: #94a3b8; font-size: 0.9em;">
-                        Wallet: ${userAddress.slice(0,6)}...${userAddress.slice(-4)}<br>
-                        ${isDelegated ? 'Via: delegate.cash v2<br>' : ''}
-                        Status: Dashboard access granted 🎉
-                    </p>
-                `;
-            }, 1500);
-        }
-
-        function showError() {
-            setTimeout(() => {
-                document.getElementById('verification-section').style.display = 'none';
-                document.getElementById('error-section').style.display = 'block';
-            }, 1500);
         }
 
         function showDashboard() {
-            // Persist verification
-            sessionStorage.setItem('simian_verified', JSON.stringify({
-                wallet: userAddress || 'verified',
-                collection: 'BAYC',
-                tokenIds: [],
-                timestamp: Date.now()
-            }));
+            document.getElementById('token-gate').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
             
-            document.getElementById('success-section').style.display = 'none';
-            document.getElementById('main-dashboard').style.display = 'block';
-            loadDashboard();
+            // Start loading dashboard data
+            loadDashboardData();
         }
 
-        function resetToConnect() {
-            document.getElementById('error-section').style.display = 'none';
-            document.getElementById('token-gate').style.display = 'block';
-            resetButton();
-        }
-
-        // Dashboard data loading
-        async function loadDashboard() {
+        async function loadDashboardData() {
             try {
-                const resp = await fetch('./data/dashboard.json');
-                if (!resp.ok) throw new Error('No data file');
-                const data = await resp.json();
+                // This would normally fetch real data from your API
+                // For demo purposes, we'll use the static data from the JSON file
+                const response = await fetch('https://raw.githubusercontent.com/KeNFT1/Simian/main/leaderboard/BAYC_2253.json');
+                const data = await response.json();
                 
-                // Update stats
-                document.getElementById('markets-scanned').textContent = (data.market_scan?.after_filters || 12259).toLocaleString();
-                
-                const realizedPnl = data.realized_pnl || 1.75;
-                const realizedElement = document.getElementById('realized-pnl');
-                realizedElement.textContent = `${realizedPnl >= 0 ? '+' : ''}$${realizedPnl.toFixed(2)}`;
-                realizedElement.className = `stat-value ${realizedPnl >= 0 ? 'green' : 'red'}`;
-                
-                document.getElementById('open-count').textContent = data.open_positions?.length || '—';
-                document.getElementById('intel-signal').textContent = (data.intelligence?.combined || 0).toFixed(1);
-                
-                // Win rate
-                const wins = data.closed_trades?.filter(t => (t.realized_pnl || 0) > 0).length || 0;
-                const total = data.closed_trades?.length || 0;
-                document.getElementById('win-rate').textContent = total > 0 ? `${Math.round(wins/total*100)}%` : '—';
-                
-                // Intelligence chips
-                const intelBar = document.getElementById('intel-bar');
-                if (data.intelligence?.top_signals) {
-                    intelBar.innerHTML = Object.entries(data.intelligence.top_signals)
-                        .slice(0, 8)
-                        .map(([kw, score]) => `<span class="intel-chip ${score > 3 ? 'hot' : ''}">${kw}: ${score.toFixed(1)}</span>`)
-                        .join('');
+                if (data && data.performance) {
+                    updateStats(data.performance);
+                    updateActivity(data.recent_trades || []);
                 }
-                
-                // Sort positions by P&L descending (biggest winners first)
-                const sortedPositions = (data.open_positions || []).sort((a, b) => (b.pnl_pct || 0) - (a.pnl_pct || 0));
-                
-                // Positions
-                const posDiv = document.getElementById('positions');
-                if (sortedPositions.length) {
-                    posDiv.innerHTML = sortedPositions.map(p => {
-                        const pnlClass = (p.pnl_pct || 0) >= 0 ? 'positive' : 'negative';
-                        const badgeClass = p.outcome === 'YES' ? 'badge-yes' : 'badge-no';
-                        return `<div class="position">
-                            <div class="pos-left">
-                                <div class="pos-question"><span class="badge-outcome ${badgeClass}">${p.outcome}</span>${p.question}</div>
-                                <div class="pos-meta">Entry: ${p.entry_price?.toFixed(3)} → Now: ${p.current_price?.toFixed(3)} · $${p.cost_usd?.toFixed(2)} deployed</div>
-                            </div>
-                            <div class="pos-right">
-                                <div class="pos-pnl ${pnlClass}">${(p.pnl_pct || 0) >= 0 ? '+' : ''}${(p.pnl_pct || 0).toFixed(1)}%</div>
-                                <div class="pos-edge">Edge: ${((p.edge || 0) * 100).toFixed(1)}%</div>
-                            </div>
-                        </div>`;
-                    }).join('');
-                } else {
-                    posDiv.innerHTML = '<div class="position"><div class="pos-left"><div class="pos-question">No open positions</div></div></div>';
-                }
-                
-                // Activity
-                const actDiv = document.getElementById('activity');
-                if (data.recent_activity?.length) {
-                    actDiv.innerHTML = data.recent_activity.slice(0, 10).map(a => 
-                        `<li>${a.icon || '📊'} ${a.text} <span class="time">${a.time || ''}</span></li>`
-                    ).join('');
-                } else {
-                    actDiv.innerHTML = '<li>No recent activity</li>';
-                }
-                
-            } catch (e) {
-                // Use static fallback data
-                console.log('Using static data:', e.message);
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                // Fallback to static display
             }
         }
+
+        function updateStats(performance) {
+            const elements = {
+                'total-pnl': `${performance.total_pnl_usd >= 0 ? '+' : ''}$${performance.total_pnl_usd.toFixed(2)}`,
+                'portfolio-value': `$${(performance.positions_value + performance.wallet_balance).toFixed(2)}`,
+                'win-rate': `${performance.win_rate.toFixed(1)}%`,
+                'active-positions': performance.active_positions,
+                'total-trades': performance.total_trades,
+                'days-active': performance.days_active
+            };
+
+            Object.entries(elements).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = value;
+            });
+
+            // Update PnL color
+            const pnlElement = document.getElementById('total-pnl');
+            if (pnlElement) {
+                pnlElement.className = `stat-value ${performance.total_pnl_usd >= 0 ? 'positive' : 'negative'}`;
+            }
+        }
+
+        function updateActivity(trades) {
+            const activityElement = document.getElementById('recent-activity');
+            if (!trades.length) {
+                activityElement.innerHTML = '<li>No recent activity</li>';
+                return;
+            }
+
+            activityElement.innerHTML = trades.slice(0, 5).map(trade => {
+                const pnlText = trade.pnl >= 0 ? `+$${trade.pnl.toFixed(2)}` : `-$${Math.abs(trade.pnl).toFixed(2)}`;
+                const pnlColor = trade.pnl >= 0 ? '#22c55e' : '#ef4444';
+                return `
+                    <li style="margin-bottom: 12px; padding: 12px; background: rgba(20,20,30,0.5); border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <span style="flex: 1;">${trade.question}</span>
+                            <span style="color: ${pnlColor}; font-weight: 600; margin-left: 12px;">${pnlText}</span>
+                        </div>
+                        <div style="font-size: 0.8em; color: #64748b; margin-top: 4px;">
+                            Outcome: ${trade.outcome}
+                        </div>
+                    </li>
+                `;
+            }).join('');
+        }
+
+        // Event listeners
+        document.getElementById('connect-wallet').addEventListener('click', connectWallet);
+
+        // Load ethers.js
+        const script = document.createElement('script');
+        script.src = 'https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js';
+        document.head.appendChild(script);
     </script>
 </body>
 </html>

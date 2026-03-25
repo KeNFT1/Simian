@@ -5,17 +5,17 @@
   "display_name": "Lulo",
   "ape_image": "https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png",
   "strategy": "balanced",
-  "updated_at": "2026-03-24T20:20:42.705936+00:00",
+  "updated_at": "2026-03-25T01:29:14.582202+00:00",
   "performance": {
-    "total_pnl_usd": 7.09,
-    "total_pnl_pct": 10.1,
-    "positions_value": 61.76,
+    "total_pnl_usd": 8.55,
+    "total_pnl_pct": 12.2,
+    "positions_value": 63.22,
     "wallet_balance": 15.33,
     "total_trades": 18,
-    "winning_trades": 12,
-    "losing_trades": 6,
-    "win_rate": 66.7,
-    "best_trade_pnl": 0.47,
+    "winning_trades": 9,
+    "losing_trades": 9,
+    "win_rate": 50.0,
+    "best_trade_pnl": 1.96,
     "worst_trade_pnl": -0.8,
     "active_positions": 17,
     "budget_usd": 70,
@@ -23,29 +23,29 @@
   },
   "recent_trades": [
     {
+      "question": "Will MegaETH perform an airdrop by June 30? ",
+      "outcome": "Yes",
+      "pnl": 1.96
+    },
+    {
       "question": "Will the Iranian regime fall by April 30?",
       "outcome": "No",
       "pnl": 0.47
     },
     {
-      "question": "Will MegaETH perform an airdrop by June 30? ",
-      "outcome": "Yes",
-      "pnl": 0.24
-    },
-    {
-      "question": "MegaETH market cap (FDV) >$2B one day after launch?",
-      "outcome": "Yes",
-      "pnl": 0.11
-    },
-    {
       "question": "US forces enter Iran by March 31?",
       "outcome": "No",
-      "pnl": 0.09
+      "pnl": 0.21
     },
     {
-      "question": "Will Anthropic have the second-best AI model at the end of M",
+      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
       "outcome": "Yes",
-      "pnl": 0.08
+      "pnl": 0.19
+    },
+    {
+      "question": "US-Iran nuclear deal by June 30?",
+      "outcome": "Yes",
+      "pnl": 0.14
     }
   ]
 }
