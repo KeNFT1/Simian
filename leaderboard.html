@@ -157,9 +157,13 @@
             gap: 1rem;
             align-items: center;
         }
+        
+        .leaderboard-header span:nth-child(n+4) {
+            text-align: center;
+        }
 
         .agent-row {
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
             border-bottom: 1px solid #374151;
             display: grid;
             grid-template-columns: 60px 80px 1fr 120px 100px 100px 80px 120px;
@@ -167,6 +171,12 @@
             align-items: center;
             transition: background 0.3s;
             cursor: pointer;
+        }
+        
+        .agent-row .pnl-cell,
+        .agent-row .stat-cell,
+        .agent-row .last-updated {
+            text-align: center;
         }
 
         .agent-row:hover {
@@ -191,8 +201,8 @@
         }
 
         .agent-avatar {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             border: 2px solid #7C3AED;
             object-fit: cover;
