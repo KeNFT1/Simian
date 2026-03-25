@@ -13,16 +13,31 @@
     "after_filters": 364
   },
   "intelligence": {
-    "combined": 47.83,
+    "combined": 52.089999999999996,
     "top_signals": {
       "iran": 5.0,
-      "troops": 4.62,
-      "war": 3.35,
-      "east": 2.85,
-      "middle": 2.85
+      "east": 3.79,
+      "troops": 3.79,
+      "middle": 3.79,
+      "report": 2.51
     }
   },
   "open_positions": [
+    {
+      "question": "Will MegaETH perform an airdrop by June 30? ",
+      "outcome": "Yes",
+      "entry_price": 0.454999,
+      "current_price": 0.6475,
+      "cost_usd": 4.63,
+      "current_value": 6.59,
+      "pnl_usd": 1.96,
+      "pnl_pct": 42.3,
+      "realized_pnl": 0.0,
+      "size": 10.175823,
+      "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
+      "end_date": "2026-02-01",
+      "redeemable": false
+    },
     {
       "question": "Will the Iranian regime fall by April 30?",
       "outcome": "No",
@@ -39,29 +54,14 @@
       "redeemable": false
     },
     {
-      "question": "Will MegaETH perform an airdrop by June 30? ",
-      "outcome": "Yes",
-      "entry_price": 0.454999,
-      "current_price": 0.479,
-      "cost_usd": 4.63,
-      "current_value": 4.87,
-      "pnl_usd": 0.24,
-      "pnl_pct": 5.3,
-      "realized_pnl": 0.0,
-      "size": 10.175823,
-      "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
-      "end_date": "2026-02-01",
-      "redeemable": false
-    },
-    {
       "question": "US forces enter Iran by March 31?",
       "outcome": "No",
       "entry_price": 0.78,
-      "current_price": 0.835,
+      "current_price": 0.865,
       "cost_usd": 1.96,
-      "current_value": 2.1,
-      "pnl_usd": 0.14,
-      "pnl_pct": 7.1,
+      "current_value": 2.17,
+      "pnl_usd": 0.21,
+      "pnl_pct": 10.9,
       "realized_pnl": 0.0,
       "size": 2.51,
       "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
@@ -69,44 +69,29 @@
       "redeemable": false
     },
     {
-      "question": "MegaETH market cap (FDV) >$2B one day after launch?",
+      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
       "outcome": "Yes",
-      "entry_price": 0.129999,
-      "current_price": 0.135,
-      "cost_usd": 2.82,
-      "current_value": 2.93,
-      "pnl_usd": 0.11,
-      "pnl_pct": 3.8,
+      "entry_price": 0.439999,
+      "current_price": 0.46,
+      "cost_usd": 4.13,
+      "current_value": 4.32,
+      "pnl_usd": 0.19,
+      "pnl_pct": 4.5,
       "realized_pnl": 0.0,
-      "size": 21.692306,
-      "slug": "megaeth-market-cap-fdv-2b-one-day-after-launch-738-867-649-272-765-733",
-      "end_date": "2025-12-31",
-      "redeemable": false
-    },
-    {
-      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
-      "outcome": "Yes",
-      "entry_price": 0.93,
-      "current_price": 0.955,
-      "cost_usd": 3.72,
-      "current_value": 3.82,
-      "pnl_usd": 0.1,
-      "pnl_pct": 2.7,
-      "realized_pnl": 0.0,
-      "size": 4.0,
-      "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
-      "end_date": "2026-03-31",
+      "size": 9.386362,
+      "slug": "will-ken-paxton-win-the-2026-republican-primary",
+      "end_date": "2026-05-26",
       "redeemable": false
     },
     {
       "question": "US-Iran nuclear deal by June 30?",
       "outcome": "Yes",
       "entry_price": 0.266013,
-      "current_price": 0.345,
+      "current_price": 0.39,
       "cost_usd": 0.29,
-      "current_value": 0.38,
-      "pnl_usd": 0.09,
-      "pnl_pct": 29.7,
+      "current_value": 0.43,
+      "pnl_usd": 0.14,
+      "pnl_pct": 46.6,
       "realized_pnl": 3.18,
       "size": 1.099154,
       "slug": "us-iran-nuclear-deal-by-june-30",
@@ -114,8 +99,8 @@
       "redeemable": false
     },
     {
-      "question": "Will Russia capture Kostyantynivka by March 31?",
-      "outcome": "No",
+      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
+      "outcome": "Yes",
       "entry_price": 0.93,
       "current_price": 0.945,
       "cost_usd": 3.72,
@@ -124,38 +109,23 @@
       "pnl_pct": 1.6,
       "realized_pnl": 0.0,
       "size": 4.0,
-      "slug": "will-russia-capture-kostyantynivka-by-march-31-872-578",
+      "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
       "end_date": "2026-03-31",
       "redeemable": false
     },
     {
-      "question": "Will Ken Paxton win the 2026 Texas Republican Primary?",
-      "outcome": "Yes",
-      "entry_price": 0.439999,
-      "current_price": 0.445,
-      "cost_usd": 4.13,
-      "current_value": 4.18,
-      "pnl_usd": 0.05,
-      "pnl_pct": 1.1,
-      "realized_pnl": 0.0,
-      "size": 9.386362,
-      "slug": "will-ken-paxton-win-the-2026-republican-primary",
-      "end_date": "2026-05-26",
-      "redeemable": false
-    },
-    {
-      "question": "Will Trump and Putin not meet?",
+      "question": "Will Bitcoin dip to $60,000 in March?",
       "outcome": "No",
-      "entry_price": 0.176995,
-      "current_price": 0.179,
-      "cost_usd": 3.45,
-      "current_value": 3.49,
-      "pnl_usd": 0.04,
-      "pnl_pct": 1.1,
-      "realized_pnl": 0.79,
-      "size": 19.494856,
-      "slug": "will-trump-and-putin-not-meet-315-857-437-514",
-      "end_date": "2026-06-30",
+      "entry_price": 0.9,
+      "current_price": 0.935,
+      "cost_usd": 1.49,
+      "current_value": 1.54,
+      "pnl_usd": 0.06,
+      "pnl_pct": 3.9,
+      "realized_pnl": 0.0,
+      "size": 1.65,
+      "slug": "will-bitcoin-dip-to-60k-in-march-2026",
+      "end_date": "2026-04-01",
       "redeemable": false
     },
     {
@@ -174,18 +144,18 @@
       "redeemable": false
     },
     {
-      "question": "Will Bitcoin dip to $60,000 in March?",
+      "question": "Will Trump and Putin not meet?",
       "outcome": "No",
-      "entry_price": 0.9,
-      "current_price": 0.915,
-      "cost_usd": 1.49,
-      "current_value": 1.51,
+      "entry_price": 0.176995,
+      "current_price": 0.178,
+      "cost_usd": 3.45,
+      "current_value": 3.47,
       "pnl_usd": 0.02,
-      "pnl_pct": 1.7,
-      "realized_pnl": 0.0,
-      "size": 1.65,
-      "slug": "will-bitcoin-dip-to-60k-in-march-2026",
-      "end_date": "2026-04-01",
+      "pnl_pct": 0.6,
+      "realized_pnl": 0.79,
+      "size": 19.494856,
+      "slug": "will-trump-and-putin-not-meet-315-857-437-514",
+      "end_date": "2026-06-30",
       "redeemable": false
     },
     {
@@ -204,14 +174,44 @@
       "redeemable": false
     },
     {
+      "question": "Will Russia capture Kostyantynivka by March 31?",
+      "outcome": "No",
+      "entry_price": 0.93,
+      "current_price": 0.925,
+      "cost_usd": 3.72,
+      "current_value": 3.7,
+      "pnl_usd": -0.02,
+      "pnl_pct": -0.5,
+      "realized_pnl": 0.0,
+      "size": 4.0,
+      "slug": "will-russia-capture-kostyantynivka-by-march-31-872-578",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "MegaETH market cap (FDV) >$2B one day after launch?",
+      "outcome": "Yes",
+      "entry_price": 0.129999,
+      "current_price": 0.125,
+      "cost_usd": 2.82,
+      "current_value": 2.71,
+      "pnl_usd": -0.11,
+      "pnl_pct": -3.8,
+      "realized_pnl": 0.0,
+      "size": 21.692306,
+      "slug": "megaeth-market-cap-fdv-2b-one-day-after-launch-738-867-649-272-765-733",
+      "end_date": "2025-12-31",
+      "redeemable": false
+    },
+    {
       "question": "Israel strike on Damascus by March 31, 2026?",
       "outcome": "No",
       "entry_price": 0.89,
-      "current_price": 0.885,
+      "current_price": 0.863,
       "cost_usd": 5.34,
-      "current_value": 5.31,
-      "pnl_usd": -0.03,
-      "pnl_pct": -0.6,
+      "current_value": 5.18,
+      "pnl_usd": -0.16,
+      "pnl_pct": -3.0,
       "realized_pnl": 0.0,
       "size": 6.0,
       "slug": "israel-strike-on-damascus-by-march-31-2026",
@@ -237,11 +237,11 @@
       "question": "Will the Toronto Raptors make the NBA Playoffs?",
       "outcome": "Yes",
       "entry_price": 0.92,
-      "current_price": 0.86,
+      "current_price": 0.855,
       "cost_usd": 3.68,
-      "current_value": 3.44,
-      "pnl_usd": -0.24,
-      "pnl_pct": -6.5,
+      "current_value": 3.42,
+      "pnl_usd": -0.26,
+      "pnl_pct": -7.1,
       "realized_pnl": 0.0,
       "size": 4.0,
       "slug": "will-the-toronto-raptors-make-the-nba-playoffs-961",
@@ -252,11 +252,11 @@
       "question": "MegaETH market cap (FDV) >$1B one day after launch?",
       "outcome": "Yes",
       "entry_price": 0.359999,
-      "current_price": 0.325,
+      "current_price": 0.315,
       "cost_usd": 3.54,
-      "current_value": 3.2,
-      "pnl_usd": -0.34,
-      "pnl_pct": -9.7,
+      "current_value": 3.1,
+      "pnl_usd": -0.44,
+      "pnl_pct": -12.5,
       "realized_pnl": 0.0,
       "size": 9.833332,
       "slug": "megaeth-market-cap-fdv-1b-one-day-after-launch-gj9e-189-291-824-352",
@@ -297,43 +297,43 @@
     }
   ],
   "portfolio": {
-    "positions_value": 61.83,
+    "positions_value": 63.22,
     "wallet_balance": 15.33,
-    "total_value": 77.16,
+    "total_value": 78.55,
     "initial_deposit": 70.0,
-    "total_pnl": 7.16,
-    "total_pnl_pct": 10.2,
-    "biggest_win": 0.47205516000000014
+    "total_pnl": 8.55,
+    "total_pnl_pct": 12.2,
+    "biggest_win": 1.9588561033230005
   },
   "stats": {
     "total_trades": 18,
-    "winning_trades": 11,
-    "losing_trades": 7,
-    "win_rate": 61.1,
+    "winning_trades": 9,
+    "losing_trades": 9,
+    "win_rate": 50.0,
     "open_positions": 17,
     "resolved_positions": 1
   },
   "recent_activity": [
     {
       "icon": "\ud83d\udfe2",
-      "text": "Yes Will Anthropic have the second-best AI model  \u2014 $+0.10 (+2.7%)"
+      "text": "Yes US-Iran nuclear deal by June 30? \u2014 $+0.14 (+46.6%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "Yes MegaETH market cap (FDV) >$2B one day after l \u2014 $+0.11 (+3.8%)"
+      "text": "Yes Will Ken Paxton win the 2026 Texas Republican \u2014 $+0.19 (+4.5%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No US forces enter Iran by March 31? \u2014 $+0.14 (+7.1%)"
-    },
-    {
-      "icon": "\ud83d\udfe2",
-      "text": "Yes Will MegaETH perform an airdrop by June 30?  \u2014 $+0.24 (+5.3%)"
+      "text": "No US forces enter Iran by March 31? \u2014 $+0.21 (+10.9%)"
     },
     {
       "icon": "\ud83d\udfe2",
       "text": "No Will the Iranian regime fall by April 30? \u2014 $+0.47 (+4.7%)"
+    },
+    {
+      "icon": "\ud83d\udfe2",
+      "text": "Yes Will MegaETH perform an airdrop by June 30?  \u2014 $+1.96 (+42.3%)"
     }
   ],
-  "updated_at": "2026-03-24T20:47:46.214473+00:00"
+  "updated_at": "2026-03-25T01:29:14.581214+00:00"
 }
