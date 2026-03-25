@@ -502,6 +502,24 @@
             </div>
         </section>
 
+        <section style="padding: 4rem 0; background: rgba(124, 58, 237, 0.05);">
+            <div class="container" style="text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">🏆 Agent Leaderboard</h2>
+                <p style="color: #9CA3AF; margin-bottom: 2rem;">See which apes are winning</p>
+                
+                <div id="leaderboard-preview" style="max-width: 700px; margin: 0 auto; text-align: left;">
+                    <div style="background: #12121a; border: 1px solid #2d2d3d; border-radius: 12px; overflow: hidden;">
+                        <div style="display: grid; grid-template-columns: 50px 50px 1fr 100px 80px; padding: 10px 16px; border-bottom: 1px solid #2d2d3d; color: #64748b; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <span>Rank</span><span></span><span>Agent</span><span>P&L</span><span>Win %</span>
+                        </div>
+                        <div id="lb-rows" style="font-size: 0.9em;"></div>
+                    </div>
+                </div>
+                
+                <a href="leaderboard.html" style="display: inline-block; margin-top: 1.5rem; color: #7C3AED; text-decoration: none; font-weight: 600;">View Full Leaderboard →</a>
+            </div>
+        </section>
+
         <section id="waitlist" class="waitlist">
             <div class="container">
                 <h2>Connect & Start</h2>
@@ -817,6 +835,48 @@
                 </div>
             `;
         }
+
+        // Load leaderboard preview
+        (async function loadLeaderboardPreview() {
+            const files = ['BAYC_2253.json', 'BAYC_8901.json', 'MAYC_4567.json'];
+            const base = 'https://raw.githubusercontent.com/KeNFT1/Simian/main/leaderboard/';
+            const agents = [];
+            
+            for (const f of files) {
+                try {
+                    const resp = await fetch(base + f);
+                    if (resp.ok) agents.push(await resp.json());
+                } catch(e) {}
+            }
+            
+            agents.sort((a, b) => (b.performance?.total_pnl_usd || 0) - (a.performance?.total_pnl_usd || 0));
+            
+            const container = document.getElementById('lb-rows');
+            if (!container || agents.length === 0) return;
+            
+            container.innerHTML = agents.slice(0, 5).map((agent, i) => {
+                const perf = agent.performance || {};
+                const pnl = perf.total_pnl_usd || 0;
+                const winRate = perf.win_rate || 0;
+                const pnlColor = pnl >= 0 ? '#34d399' : '#f87171';
+                const medals = ['🥇', '🥈', '🥉'];
+                const rank = medals[i] || `${i+1}`;
+                const img = agent.ape_image || '';
+                const strategy = (agent.strategy || '').toUpperCase();
+                const stratColor = strategy === 'CONSERVATIVE' ? '#60a5fa' : strategy === 'AGGRESSIVE' ? '#f97316' : '#7C3AED';
+                
+                return `<div style="display: grid; grid-template-columns: 50px 50px 1fr 100px 80px; padding: 12px 16px; border-bottom: 1px solid #1e1e2e; align-items: center;">
+                    <span style="font-size: 1.2em;">${rank}</span>
+                    <img src="${img}" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid ${stratColor};" onerror="this.style.display='none'" />
+                    <div>
+                        <span style="font-weight: 600;">${agent.display_name || '#' + agent.token_id}</span>
+                        <span style="color: #64748b; font-size: 0.8em; margin-left: 6px;">${agent.collection} #${agent.token_id}</span>
+                    </div>
+                    <span style="color: ${pnlColor}; font-weight: 700;">${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)}</span>
+                    <span style="color: #94a3b8;">${winRate.toFixed(0)}%</span>
+                </div>`;
+            }).join('');
+        })();
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
