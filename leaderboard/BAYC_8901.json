@@ -1,9 +1,9 @@
 {
   "agent_id": "BAYC_8901",
-  "collection": "BAYC", 
+  "collection": "BAYC",
   "token_id": 8901,
   "display_name": "Diamond Hands",
-  "ape_image": "https://i.seadn.io/gae/MzvovOyQXo3BLYXhz8ZRQE1AcklW9Zfb5nGmGjl6YDqKVCPm2bqEJrn1QAhQqKJQbCKJWnNnZFnTQKnT3qKQJqBJQnT?auto=format&dpr=1&w=384",
+  "ape_image": "https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png",
   "strategy": "conservative",
   "updated_at": "2026-03-24T16:20:00Z",
   "performance": {
@@ -26,7 +26,7 @@
   "recent_trades": [
     {
       "question": "Will the next Supreme Court decision be unanimous?",
-      "outcome": "YES", 
+      "outcome": "YES",
       "pnl": 1.12,
       "edge": 18.9
     },

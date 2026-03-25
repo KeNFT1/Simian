@@ -617,14 +617,16 @@
                 }
 
                 return trades.map(trade => {
-                    const pnlClass = trade.pnl >= 0 ? 'pnl-positive' : 'pnl-negative';
+                    const pnl = trade.pnl || 0;
+                    const edge = trade.edge || 0;
+                    const pnlClass = pnl >= 0 ? 'pnl-positive' : 'pnl-negative';
                     return `
                         <div class="trade-item">
-                            <div class="trade-question">${trade.question}</div>
-                            <span class="trade-outcome ${trade.outcome}">${trade.outcome}</span>
+                            <div class="trade-question">${trade.question || 'Unknown'}</div>
+                            <span class="trade-outcome ${trade.outcome || ''}">${trade.outcome || '?'}</span>
                             <div class="trade-pnl ${pnlClass}">
-                                ${trade.pnl >= 0 ? '+' : ''}$${trade.pnl.toFixed(2)}
-                                <small>(${trade.edge.toFixed(1)}% edge)</small>
+                                ${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)}
+                                ${edge ? `<small>(${edge.toFixed(1)}% edge)</small>` : ''}
                             </div>
                         </div>
                     `;
