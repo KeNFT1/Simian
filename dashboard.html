@@ -652,37 +652,71 @@
             }
         }
 
+        // Check persisted verification on page load
+        (function checkPersistedVerification() {
+            try {
+                const stored = sessionStorage.getItem('simian_verified');
+                if (stored) {
+                    const data = JSON.parse(stored);
+                    if (Date.now() - data.timestamp < 3600000) {
+                        document.getElementById('token-gate').style.display = 'none';
+                        document.getElementById('dashboard').style.display = 'block';
+                        loadDashboardData();
+                        return;
+                    }
+                    sessionStorage.removeItem('simian_verified');
+                }
+            } catch (e) {}
+        })();
+
         // Wallet connection
         async function connectWallet() {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    const btn = document.getElementById('connect-wallet');
-                    btn.textContent = 'Connecting...';
-                    btn.disabled = true;
+            if (typeof window.ethereum === 'undefined') {
+                alert('Please install MetaMask or another Web3 wallet.');
+                return;
+            }
 
+            const btn = document.getElementById('connect-wallet');
+            btn.textContent = 'Connecting...';
+            btn.disabled = true;
+
+            try {
+                // Support both ethers v5 and v6
+                if (ethers.BrowserProvider) {
+                    provider = new ethers.BrowserProvider(window.ethereum);
+                } else {
                     provider = new ethers.providers.Web3Provider(window.ethereum);
-                    await provider.send("eth_requestAccounts", []);
-                    signer = provider.getSigner();
-                    userAddress = await signer.getAddress();
+                }
+                await provider.send("eth_requestAccounts", []);
+                signer = await provider.getSigner();
+                userAddress = await signer.getAddress();
 
-                    const hasBAYC = await hasNFT(BAYC_CONTRACT);
-                    const hasMAYC = await hasNFT(MAYC_CONTRACT);
+                // Check direct ownership
+                const hasBAYC = await hasNFT(BAYC_CONTRACT);
+                const hasMAYC = await hasNFT(MAYC_CONTRACT);
 
-                    if (hasBAYC || hasMAYC) {
-                        showDashboard();
-                    } else {
-                        alert('This dashboard requires a BAYC or MAYC NFT to access.');
-                        btn.textContent = 'Connect Wallet';
-                        btn.disabled = false;
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Failed to connect wallet. Please try again.');
+                // Check delegate.cash delegations
+                let hasDelegation = false;
+                if (!hasBAYC && !hasMAYC) {
+                    hasDelegation = await checkDelegation();
+                }
+
+                if (hasBAYC || hasMAYC || hasDelegation) {
+                    sessionStorage.setItem('simian_verified', JSON.stringify({
+                        wallet: userAddress,
+                        timestamp: Date.now()
+                    }));
+                    showDashboard();
+                } else {
+                    alert('This dashboard requires a BAYC or MAYC NFT. You can also connect a wallet with delegate.cash delegation.');
                     btn.textContent = 'Connect Wallet';
                     btn.disabled = false;
                 }
-            } else {
-                alert('Please install MetaMask or another Web3 wallet.');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to connect wallet. Please try again.');
+                btn.textContent = 'Connect Wallet';
+                btn.disabled = false;
             }
         }
 
@@ -690,18 +724,35 @@
             try {
                 const contract = new ethers.Contract(contractAddress, ['function balanceOf(address) view returns (uint256)'], provider);
                 const balance = await contract.balanceOf(userAddress);
-                return balance.gt(0);
+                // Handle both v5 BigNumber and v6 bigint
+                return typeof balance === 'bigint' ? balance > 0n : balance.gt(0);
             } catch (error) {
-                console.error('Error checking NFT balance:', error);
                 return false;
             }
+        }
+
+        async function checkDelegation() {
+            try {
+                const DELEGATE_REGISTRY = '0x00000000000000447e69651d841bD8D104Bed493';
+                const contract = new ethers.Contract(DELEGATE_REGISTRY, 
+                    ['function getIncomingDelegations(address) view returns (tuple(uint8,address,address,bytes32,address,uint256,uint256)[])'],
+                    provider);
+                const delegations = await contract.getIncomingDelegations(userAddress);
+                for (const d of delegations) {
+                    const delegatedContract = (d[4] || d.contract_  || '').toLowerCase();
+                    if (delegatedContract === BAYC_CONTRACT.toLowerCase() || delegatedContract === MAYC_CONTRACT.toLowerCase()) {
+                        return true;
+                    }
+                }
+            } catch (e) {
+                console.error('Delegation check failed:', e);
+            }
+            return false;
         }
 
         function showDashboard() {
             document.getElementById('token-gate').style.display = 'none';
             document.getElementById('dashboard').style.display = 'block';
-            
-            // Start loading dashboard data
             loadDashboardData();
         }
 
