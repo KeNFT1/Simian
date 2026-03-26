@@ -13,13 +13,13 @@
     "after_filters": 364
   },
   "intelligence": {
-    "combined": 37.43,
+    "combined": 37.33,
     "top_signals": {
       "iran": 5.0,
-      "says": 2.93,
-      "trump": 2.6,
-      "oil": 2.47,
-      "confirms": 2.19
+      "says": 2.91,
+      "trump": 2.62,
+      "oil": 2.46,
+      "confirms": 2.17
     }
   },
   "open_positions": [
@@ -305,5 +305,5 @@
       "text": "No Will the Iranian regime fall by April 30? \u2014 $+0.47 (+4.7%)"
     }
   ],
-  "updated_at": "2026-03-26T20:56:24.298424+00:00"
+  "updated_at": "2026-03-26T20:57:38.136148+00:00"
 }
