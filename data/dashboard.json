@@ -16,10 +16,10 @@
     "combined": 33.49,
     "top_signals": {
       "trump": 5.0,
-      "iran": 4.57,
-      "from": 2.17,
-      "war": 1.98,
-      "his": 1.68
+      "iran": 4.5,
+      "from": 2.2,
+      "war": 1.91,
+      "his": 1.66
     }
   },
   "open_positions": [
@@ -42,11 +42,11 @@
       "question": "Will Trump and Putin not meet?",
       "outcome": "No",
       "entry_price": 0.176995,
-      "current_price": 0.19,
+      "current_price": 0.191,
       "cost_usd": 3.45,
-      "current_value": 3.7,
-      "pnl_usd": 0.25,
-      "pnl_pct": 7.3,
+      "current_value": 3.72,
+      "pnl_usd": 0.27,
+      "pnl_pct": 7.9,
       "realized_pnl": 0.79,
       "size": 19.494856,
       "slug": "will-trump-and-putin-not-meet-315-857-437-514",
@@ -57,11 +57,11 @@
       "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
       "outcome": "Yes",
       "entry_price": 0.93,
-      "current_price": 0.974,
+      "current_price": 0.975,
       "cost_usd": 3.72,
       "current_value": 3.9,
       "pnl_usd": 0.18,
-      "pnl_pct": 4.7,
+      "pnl_pct": 4.8,
       "realized_pnl": 0.0,
       "size": 4.0,
       "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
@@ -72,30 +72,15 @@
       "question": "Will Bitcoin dip to $60,000 in March?",
       "outcome": "No",
       "entry_price": 0.9,
-      "current_price": 0.9605,
+      "current_price": 0.9645,
       "cost_usd": 1.49,
-      "current_value": 1.58,
-      "pnl_usd": 0.1,
-      "pnl_pct": 6.7,
+      "current_value": 1.59,
+      "pnl_usd": 0.11,
+      "pnl_pct": 7.2,
       "realized_pnl": 0.0,
       "size": 1.65,
       "slug": "will-bitcoin-dip-to-60k-in-march-2026",
       "end_date": "2026-04-01",
-      "redeemable": false
-    },
-    {
-      "question": "US forces enter Iran by March 31?",
-      "outcome": "No",
-      "entry_price": 0.78,
-      "current_price": 0.815,
-      "cost_usd": 1.96,
-      "current_value": 2.05,
-      "pnl_usd": 0.09,
-      "pnl_pct": 4.5,
-      "realized_pnl": 0.0,
-      "size": 2.51,
-      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
-      "end_date": "2026-03-31",
       "redeemable": false
     },
     {
@@ -114,14 +99,29 @@
       "redeemable": false
     },
     {
+      "question": "US forces enter Iran by March 31?",
+      "outcome": "No",
+      "entry_price": 0.78,
+      "current_price": 0.805,
+      "cost_usd": 1.96,
+      "current_value": 2.02,
+      "pnl_usd": 0.06,
+      "pnl_pct": 3.2,
+      "realized_pnl": 0.0,
+      "size": 2.51,
+      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
       "question": "Will Russia capture Kostyantynivka by March 31?",
       "outcome": "No",
       "entry_price": 0.93,
-      "current_price": 0.935,
+      "current_price": 0.9295,
       "cost_usd": 3.72,
-      "current_value": 3.74,
-      "pnl_usd": 0.02,
-      "pnl_pct": 0.5,
+      "current_value": 3.72,
+      "pnl_usd": -0.0,
+      "pnl_pct": -0.1,
       "realized_pnl": 0.0,
       "size": 4.0,
       "slug": "will-russia-capture-kostyantynivka-by-march-31-872-578",
@@ -189,21 +189,6 @@
       "redeemable": false
     },
     {
-      "question": "Will the Toronto Raptors make the NBA Playoffs?",
-      "outcome": "Yes",
-      "entry_price": 0.92,
-      "current_price": 0.85,
-      "cost_usd": 3.68,
-      "current_value": 3.4,
-      "pnl_usd": -0.28,
-      "pnl_pct": -7.6,
-      "realized_pnl": 0.0,
-      "size": 4.0,
-      "slug": "will-the-toronto-raptors-make-the-nba-playoffs-961",
-      "end_date": "2026-04-12",
-      "redeemable": false
-    },
-    {
       "question": "Will the Iranian regime fall by June 30?",
       "outcome": "Yes",
       "entry_price": 0.240027,
@@ -232,6 +217,21 @@
       "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
       "end_date": "2026-02-01",
       "redeemable": false
+    },
+    {
+      "question": "Will the Toronto Raptors make the NBA Playoffs?",
+      "outcome": "Yes",
+      "entry_price": 0.92,
+      "current_price": 0.825,
+      "cost_usd": 3.68,
+      "current_value": 3.3,
+      "pnl_usd": -0.38,
+      "pnl_pct": -10.3,
+      "realized_pnl": 0.0,
+      "size": 4.0,
+      "slug": "will-the-toronto-raptors-make-the-nba-playoffs-961",
+      "end_date": "2026-04-12",
+      "redeemable": false
     }
   ],
   "closed_trades": [
@@ -252,43 +252,43 @@
     }
   ],
   "portfolio": {
-    "positions_value": 52.23,
+    "positions_value": 52.11,
     "wallet_balance": 22.4,
-    "total_value": 74.62,
+    "total_value": 74.51,
     "initial_deposit": 70.0,
-    "total_pnl": 4.62,
-    "total_pnl_pct": 6.6,
+    "total_pnl": 4.51,
+    "total_pnl_pct": 6.4,
     "biggest_win": 0.47205516000000014
   },
   "stats": {
     "total_trades": 15,
-    "winning_trades": 7,
-    "losing_trades": 8,
-    "win_rate": 46.7,
+    "winning_trades": 6,
+    "losing_trades": 9,
+    "win_rate": 40.0,
     "open_positions": 14,
     "resolved_positions": 1
   },
   "recent_activity": [
     {
       "icon": "\ud83d\udfe2",
-      "text": "No US forces enter Iran by March 31? \u2014 $+0.09 (+4.5%)"
+      "text": "No Will a new country join the Abraham Accords b \u2014 $+0.06 (+1.6%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No Will Bitcoin dip to $60,000 in March? \u2014 $+0.10 (+6.7%)"
+      "text": "No Will Bitcoin dip to $60,000 in March? \u2014 $+0.11 (+7.2%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "Yes Will Anthropic have the second-best AI model  \u2014 $+0.18 (+4.7%)"
+      "text": "Yes Will Anthropic have the second-best AI model  \u2014 $+0.18 (+4.8%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No Will Trump and Putin not meet? \u2014 $+0.25 (+7.3%)"
+      "text": "No Will Trump and Putin not meet? \u2014 $+0.27 (+7.9%)"
     },
     {
       "icon": "\ud83d\udfe2",
       "text": "No Will the Iranian regime fall by April 30? \u2014 $+0.47 (+4.7%)"
     }
   ],
-  "updated_at": "2026-03-26T02:57:50.203917+00:00"
+  "updated_at": "2026-03-26T04:52:35.723527+00:00"
 }
