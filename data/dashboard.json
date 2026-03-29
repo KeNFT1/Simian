@@ -13,13 +13,13 @@
     "after_filters": 364
   },
   "intelligence": {
-    "combined": 47.419999999999995,
+    "combined": 44.72,
     "top_signals": {
       "iran": 5.0,
-      "ground": 3.1,
-      "house": 2.95,
-      "operations": 2.93,
-      "weeks": 2.92
+      "ground": 3.31,
+      "operations": 2.47,
+      "post": 2.47,
+      "pentagon": 2.46
     }
   },
   "open_positions": [
@@ -42,11 +42,11 @@
       "question": "Israel strike on Damascus by March 31, 2026?",
       "outcome": "No",
       "entry_price": 0.89,
-      "current_price": 0.952,
+      "current_price": 0.9635,
       "cost_usd": 5.34,
-      "current_value": 5.71,
-      "pnl_usd": 0.37,
-      "pnl_pct": 7.0,
+      "current_value": 5.78,
+      "pnl_usd": 0.44,
+      "pnl_pct": 8.3,
       "realized_pnl": 0.0,
       "size": 6.0,
       "slug": "israel-strike-on-damascus-by-march-31-2026",
@@ -54,17 +54,17 @@
       "redeemable": false
     },
     {
-      "question": "US forces enter Iran by March 31?",
-      "outcome": "No",
-      "entry_price": 0.78,
-      "current_price": 0.9175,
-      "cost_usd": 1.96,
-      "current_value": 2.3,
-      "pnl_usd": 0.35,
-      "pnl_pct": 17.6,
+      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
+      "outcome": "Yes",
+      "entry_price": 0.93,
+      "current_price": 0.985,
+      "cost_usd": 3.72,
+      "current_value": 3.94,
+      "pnl_usd": 0.22,
+      "pnl_pct": 5.9,
       "realized_pnl": 0.0,
-      "size": 2.51,
-      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
+      "size": 4.0,
+      "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
       "end_date": "2026-03-31",
       "redeemable": false
     },
@@ -72,11 +72,11 @@
       "question": "Will Russia capture Kostyantynivka by March 31?",
       "outcome": "No",
       "entry_price": 0.93,
-      "current_price": 0.9845,
+      "current_price": 0.984,
       "cost_usd": 3.72,
       "current_value": 3.94,
       "pnl_usd": 0.22,
-      "pnl_pct": 5.9,
+      "pnl_pct": 5.8,
       "realized_pnl": 0.0,
       "size": 4.0,
       "slug": "will-russia-capture-kostyantynivka-by-march-31-872-578",
@@ -84,17 +84,17 @@
       "redeemable": false
     },
     {
-      "question": "Will Anthropic have the second-best AI model at the end of March 2026?",
-      "outcome": "Yes",
-      "entry_price": 0.93,
-      "current_price": 0.9775,
-      "cost_usd": 3.72,
-      "current_value": 3.91,
-      "pnl_usd": 0.19,
-      "pnl_pct": 5.1,
+      "question": "US forces enter Iran by March 31?",
+      "outcome": "No",
+      "entry_price": 0.78,
+      "current_price": 0.861,
+      "cost_usd": 1.96,
+      "current_value": 2.16,
+      "pnl_usd": 0.2,
+      "pnl_pct": 10.4,
       "realized_pnl": 0.0,
-      "size": 4.0,
-      "slug": "will-anthropic-have-the-second-best-ai-model-at-the-end-of-march-2026",
+      "size": 2.51,
+      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
       "end_date": "2026-03-31",
       "redeemable": false
     },
@@ -117,15 +117,30 @@
       "question": "Will Bitcoin dip to $60,000 in March?",
       "outcome": "No",
       "entry_price": 0.9,
-      "current_price": 0.9595,
+      "current_price": 0.951,
       "cost_usd": 1.49,
-      "current_value": 1.58,
-      "pnl_usd": 0.1,
-      "pnl_pct": 6.6,
+      "current_value": 1.57,
+      "pnl_usd": 0.08,
+      "pnl_pct": 5.7,
       "realized_pnl": 0.0,
       "size": 1.65,
       "slug": "will-bitcoin-dip-to-60k-in-march-2026",
       "end_date": "2026-04-01",
+      "redeemable": false
+    },
+    {
+      "question": "Will Trump and Putin not meet?",
+      "outcome": "No",
+      "entry_price": 0.176995,
+      "current_price": 0.1775,
+      "cost_usd": 3.45,
+      "current_value": 3.46,
+      "pnl_usd": 0.01,
+      "pnl_pct": 0.3,
+      "realized_pnl": 0.79,
+      "size": 19.494856,
+      "slug": "will-trump-and-putin-not-meet-315-857-437-514",
+      "end_date": "2026-06-30",
       "redeemable": false
     },
     {
@@ -144,6 +159,21 @@
       "redeemable": false
     },
     {
+      "question": "Will MegaETH perform an airdrop by June 30? ",
+      "outcome": "Yes",
+      "entry_price": 0.454999,
+      "current_price": 0.4495,
+      "cost_usd": 4.63,
+      "current_value": 4.57,
+      "pnl_usd": -0.06,
+      "pnl_pct": -1.2,
+      "realized_pnl": 0.0,
+      "size": 10.175823,
+      "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
+      "end_date": "2026-02-01",
+      "redeemable": false
+    },
+    {
       "question": "MegaETH market cap (FDV) >$2B one day after launch?",
       "outcome": "Yes",
       "entry_price": 0.129999,
@@ -156,36 +186,6 @@
       "size": 21.692306,
       "slug": "megaeth-market-cap-fdv-2b-one-day-after-launch-738-867-649-272-765-733",
       "end_date": "2025-12-31",
-      "redeemable": false
-    },
-    {
-      "question": "Will Trump and Putin not meet?",
-      "outcome": "No",
-      "entry_price": 0.176995,
-      "current_price": 0.1715,
-      "cost_usd": 3.45,
-      "current_value": 3.34,
-      "pnl_usd": -0.11,
-      "pnl_pct": -3.1,
-      "realized_pnl": 0.79,
-      "size": 19.494856,
-      "slug": "will-trump-and-putin-not-meet-315-857-437-514",
-      "end_date": "2026-06-30",
-      "redeemable": false
-    },
-    {
-      "question": "Will MegaETH perform an airdrop by June 30? ",
-      "outcome": "Yes",
-      "entry_price": 0.454999,
-      "current_price": 0.426,
-      "cost_usd": 4.63,
-      "current_value": 4.33,
-      "pnl_usd": -0.3,
-      "pnl_pct": -6.4,
-      "realized_pnl": 0.0,
-      "size": 10.175823,
-      "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
-      "end_date": "2026-02-01",
       "redeemable": false
     },
     {
@@ -207,11 +207,11 @@
       "question": "Will the Toronto Raptors make the NBA Playoffs?",
       "outcome": "Yes",
       "entry_price": 0.92,
-      "current_price": 0.825,
+      "current_price": 0.82,
       "cost_usd": 3.68,
-      "current_value": 3.3,
-      "pnl_usd": -0.38,
-      "pnl_pct": -10.3,
+      "current_value": 3.28,
+      "pnl_usd": -0.4,
+      "pnl_pct": -10.9,
       "realized_pnl": 0.0,
       "size": 4.0,
       "slug": "will-the-toronto-raptors-make-the-nba-playoffs-961",
@@ -237,11 +237,11 @@
       "question": "Will John Cornyn win the 2026 Texas Republican Primary?",
       "outcome": "Yes",
       "entry_price": 0.46,
-      "current_price": 0.285,
+      "current_price": 0.295,
       "cost_usd": 2.99,
-      "current_value": 1.85,
-      "pnl_usd": -1.14,
-      "pnl_pct": -38.0,
+      "current_value": 1.92,
+      "pnl_usd": -1.07,
+      "pnl_pct": -35.9,
       "realized_pnl": 0.0,
       "size": 6.5,
       "slug": "will-john-cornyn-win-the-2026-republican-primary",
@@ -267,43 +267,43 @@
     }
   ],
   "portfolio": {
-    "positions_value": 54.27,
+    "positions_value": 54.61,
     "wallet_balance": 19.41,
-    "total_value": 73.67,
+    "total_value": 74.02,
     "initial_deposit": 70.0,
-    "total_pnl": 3.67,
-    "total_pnl_pct": 5.2,
+    "total_pnl": 4.02,
+    "total_pnl_pct": 5.7,
     "biggest_win": 0.7018551600000001
   },
   "stats": {
     "total_trades": 16,
-    "winning_trades": 7,
-    "losing_trades": 9,
-    "win_rate": 43.8,
+    "winning_trades": 8,
+    "losing_trades": 8,
+    "win_rate": 50.0,
     "open_positions": 15,
     "resolved_positions": 1
   },
   "recent_activity": [
     {
       "icon": "\ud83d\udfe2",
-      "text": "Yes Will Anthropic have the second-best AI model  \u2014 $+0.19 (+5.1%)"
+      "text": "No US forces enter Iran by March 31? \u2014 $+0.20 (+10.4%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No Will Russia capture Kostyantynivka by March 3 \u2014 $+0.22 (+5.9%)"
+      "text": "No Will Russia capture Kostyantynivka by March 3 \u2014 $+0.22 (+5.8%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No US forces enter Iran by March 31? \u2014 $+0.35 (+17.6%)"
+      "text": "Yes Will Anthropic have the second-best AI model  \u2014 $+0.22 (+5.9%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No Israel strike on Damascus by March 31, 2026? \u2014 $+0.37 (+7.0%)"
+      "text": "No Israel strike on Damascus by March 31, 2026? \u2014 $+0.44 (+8.3%)"
     },
     {
       "icon": "\ud83d\udfe2",
       "text": "No Will the Iranian regime fall by April 30? \u2014 $+0.70 (+7.0%)"
     }
   ],
-  "updated_at": "2026-03-29T13:15:07.852202+00:00"
+  "updated_at": "2026-03-29T21:15:32.199293+00:00"
 }
