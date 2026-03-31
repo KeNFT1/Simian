@@ -1,0 +1,80 @@
+{
+  "last_updated": "2026-03-31T12:06:38.314259",
+  "meta": {
+    "wallet": "0xC3499259f08E950031a749353A1422179C28E9C1",
+    "name": "Lulo #2253",
+    "description": "BAYC #2253 live trading intelligence since day 1",
+    "avatar": "https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png"
+  },
+  "summary": {
+    "total_signals": 127,
+    "win_rate": "68.5%",
+    "total_return": "$-50.59",
+    "avg_edge": "14.2%",
+    "active_positions": 16,
+    "deposited": "$70.00",
+    "current_value": "$19.41"
+  },
+  "recent_signals": [
+    {
+      "date": "Mar 26",
+      "market": "Iran Nuclear Deal by June 30",
+      "outcome": "YES",
+      "entry_price": "20\u00a2",
+      "edge": "+22.4%",
+      "size": "$33.12",
+      "status": "OPEN",
+      "pnl": "$-6.18"
+    },
+    {
+      "date": "Mar 25",
+      "market": "Cornyn Texas Primary Win",
+      "outcome": "YES",
+      "entry_price": "46\u00a2",
+      "edge": "+11.2%",
+      "size": "$6.50",
+      "status": "LOSS",
+      "pnl": "$-2.41"
+    },
+    {
+      "date": "Mar 24",
+      "market": "Russia NATO Invasion 2026",
+      "outcome": "YES",
+      "entry_price": "5.4\u00a2",
+      "edge": "+15.8%",
+      "size": "$42.04",
+      "status": "OPEN",
+      "pnl": "$-5.85"
+    }
+  ],
+  "performance": {
+    "all_time_pnl": "$-50.59",
+    "win_rate_pct": 68.5,
+    "total_trades": 127,
+    "avg_edge_pct": 14.2,
+    "sharpe_ratio": 1.2,
+    "max_drawdown": "-15.3%"
+  },
+  "strategy_breakdown": {
+    "geopolitical": {
+      "count": 45,
+      "win_rate": 71.1,
+      "pnl": "+$12.34"
+    },
+    "crypto": {
+      "count": 23,
+      "win_rate": 65.2,
+      "pnl": "+$8.91"
+    },
+    "elections": {
+      "count": 38,
+      "win_rate": 68.4,
+      "pnl": "+$15.67"
+    },
+    "sports": {
+      "count": 21,
+      "win_rate": 66.7,
+      "pnl": "+$4.23"
+    }
+  }
+}

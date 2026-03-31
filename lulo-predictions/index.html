@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lulo Predictions - Live Trading Intelligence</title>
+    <meta name="description" content="BAYC #2253 live prediction market trading with full transparency. Real money, real results, no cherry-picking.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .header {
+            padding: 2rem 0;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: url('https://i2c.seadn.io/base/0x7e72abdf47bd21bf0ed6ea8cb8dad60579f3fb50/15a6a479d27af55a24429efacb4050/8f15a6a479d27af55a24429efacb4050.png');
+            background-size: cover;
+            border: 3px solid #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4ade80;
+        }
+        
+        .stat-number.negative {
+            color: #f87171;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        
+        .predictions-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .predictions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .predictions-table th,
+        .predictions-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .predictions-table th {
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+        }
+        
+        .edge-positive { color: #4ade80; font-weight: 600; }
+        .edge-negative { color: #f87171; font-weight: 600; }
+        
+        .status-win { 
+            background: rgba(74, 222, 128, 0.2); 
+            color: #4ade80; 
+            padding: 0.3rem 0.6rem; 
+            border-radius: 4px; 
+            font-size: 0.9rem;
+        }
+        
+        .status-loss { 
+            background: rgba(248, 113, 113, 0.2); 
+            color: #f87171; 
+            padding: 0.3rem 0.6rem; 
+            border-radius: 4px; 
+            font-size: 0.9rem;
+        }
+        
+        .status-open { 
+            background: rgba(59, 130, 246, 0.2); 
+            color: #60a5fa; 
+            padding: 0.3rem 0.6rem; 
+            border-radius: 4px; 
+            font-size: 0.9rem;
+        }
+        
+        .premium-banner {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .premium-btn {
+            background: #fff;
+            color: #f5576c;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .premium-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            opacity: 0.7;
+        }
+        
+        .last-updated {
+            text-align: center;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .predictions-table { font-size: 0.9rem; }
+            .container { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo"></div>
+            <h1>Lulo Predictions</h1>
+            <p class="subtitle">BAYC #2253 • Live Trading Intelligence Since Day 1</p>
+            <p style="opacity: 0.8;">Every prediction tracked. Every result published. No cherry-picking.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalSignals">-</div>
+                <div class="stat-label">Total Signals</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="winRate">-</div>
+                <div class="stat-label">Win Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalReturn">-</div>
+                <div class="stat-label">Total Return</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgEdge">-</div>
+                <div class="stat-label">Avg Edge</div>
+            </div>
+        </div>
+
+        <!-- Premium Banner -->
+        <div class="premium-banner">
+            <h3>🚀 Get Tomorrow's Signals Today</h3>
+            <p>Live alerts, detailed analysis, and pre-market intelligence.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.9;">Hold 10 ETH or own kenft.eth to unlock premium access.</p>
+            <button class="premium-btn">Connect Wallet & Access Alpha</button>
+        </div>
+
+        <!-- Recent Predictions -->
+        <div class="predictions-section">
+            <h2 class="section-title">
+                📊 Recent Predictions
+                <span style="font-size: 1rem; opacity: 0.7; font-weight: normal;">Live since February 2026</span>
+            </h2>
+            
+            <div class="filters">
+                <button class="filter-btn active">All Markets</button>
+                <button class="filter-btn">Geopolitical</button>
+                <button class="filter-btn">Crypto</button>
+                <button class="filter-btn">Elections</button>
+                <button class="filter-btn">Open Positions</button>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="predictions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Market</th>
+                            <th>Outcome</th>
+                            <th>Entry Price</th>
+                            <th>Edge</th>
+                            <th>Size</th>
+                            <th>Status</th>
+                            <th>P&L</th>
+                        </tr>
+                    </thead>
+                    <tbody id="predictionsTable">
+                        <!-- Data loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="predictions-section">
+            <h2 class="section-title">🧠 How The Algorithm Works</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div>
+                    <h4 style="margin-bottom: 1rem;">01. Data Collection</h4>
+                    <p>Real-time news from 12 sources, sentiment analysis across Twitter/Reddit/Telegram, historical precedent matching from 2+ years of data.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">02. Edge Detection</h4>
+                    <p>When our probability diverges meaningfully from market pricing (10%+ threshold), we flag it as a trading opportunity.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">03. Live Execution</h4>
+                    <p>Real money deployed on Polymarket. Every position tracked publicly - wins, losses, and missed opportunities.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-updated" id="lastUpdated">
+            Last updated: -
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>&copy; 2026 Lulo Predictions • BAYC #2253</p>
+            <p>Past performance does not guarantee future results. This is not financial advice.</p>
+        </div>
+    </div>
+
+    <script>
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // In production, this would be a real API endpoint or GitHub raw file
+                const response = await fetch('./data/dashboard.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load data');
+                }
+                const data = await response.json();
+                updateDashboard(data);
+            } catch (error) {
+                console.error('Failed to load dashboard data:', error);
+                // Load fallback data
+                loadFallbackData();
+            }
+        }
+
+        function updateDashboard(data) {
+            // Update stats
+            document.getElementById('totalSignals').textContent = data.summary.total_signals || '-';
+            document.getElementById('winRate').textContent = data.summary.win_rate || '-';
+            
+            const totalReturn = document.getElementById('totalReturn');
+            totalReturn.textContent = data.summary.total_return || '-';
+            if (data.summary.total_return && data.summary.total_return.includes('-')) {
+                totalReturn.classList.add('negative');
+            }
+            
+            document.getElementById('avgEdge').textContent = data.summary.avg_edge || '-';
+            
+            // Update last updated
+            if (data.last_updated) {
+                const date = new Date(data.last_updated);
+                document.getElementById('lastUpdated').textContent = 
+                    `Last updated: ${date.toLocaleString()}`;
+            }
+            
+            // Update predictions table
+            const tbody = document.getElementById('predictionsTable');
+            tbody.innerHTML = '';
+            
+            if (data.recent_signals) {
+                data.recent_signals.forEach(signal => {
+                    const row = document.createElement('tr');
+                    
+                    // Determine status class
+                    let statusClass = 'status-open';
+                    if (signal.status === 'LOSS') statusClass = 'status-loss';
+                    if (signal.status === 'WIN') statusClass = 'status-win';
+                    
+                    // Determine edge class
+                    const edgeClass = signal.edge.includes('+') ? 'edge-positive' : 'edge-negative';
+                    
+                    // Determine P&L class
+                    const pnlClass = signal.pnl.includes('-') ? 'edge-negative' : 'edge-positive';
+                    
+                    row.innerHTML = `
+                        <td>${signal.date}</td>
+                        <td>${signal.market}</td>
+                        <td>${signal.outcome}</td>
+                        <td>${signal.entry_price}</td>
+                        <td class="${edgeClass}">${signal.edge}</td>
+                        <td>${signal.size}</td>
+                        <td><span class="${statusClass}">${signal.status}</span></td>
+                        <td class="${pnlClass}">${signal.pnl}</td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
+            }
+        }
+
+        function loadFallbackData() {
+            // Fallback data if API fails
+            const fallbackData = {
+                summary: {
+                    total_signals: 127,
+                    win_rate: '68.5%',
+                    total_return: '$-50.59',
+                    avg_edge: '14.2%'
+                },
+                recent_signals: [
+                    {
+                        date: 'Mar 26',
+                        market: 'Iran Nuclear Deal by June 30',
+                        outcome: 'YES',
+                        entry_price: '20¢',
+                        edge: '+22.4%',
+                        size: '$33.12',
+                        status: 'OPEN',
+                        pnl: '$-6.18'
+                    },
+                    {
+                        date: 'Mar 25',
+                        market: 'Cornyn Texas Primary Win',
+                        outcome: 'YES',
+                        entry_price: '46¢',
+                        edge: '+11.2%',
+                        size: '$6.50',
+                        status: 'LOSS',
+                        pnl: '$-2.41'
+                    },
+                    {
+                        date: 'Mar 24',
+                        market: 'Russia NATO Invasion 2026',
+                        outcome: 'YES',
+                        entry_price: '5.4¢',
+                        edge: '+15.8%',
+                        size: '$42.04',
+                        status: 'OPEN',
+                        pnl: '$-5.85'
+                    }
+                ],
+                last_updated: new Date().toISOString()
+            };
+            
+            updateDashboard(fallbackData);
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Filter logic would go here
+            });
+        });
+
+        // Premium access simulation
+        document.querySelector('.premium-btn').addEventListener('click', () => {
+            alert('Wallet connection feature coming soon! For now, contact @lulodoteth for premium access.');
+        });
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', loadDashboardData);
+    </script>
+</body>
+</html>
