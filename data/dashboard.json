@@ -13,13 +13,13 @@
     "after_filters": 364
   },
   "intelligence": {
-    "combined": 30.89,
+    "combined": 37.37,
     "top_signals": {
       "iran": 5.0,
-      "trump": 4.24,
-      "says": 3.16,
-      "hormuz": 2.0,
-      "nato": 1.91
+      "says": 4.47,
+      "trump": 4.34,
+      "hormuz": 3.21,
+      "ridiculous": 1.9
     }
   },
   "open_positions": [
@@ -27,11 +27,11 @@
       "question": "Will the Iranian regime fall by April 30?",
       "outcome": "No",
       "entry_price": 0.873916,
-      "current_price": 0.9665,
+      "current_price": 0.9685,
       "cost_usd": 10.04,
-      "current_value": 11.11,
-      "pnl_usd": 1.06,
-      "pnl_pct": 10.6,
+      "current_value": 11.13,
+      "pnl_usd": 1.09,
+      "pnl_pct": 10.8,
       "realized_pnl": 0.0,
       "size": 11.49,
       "slug": "will-the-iranian-regime-fall-by-april-30",
@@ -99,6 +99,36 @@
       "redeemable": false
     },
     {
+      "question": "Will Trump visit China by May 31?",
+      "outcome": "No",
+      "entry_price": 0.229999,
+      "current_price": 0.225,
+      "cost_usd": 4.28,
+      "current_value": 4.19,
+      "pnl_usd": -0.09,
+      "pnl_pct": -2.2,
+      "realized_pnl": 0.0,
+      "size": 18.608694,
+      "slug": "will-trump-visit-china-by-may-31",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will Trump and Putin not meet?",
+      "outcome": "No",
+      "entry_price": 0.129639,
+      "current_price": 0.1255,
+      "cost_usd": 4.13,
+      "current_value": 4.0,
+      "pnl_usd": -0.13,
+      "pnl_pct": -3.2,
+      "realized_pnl": 0.17,
+      "size": 31.864085,
+      "slug": "will-trump-and-putin-not-meet-315-857-437-514",
+      "end_date": "2026-06-30",
+      "redeemable": false
+    },
+    {
       "question": "Will the Iranian regime fall by June 30?",
       "outcome": "Yes",
       "entry_price": 0.130027,
@@ -147,20 +177,20 @@
     }
   ],
   "portfolio": {
-    "positions_value": 35.29,
-    "wallet_balance": 31.39,
-    "total_value": 66.68,
+    "positions_value": 48.89,
+    "wallet_balance": 21.71,
+    "total_value": 70.6,
     "initial_deposit": 70.0,
-    "total_pnl": -3.32,
-    "total_pnl_pct": -4.7,
-    "biggest_win": 1.0637901600000002
+    "total_pnl": 0.6,
+    "total_pnl_pct": 0.9,
+    "biggest_win": 1.0867701600000002
   },
   "stats": {
-    "total_trades": 8,
+    "total_trades": 10,
     "winning_trades": 3,
-    "losing_trades": 5,
-    "win_rate": 37.5,
-    "open_positions": 7,
+    "losing_trades": 7,
+    "win_rate": 30.0,
+    "open_positions": 9,
     "resolved_positions": 1
   },
   "recent_activity": [
@@ -182,8 +212,8 @@
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No Will the Iranian regime fall by April 30? \u2014 $+1.06 (+10.6%)"
+      "text": "No Will the Iranian regime fall by April 30? \u2014 $+1.09 (+10.8%)"
     }
   ],
-  "updated_at": "2026-04-01T21:16:34.637987+00:00"
+  "updated_at": "2026-04-01T22:43:13.060502+00:00"
 }
