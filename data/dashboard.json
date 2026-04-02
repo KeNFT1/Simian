@@ -13,13 +13,13 @@
     "after_filters": 364
   },
   "intelligence": {
-    "combined": 41.459999999999994,
+    "combined": 41.419999999999995,
     "top_signals": {
       "says": 5.0,
-      "hormuz": 4.99,
-      "iran": 4.84,
-      "strait": 4.42,
-      "trump": 4.27
+      "hormuz": 5.0,
+      "iran": 4.83,
+      "strait": 4.43,
+      "trump": 4.26
     }
   },
   "open_positions": [
@@ -102,11 +102,11 @@
       "question": "Will Trump and Putin not meet?",
       "outcome": "No",
       "entry_price": 0.129639,
-      "current_price": 0.126,
+      "current_price": 0.1225,
       "cost_usd": 4.13,
-      "current_value": 4.01,
-      "pnl_usd": -0.12,
-      "pnl_pct": -2.8,
+      "current_value": 3.9,
+      "pnl_usd": -0.23,
+      "pnl_pct": -5.5,
       "realized_pnl": 0.17,
       "size": 31.864085,
       "slug": "will-trump-and-putin-not-meet-315-857-437-514",
@@ -117,11 +117,11 @@
       "question": "Will US GDP growth in Q1 2026 be between 1.5% and 2.0%?",
       "outcome": "No",
       "entry_price": 0.899,
-      "current_price": 0.877,
+      "current_price": 0.8765,
       "cost_usd": 10.79,
       "current_value": 10.52,
-      "pnl_usd": -0.26,
-      "pnl_pct": -2.4,
+      "pnl_usd": -0.27,
+      "pnl_pct": -2.5,
       "realized_pnl": 0.0,
       "size": 12.0,
       "slug": "will-us-gdp-growth-in-q1-2026-be-between-1pt5-and-2pt0",
@@ -192,12 +192,12 @@
     }
   ],
   "portfolio": {
-    "positions_value": 53.54,
+    "positions_value": 53.42,
     "wallet_balance": 17.22,
-    "total_value": 70.75,
+    "total_value": 70.64,
     "initial_deposit": 70.0,
-    "total_pnl": 0.75,
-    "total_pnl_pct": 1.1,
+    "total_pnl": 0.64,
+    "total_pnl_pct": 0.9,
     "biggest_win": 1.0752801600000002
   },
   "stats": {
@@ -230,5 +230,5 @@
       "text": "No Will the Iranian regime fall by April 30? \u2014 $+1.08 (+10.7%)"
     }
   ],
-  "updated_at": "2026-04-02T13:23:15.027902+00:00"
+  "updated_at": "2026-04-02T13:25:01.414162+00:00"
 }
