@@ -13,55 +13,40 @@
     "after_filters": 364
   },
   "intelligence": {
-    "combined": 73.64,
+    "combined": 34.33,
     "top_signals": {
-      "strait": 5.0,
-      "hormuz": 5.0,
-      "mission": 4.31,
-      "crewed": 4.31,
-      "first": 4.31
+      "trump": 5.0,
+      "bondi": 2.58,
+      "attorney": 2.58,
+      "general": 2.39,
+      "iran": 2.25
     }
   },
   "open_positions": [
     {
-      "question": "Will the Iranian regime fall by April 30?",
-      "outcome": "No",
-      "entry_price": 0.873916,
-      "current_price": 0.9675,
-      "cost_usd": 10.04,
-      "current_value": 11.12,
-      "pnl_usd": 1.08,
-      "pnl_pct": 10.7,
+      "question": "Will MegaETH perform an airdrop by June 30? ",
+      "outcome": "Yes",
+      "entry_price": 0.454999,
+      "current_price": 0.58,
+      "cost_usd": 4.63,
+      "current_value": 5.9,
+      "pnl_usd": 1.27,
+      "pnl_pct": 27.5,
       "realized_pnl": 0.0,
-      "size": 11.49,
-      "slug": "will-the-iranian-regime-fall-by-april-30",
-      "end_date": "2026-04-30",
-      "redeemable": false
-    },
-    {
-      "question": "Will Trump visit China by May 31?",
-      "outcome": "No",
-      "entry_price": 0.229999,
-      "current_price": 0.285,
-      "cost_usd": 4.28,
-      "current_value": 5.3,
-      "pnl_usd": 1.02,
-      "pnl_pct": 23.9,
-      "realized_pnl": 0.0,
-      "size": 18.608694,
-      "slug": "will-trump-visit-china-by-may-31",
-      "end_date": "2026-03-31",
+      "size": 10.175823,
+      "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
+      "end_date": "2026-02-01",
       "redeemable": false
     },
     {
       "question": "Will the Atlanta Hawks make the NBA Playoffs?",
       "outcome": "Yes",
       "entry_price": 0.9,
-      "current_price": 0.93,
+      "current_price": 0.935,
       "cost_usd": 5.4,
-      "current_value": 5.58,
-      "pnl_usd": 0.18,
-      "pnl_pct": 3.3,
+      "current_value": 5.61,
+      "pnl_usd": 0.21,
+      "pnl_pct": 3.9,
       "realized_pnl": 0.0,
       "size": 6.0,
       "slug": "will-the-atlanta-hawks-make-the-nba-playoffs-928",
@@ -69,18 +54,18 @@
       "redeemable": false
     },
     {
-      "question": "Will MegaETH perform an airdrop by June 30? ",
+      "question": "Will the Iranian regime fall by June 30?",
       "outcome": "Yes",
-      "entry_price": 0.454999,
-      "current_price": 0.4575,
-      "cost_usd": 4.63,
-      "current_value": 4.66,
-      "pnl_usd": 0.03,
-      "pnl_pct": 0.5,
-      "realized_pnl": 0.0,
-      "size": 10.175823,
-      "slug": "will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254",
-      "end_date": "2026-02-01",
+      "entry_price": 0.130027,
+      "current_price": 0.135,
+      "cost_usd": 5.0,
+      "current_value": 5.19,
+      "pnl_usd": 0.19,
+      "pnl_pct": 3.8,
+      "realized_pnl": -2.69,
+      "size": 38.471434,
+      "slug": "will-the-iranian-regime-fall-by-june-30",
+      "end_date": "2026-06-30",
       "redeemable": false
     },
     {
@@ -101,27 +86,57 @@
     {
       "question": "Will US GDP growth in Q1 2026 be less than 1.0%?",
       "outcome": "No",
-      "entry_price": 0.938,
-      "current_price": 0.937,
-      "cost_usd": 5.63,
-      "current_value": 5.62,
+      "entry_price": 0.935,
+      "current_price": 0.9345,
+      "cost_usd": 11.22,
+      "current_value": 11.21,
       "pnl_usd": -0.01,
       "pnl_pct": -0.1,
       "realized_pnl": 0.0,
-      "size": 6.0,
+      "size": 12.0,
       "slug": "will-us-gdp-growth-in-q1-2026-be-less-than-1pt0",
       "end_date": "2026-04-30",
+      "redeemable": false
+    },
+    {
+      "question": "Will Trump visit China by May 31?",
+      "outcome": "Yes",
+      "entry_price": 0.729999,
+      "current_price": 0.725,
+      "cost_usd": 5.0,
+      "current_value": 4.97,
+      "pnl_usd": -0.03,
+      "pnl_pct": -0.7,
+      "realized_pnl": 0.0,
+      "size": 6.849314,
+      "slug": "will-trump-visit-china-by-may-31",
+      "end_date": "2026-03-31",
+      "redeemable": false
+    },
+    {
+      "question": "Will Trump visit China by June 30?",
+      "outcome": "Yes",
+      "entry_price": 0.819999,
+      "current_price": 0.815,
+      "cost_usd": 5.0,
+      "current_value": 4.97,
+      "pnl_usd": -0.03,
+      "pnl_pct": -0.6,
+      "realized_pnl": 0.0,
+      "size": 6.097555,
+      "slug": "will-trump-visit-china-by-june-30",
+      "end_date": "2026-03-31",
       "redeemable": false
     },
     {
       "question": "Will Cason Wallace lead the NBA in steals during the 2025\u201326 NBA season?",
       "outcome": "No",
       "entry_price": 0.93,
-      "current_price": 0.925,
+      "current_price": 0.905,
       "cost_usd": 5.58,
-      "current_value": 5.55,
-      "pnl_usd": -0.03,
-      "pnl_pct": -0.5,
+      "current_value": 5.43,
+      "pnl_usd": -0.15,
+      "pnl_pct": -2.7,
       "realized_pnl": 0.0,
       "size": 6.0,
       "slug": "nba-2025-26-spg-leader-cason-wallace",
@@ -129,29 +144,14 @@
       "redeemable": false
     },
     {
-      "question": "Will US GDP growth in Q1 2026 be between 1.5% and 2.0%?",
-      "outcome": "No",
-      "entry_price": 0.899,
-      "current_price": 0.877,
-      "cost_usd": 10.79,
-      "current_value": 10.52,
-      "pnl_usd": -0.26,
-      "pnl_pct": -2.4,
-      "realized_pnl": 0.0,
-      "size": 12.0,
-      "slug": "will-us-gdp-growth-in-q1-2026-be-between-1pt5-and-2pt0",
-      "end_date": "2026-04-30",
-      "redeemable": false
-    },
-    {
       "question": "Will Trump and Putin not meet?",
       "outcome": "No",
       "entry_price": 0.129639,
-      "current_price": 0.1175,
+      "current_price": 0.1225,
       "cost_usd": 4.13,
-      "current_value": 3.74,
-      "pnl_usd": -0.39,
-      "pnl_pct": -9.4,
+      "current_value": 3.9,
+      "pnl_usd": -0.23,
+      "pnl_pct": -5.5,
       "realized_pnl": 0.17,
       "size": 31.864085,
       "slug": "will-trump-and-putin-not-meet-315-857-437-514",
@@ -159,48 +159,18 @@
       "redeemable": false
     },
     {
-      "question": "Will the Iranian regime fall by June 30?",
-      "outcome": "Yes",
-      "entry_price": 0.130027,
-      "current_price": 0.115,
-      "cost_usd": 5.0,
-      "current_value": 4.42,
-      "pnl_usd": -0.58,
-      "pnl_pct": -11.6,
-      "realized_pnl": -2.69,
-      "size": 38.471434,
-      "slug": "will-the-iranian-regime-fall-by-june-30",
-      "end_date": "2026-06-30",
-      "redeemable": false
-    },
-    {
-      "question": "US-Iran nuclear deal by June 30?",
-      "outcome": "Yes",
-      "entry_price": 0.32975,
-      "current_price": 0.25,
-      "cost_usd": 3.79,
-      "current_value": 2.87,
-      "pnl_usd": -0.92,
-      "pnl_pct": -24.2,
-      "realized_pnl": 2.96,
-      "size": 11.480668,
-      "slug": "us-iran-nuclear-deal-by-june-30",
-      "end_date": "2026-06-30",
-      "redeemable": false
-    },
-    {
-      "question": "Will the Toronto Raptors make the NBA Playoffs?",
-      "outcome": "Yes",
-      "entry_price": 0.93,
-      "current_price": 0.76,
-      "cost_usd": 5.58,
-      "current_value": 4.56,
-      "pnl_usd": -1.02,
-      "pnl_pct": -18.3,
+      "question": "Will US GDP growth in Q1 2026 be between 1.5% and 2.0%?",
+      "outcome": "No",
+      "entry_price": 0.899,
+      "current_price": 0.857,
+      "cost_usd": 10.79,
+      "current_value": 10.28,
+      "pnl_usd": -0.5,
+      "pnl_pct": -4.7,
       "realized_pnl": 0.0,
-      "size": 6.0,
-      "slug": "will-the-toronto-raptors-make-the-nba-playoffs-961",
-      "end_date": "2026-04-12",
+      "size": 12.0,
+      "slug": "will-us-gdp-growth-in-q1-2026-be-between-1pt5-and-2pt0",
+      "end_date": "2026-04-30",
       "redeemable": false
     }
   ],
@@ -222,43 +192,43 @@
     }
   ],
   "portfolio": {
-    "positions_value": 64.53,
-    "wallet_balance": 6.01,
-    "total_value": 70.54,
+    "positions_value": 58.05,
+    "wallet_balance": 13.7,
+    "total_value": 71.75,
     "initial_deposit": 70.0,
-    "total_pnl": 0.54,
-    "total_pnl_pct": 0.8,
-    "biggest_win": 1.0752801600000002
+    "total_pnl": 1.75,
+    "total_pnl_pct": 2.5,
+    "biggest_win": 1.2719880508230001
   },
   "stats": {
-    "total_trades": 13,
-    "winning_trades": 4,
-    "losing_trades": 9,
-    "win_rate": 30.8,
-    "open_positions": 12,
+    "total_trades": 11,
+    "winning_trades": 3,
+    "losing_trades": 8,
+    "win_rate": 27.3,
+    "open_positions": 10,
     "resolved_positions": 1
   },
   "recent_activity": [
+    {
+      "icon": "\ud83d\udd34",
+      "text": "No Will US GDP growth in Q1 2026 be less than 1. \u2014 $-0.01 (-0.1%)"
+    },
     {
       "icon": "\ud83d\udfe2",
       "text": "Yes Will Jesus Christ return before GTA VI? \u2014 $-0.00 (-0.8%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "Yes Will MegaETH perform an airdrop by June 30?  \u2014 $+0.03 (+0.5%)"
+      "text": "Yes Will the Iranian regime fall by June 30? \u2014 $+0.19 (+3.8%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "Yes Will the Atlanta Hawks make the NBA Playoffs? \u2014 $+0.18 (+3.3%)"
+      "text": "Yes Will the Atlanta Hawks make the NBA Playoffs? \u2014 $+0.21 (+3.9%)"
     },
     {
       "icon": "\ud83d\udfe2",
-      "text": "No Will Trump visit China by May 31? \u2014 $+1.02 (+23.9%)"
-    },
-    {
-      "icon": "\ud83d\udfe2",
-      "text": "No Will the Iranian regime fall by April 30? \u2014 $+1.08 (+10.7%)"
+      "text": "Yes Will MegaETH perform an airdrop by June 30?  \u2014 $+1.27 (+27.5%)"
     }
   ],
-  "updated_at": "2026-04-02T15:29:53.882985+00:00"
+  "updated_at": "2026-04-02T21:45:20.037461+00:00"
 }
